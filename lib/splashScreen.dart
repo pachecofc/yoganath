@@ -23,8 +23,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var startWidth = MediaQuery.of(context).size.width * 0.548;
-    var finalWidth = MediaQuery.of(context).size.width * 0.848;
+    final mediaQuery = MediaQuery.of(context).size;
+    final startWidth = mediaQuery.width * 0.548;
+    final finalWidth = mediaQuery.width * 0.848;
+
     return Scaffold(
       body: Container(
         color: Colors.white,
@@ -36,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: <Widget>[
                 Image.asset(
                   'images/ganesha.png',
-                  height: MediaQuery.of(context).size.height * 0.27,
+                  height: mediaQuery.height * 0.27,
                 )
               ],
             ),
@@ -60,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: <Widget>[
                 Image.asset(
                   'images/nath_splash.png',
-                  height: MediaQuery.of(context).size.height * 0.27,
+                  height: mediaQuery.height * 0.27,
                 )
               ],
             )
