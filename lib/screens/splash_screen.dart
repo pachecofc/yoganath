@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:yoganath/screens/login_screen.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -13,19 +13,18 @@ class _SplashScreenState extends State<SplashScreen> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     Timer(Duration(seconds: 5), () {
-      Navigator.pushReplacement(
+      Navigator.pushReplacementNamed(
         context,
-        // TODO Definir arquivo de rotas
-        MaterialPageRoute(builder: (_) => Login()),
+        RouteGenerator.kLOGIN_ROUTE,
       );
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final mediaQuery = MediaQuery.of(context).size;
-    final startWidth = mediaQuery.width * 0.548;
-    final finalWidth = mediaQuery.width * 0.848;
+    final mediaSize = MediaQuery.of(context).size;
+    final startWidth = mediaSize.width * 0.548;
+    final finalWidth = mediaSize.width * 0.848;
 
     return Scaffold(
       body: Container(
@@ -38,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: <Widget>[
                 Image.asset(
                   'assets/images/ganesha.png',
-                  height: mediaQuery.height * 0.27,
+                  height: mediaSize.height * 0.27,
                 )
               ],
             ),
@@ -62,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
               children: <Widget>[
                 Image.asset(
                   'assets/images/nath_splash.png',
-                  height: mediaQuery.height * 0.27,
+                  height: mediaSize.height * 0.27,
                 )
               ],
             )
