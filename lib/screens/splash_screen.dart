@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:yoganath/login.dart';
+import 'package:yoganath/screens/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -37,7 +37,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Image.asset(
-                  'images/ganesha.png',
+                  'assets/images/ganesha.png',
                   height: mediaQuery.height * 0.27,
                 )
               ],
@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     return Hero(
                       tag: 'logo',
                       child: Image(
-                        image: AssetImage('images/logo.jpg'),
+                        image: AssetImage('assets/images/logo.jpg'),
                         width: largura,
                       ),
                     );
@@ -61,7 +61,7 @@ class _SplashScreenState extends State<SplashScreen> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Image.asset(
-                  'images/nath_splash.png',
+                  'assets/images/nath_splash.png',
                   height: mediaQuery.height * 0.27,
                 )
               ],

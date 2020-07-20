@@ -9,7 +9,7 @@ class Login extends StatelessWidget {
         Hero(
           tag: 'logo',
           child: Image.asset(
-            'images/logo.jpg',
+            'assets/images/logo.jpg',
             width: MediaQuery.of(context).size.width * 0.848,
           ),
         ),
