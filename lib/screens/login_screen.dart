@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/widgets/reusableCheckBox.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
@@ -12,7 +13,6 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
-  bool _checked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -85,17 +85,10 @@ class _LoginState extends State<Login> {
                 SizedBox(
                   height: 70.0,
                 ),
-                CheckboxListTile(
-                    title: Text(
-                        'Ao continuar, você concorda com os Termos de Uso e Política de Privacidade do YogaNath.'),
-                    value: _checked,
-                    onChanged: (bool newValue) {
-                      setState(() {
-                        _checked = newValue;
-                      });
-                    },
-                    activeColor: Theme.of(context).colorScheme.secondaryVariant,
-                    controlAffinity: ListTileControlAffinity.platform),
+                ReusableCheckboxListTile(
+                  checkTitle:
+                      'Ao continuar, você concorda com os Termos de Uso e Política de Privacidade do YogaNath.',
+                ),
               ],
             ),
           ),

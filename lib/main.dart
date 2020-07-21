@@ -14,9 +14,11 @@ void main() => runApp(
           typography: Typography.material2018(platform: TargetPlatform.android),
           primaryColor: Color(0xffcc9c74),
           buttonColor: Color(0xff5F9269),
+          accentColor: Color(0xff32643E),
           scaffoldBackgroundColor: Colors.white,
           textTheme: Typography.blackMountainView.copyWith(
             bodyText2: TextStyle(color: Colors.black54, fontSize: 16.0),
+            // TODO Fix imported font
             headline5: TextStyle(
               fontFamily: 'IndieFlower-Regular',
               fontSize: 33.0,
@@ -30,7 +32,6 @@ void main() => runApp(
               fontSize: 27.0,
               fontWeight: FontWeight.normal,
               letterSpacing: 0.15,
-              height: 39,
               color: Colors.black87,
             ),
           ),
