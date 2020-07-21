@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/widgets/reusableFlatButton.dart';
+import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
 
 class Login extends StatefulWidget {
@@ -10,16 +12,12 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
-  String _email = '';
-  String _password = '';
-  String _formData = '';
   bool _checked = false;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: Theme.of(context).colorScheme.background,
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
@@ -67,19 +65,10 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         height: 32.0,
                       ),
-                      RaisedButton(
-                          child: Text('ENTRAR'),
-                          onPressed: () {
-                            if (_formKey.currentState.validate()) {
-                              _formKey.currentState.save();
-
-                              setState(() {
-                                _formData =
-                                    'E-mail: $_email; Senha: $_password.';
-                              });
-                              print(_formData);
-                            }
-                          }),
+                      ReusableRaisedButton(
+                        buttonText: 'ENTRAR',
+                        onPressed: () {},
+                      ),
                     ],
                   ),
                 ),
@@ -89,9 +78,9 @@ class _LoginState extends State<Login> {
                 Text(
                   'Ainda não é cadastrado?',
                 ),
-                FlatButton(
+                ReusableFlatButton(
+                  buttonText: 'Cadastrar',
                   onPressed: () {},
-                  child: Text('Cadastrar'),
                 ),
                 SizedBox(
                   height: 70.0,

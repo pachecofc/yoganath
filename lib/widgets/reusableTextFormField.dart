@@ -34,7 +34,6 @@ class ReusableTextFormField extends StatelessWidget {
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,
-        labelStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
         filled: true,
         suffixIcon: showEyeIcon(),
       ),
