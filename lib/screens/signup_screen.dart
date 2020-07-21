@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableCheckBox.dart';
-import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
 
-class Login extends StatelessWidget {
+class Signup extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
   final _emailController = TextEditingController();
   final _passController = TextEditingController();
 
@@ -14,6 +13,7 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
@@ -27,12 +27,26 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 70.54,
+                  height: 61.54,
                 ),
                 Form(
                   key: _formKey,
                   child: Column(
                     children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: ReusableTextFormField(
+                          textEditingController: _nameController,
+                          isObscure: false,
+                          label: 'Nome',
+                          hint: 'Seu Nome',
+                          errorMessage: 'Por favor, digite seu nome',
+                          keyboardType: TextInputType.text,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 50.0,
+                      ),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ReusableTextFormField(
@@ -62,26 +76,14 @@ class Login extends StatelessWidget {
                         height: 32.0,
                       ),
                       ReusableRaisedButton(
-                        buttonText: 'ENTRAR',
+                        buttonText: 'CADASTRAR',
                         onPressed: () {},
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 32.0,
-                ),
-                Text(
-                  'Ainda não é cadastrado?',
-                ),
-                ReusableFlatButton(
-                  buttonText: 'Cadastrar',
-                  onPressed: () {
-                    Navigator.pushNamed(context, RouteGenerator.kSIGNUP_ROUTE);
-                  },
-                ),
-                SizedBox(
-                  height: 70.0,
+                  height: 53.0,
                 ),
                 ReusableCheckboxListTile(
                   checkTitle:
