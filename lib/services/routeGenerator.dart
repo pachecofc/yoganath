@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/level_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
 import 'package:yoganath/screens/signup_screen.dart';
 import 'package:yoganath/screens/splash_screen.dart';
@@ -7,6 +8,7 @@ class RouteGenerator {
   static const String kROOT_ROUTE = '/';
   static const String kLOGIN_ROUTE = '/login';
   static const String kSIGNUP_ROUTE = '/signup';
+  static const String kLEVEL_ROUTE = '/level';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -18,6 +20,9 @@ class RouteGenerator {
         break;
       case kSIGNUP_ROUTE:
         return MaterialPageRoute(builder: (_) => Signup());
+        break;
+      case kLEVEL_ROUTE:
+        return MaterialPageRoute(builder: (_) => Level());
         break;
       default:
         _routeNotFound();

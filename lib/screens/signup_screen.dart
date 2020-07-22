@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableCheckBox.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
@@ -77,7 +78,10 @@ class Signup extends StatelessWidget {
                       ),
                       ReusableRaisedButton(
                         buttonText: 'CADASTRAR',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, RouteGenerator.kLEVEL_ROUTE);
+                        },
                       ),
                     ],
                   ),

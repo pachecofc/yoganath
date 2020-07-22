@@ -13,28 +13,24 @@ void main() => runApp(
         theme: ThemeData(
           typography: Typography.material2018(platform: TargetPlatform.android),
           primaryColor: Color(0xffcc9c74),
+          primaryColorDark: Color(0xff996E48),
           buttonColor: Color(0xff5F9269),
           accentColor: Color(0xff32643E),
           scaffoldBackgroundColor: Colors.white,
           textTheme: Typography.blackMountainView.copyWith(
             bodyText2: TextStyle(color: Colors.black54, fontSize: 16.0),
-            // TODO Fix imported font
             headline5: TextStyle(
-              fontFamily: 'IndieFlower-Regular',
+              fontFamily: 'Indie Flower',
               fontSize: 33.0,
-              fontWeight: FontWeight.normal,
-              letterSpacing: 0,
-              height: 48.0,
               color: Color(0xff5F9269),
             ),
             headline6: TextStyle(
-              fontFamily: 'IndieFlower-Regular',
+              fontFamily: 'Indie Flower',
               fontSize: 27.0,
-              fontWeight: FontWeight.normal,
-              letterSpacing: 0.15,
               color: Colors.black87,
             ),
           ),
+          // appBarTheme: AppBarTheme(brightness: Brightness.dark),
         ),
       ),
     );
