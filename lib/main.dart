@@ -21,6 +21,12 @@ class YogaNath extends StatelessWidget {
         buttonColor: Color(0xff5F9269),
         accentColor: Color(0xff32643E),
         scaffoldBackgroundColor: Colors.white,
+        cardTheme: CardTheme(
+          shadowColor: Color(0xffDEA97E),
+          margin: EdgeInsets.symmetric(
+            vertical: 11.0,
+          ),
+        ),
         textTheme: Typography.blackMountainView.copyWith(
           bodyText2: TextStyle(color: Colors.black54, fontSize: 16.0),
           headline5: TextStyle(
