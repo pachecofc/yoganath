@@ -27,17 +27,17 @@ class Level extends StatelessWidget {
                 ReusableCard(
                   cardImage: 'beginner.jpg',
                   cardText: 'Iniciante',
-                  routeName: RouteGenerator.kSADHANA_ROUTE,
+                  routeName: RouteGenerator.kBASE_ROUTE,
                 ),
                 ReusableCard(
                   cardImage: 'intermediate.jpg',
                   cardText: 'Intermediário',
-                  routeName: RouteGenerator.kSADHANA_ROUTE,
+                  routeName: RouteGenerator.kBASE_ROUTE,
                 ),
                 ReusableCard(
                   cardImage: 'advanced.jpg',
                   cardText: 'Avançado',
-                  routeName: RouteGenerator.kSADHANA_ROUTE,
+                  routeName: RouteGenerator.kBASE_ROUTE,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 21.0),
