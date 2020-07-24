@@ -33,7 +33,8 @@ class Birthday extends StatelessWidget {
                 ),
                 CircleAvatar(
                   backgroundImage: AssetImage('assets/images/baloons.jpg'),
-                  maxRadius: 343.0,
+                  maxRadius: 150.0,
+                  backgroundColor: Theme.of(context).primaryColor,
                 ),
                 SizedBox(
                   height: 58.0,

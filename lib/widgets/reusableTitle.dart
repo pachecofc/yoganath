@@ -17,7 +17,7 @@ class ReusableTitle extends StatelessWidget {
         ),
         isPremium
             ? Padding(
-                padding: const EdgeInsets.only(bottom: 8.0, left: 8.0),
+                padding: const EdgeInsets.only(bottom: 10.0, left: 8.0),
                 child: Icon(
                   Icons.star_border,
                   color: Theme.of(context).accentColor,

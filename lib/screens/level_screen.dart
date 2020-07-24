@@ -22,6 +22,11 @@ class Level extends StatelessWidget {
                 ReusableSubtitle(
                   text: 'Vamos nos conhecer melhor? Você se considera:',
                 ),
+                // Text(
+                //   'Vamos nos conhecer melhor? Você se considera:',
+                //   // textAlign: TextAlign.left,
+                //   style: Theme.of(context).textTheme.headline6,
+                // ),
                 SizedBox(
                   height: 49.0,
                 ),

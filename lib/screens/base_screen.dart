@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/practice_screen.dart';
 import 'package:yoganath/screens/sadhana_screen.dart';
 
 class Base extends StatefulWidget {
@@ -12,14 +13,12 @@ class _BaseState extends State<Base> {
   int _selectedIndex = 0;
   static List<Widget> _widgetOptions = <Widget>[
     Sadhana(),
-    Text(
-      'Index 1: Práticas Avulsas',
-    ),
+    Practice(),
     Text(
       'Index 2: Agenda',
     ),
     Text(
-      'Index 2: Leituras',
+      'Index 2: Estudos',
     ),
     Text(
       'Index 2: Perfil',
@@ -53,7 +52,7 @@ class _BaseState extends State<Base> {
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.school),
-              title: Text('Leituras'),
+              title: Text('Estudos'),
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.account_circle),
