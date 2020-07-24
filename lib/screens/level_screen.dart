@@ -16,6 +16,7 @@ class Level extends StatelessWidget {
               children: <Widget>[
                 ReusableTitle(
                   text: 'Namastê João',
+                  isPremium: false,
                 ),
                 SizedBox(height: 19.0),
                 ReusableSubtitle(
