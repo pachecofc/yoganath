@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableCard.dart';
+import 'package:yoganath/widgets/reusableSubtitle.dart';
+import 'package:yoganath/widgets/reusableTitle.dart';
 
 class Level extends StatelessWidget {
   @override
@@ -8,19 +10,16 @@ class Level extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                Text(
-                  'Namastê João',
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline5,
+                ReusableTitle(
+                  text: 'Namastê João',
                 ),
                 SizedBox(height: 19.0),
-                Text(
-                  'Vamos nos conhecer melhor? Você se considera:',
-                  style: Theme.of(context).textTheme.headline6,
+                ReusableSubtitle(
+                  text: 'Vamos nos conhecer melhor? Você se considera:',
                 ),
                 SizedBox(
                   height: 49.0,
@@ -28,17 +27,17 @@ class Level extends StatelessWidget {
                 ReusableCard(
                   cardImage: 'beginner.jpg',
                   cardText: 'Iniciante',
-                  routeName: RouteGenerator.kSIGNUP_ROUTE,
+                  routeName: RouteGenerator.kSADHANA_ROUTE,
                 ),
                 ReusableCard(
                   cardImage: 'intermediate.jpg',
                   cardText: 'Intermediário',
-                  routeName: RouteGenerator.kLOGIN_ROUTE,
+                  routeName: RouteGenerator.kSADHANA_ROUTE,
                 ),
                 ReusableCard(
                   cardImage: 'advanced.jpg',
                   cardText: 'Avançado',
-                  routeName: RouteGenerator.kSIGNUP_ROUTE,
+                  routeName: RouteGenerator.kSADHANA_ROUTE,
                 ),
                 Padding(
                   padding: EdgeInsets.symmetric(vertical: 21.0),
