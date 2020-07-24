@@ -68,7 +68,10 @@ class Login extends StatelessWidget {
                         ),
                         ReusableRaisedButton(
                           buttonText: 'ENTRAR',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, RouteGenerator.kBIRTHDAY_ROUTE);
+                          },
                         ),
                       ],
                     ),

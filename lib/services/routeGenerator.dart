@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:yoganath/screens/base_screen.dart';
+import 'package:yoganath/screens/birthday_screen.dart';
 import 'package:yoganath/screens/level_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
 import 'package:yoganath/screens/signup_screen.dart';
@@ -10,6 +12,7 @@ class RouteGenerator {
   static const String kLOGIN_ROUTE = '/login';
   static const String kSIGNUP_ROUTE = '/signup';
   static const String kLEVEL_ROUTE = '/level';
+  static const String kBIRTHDAY_ROUTE = '/birthday';
   static const String kBASE_ROUTE = '/base';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -25,6 +28,9 @@ class RouteGenerator {
         break;
       case kLEVEL_ROUTE:
         return MaterialPageRoute(builder: (_) => Level());
+        break;
+      case kBIRTHDAY_ROUTE:
+        return MaterialPageRoute(builder: (_) => Birthday());
         break;
       case kBASE_ROUTE:
         return MaterialPageRoute(builder: (_) => Base());
