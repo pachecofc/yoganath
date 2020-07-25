@@ -1,20 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/widgets/reusableFlatButton.dart';
 
 class ReusableCard extends StatelessWidget {
   const ReusableCard(
       {@required this.cardImage,
       @required this.cardText,
-      @required this.routeName});
+      this.routeName,
+      this.secondTextLine,
+      this.reusableFlatButton});
 
   final String cardImage;
   final String cardText;
+  final String secondTextLine;
+  final ReusableFlatButton reusableFlatButton;
   final String routeName;
+
+  bool containsSecondLine() {
+    if (secondTextLine == null) return false;
+    return true;
+  }
+
+  bool containsButton() {
+    if (reusableFlatButton == null) return false;
+    return true;
+  }
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushReplacementNamed(context, routeName);
+        Navigator.pushNamed(context, routeName);
       },
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 11.0),
@@ -38,13 +53,16 @@ class ReusableCard extends StatelessWidget {
                 ),
               ],
             ),
-            Column(
-              children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Text(cardText),
-                )
-              ],
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(cardText),
+                  containsSecondLine() ? Text(secondTextLine) : Container(),
+                  containsButton() ? reusableFlatButton : Container(),
+                ],
+              ),
             ),
           ],
         ),
