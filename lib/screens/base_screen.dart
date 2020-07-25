@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/learn_screen.dart';
 import 'package:yoganath/screens/practice_screen.dart';
 import 'package:yoganath/screens/sadhana_screen.dart';
 import 'package:yoganath/screens/schedule_screen.dart';
@@ -16,9 +17,7 @@ class _BaseState extends State<Base> {
     Sadhana(),
     Practice(),
     Schedule(),
-    Text(
-      'Index 2: Estudos',
-    ),
+    Learn(),
     Text(
       'Index 2: Perfil',
     ),

@@ -41,24 +41,25 @@ class ReusableCard extends StatelessWidget {
         ),
         child: Row(
           children: <Widget>[
-            Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 120.0,
-                  width: 120.0,
-                  child: Image.asset(
-                    'assets/images/$cardImage',
-                    fit: BoxFit.cover,
-                  ),
-                ),
-              ],
+            SizedBox(
+              height: 120.0,
+              width: 120.0,
+              child: Image.asset(
+                'assets/images/$cardImage',
+                fit: BoxFit.cover,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(cardText),
+                  Container(
+                    width: MediaQuery.of(context).size.width * 0.5,
+                    child: Text(
+                      cardText,
+                    ),
+                  ),
                   containsSecondLine() ? Text(secondTextLine) : Container(),
                   containsButton() ? reusableFlatButton : Container(),
                 ],
