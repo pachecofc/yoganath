@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/screens/practice_screen.dart';
 import 'package:yoganath/screens/sadhana_screen.dart';
+import 'package:yoganath/screens/schedule_screen.dart';
 
 class Base extends StatefulWidget {
   // Base({Key key}) : super(key: key);
@@ -14,9 +15,7 @@ class _BaseState extends State<Base> {
   static List<Widget> _widgetOptions = <Widget>[
     Sadhana(),
     Practice(),
-    Text(
-      'Index 2: Agenda',
-    ),
+    Schedule(),
     Text(
       'Index 2: Estudos',
     ),
@@ -35,7 +34,13 @@ class _BaseState extends State<Base> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: _widgetOptions.elementAt(_selectedIndex),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: SingleChildScrollView(
+            child: _widgetOptions.elementAt(_selectedIndex),
+          ),
+        ),
+        // body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
