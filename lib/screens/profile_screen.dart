@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/screens/achievements_screen.dart';
+import 'package:yoganath/screens/ranking_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
-
-import 'login_screen.dart';
 
 class Profile extends StatelessWidget {
   @override
@@ -31,7 +30,7 @@ class Profile extends StatelessWidget {
             child: TabBarView(
               children: [
                 Achievements(),
-                Login(),
+                Ranking(),
                 Icon(Icons.directions_bike),
               ],
             ),
