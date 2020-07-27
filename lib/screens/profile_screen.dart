@@ -11,7 +11,16 @@ class Profile extends StatelessWidget {
         children: <Widget>[
           ReusableTitle(text: 'Meu Perfil', isPremium: false),
           ProfileHeader(),
-          ProfileTabs(),
+          TabBar(
+            labelColor: Theme.of(context).primaryColor,
+            indicatorColor: Theme.of(context).primaryColor,
+            unselectedLabelColor: Colors.black45,
+            tabs: [
+              Tab(text: 'Conquistas'),
+              Tab(text: 'Ranking'),
+              Tab(text: 'Calendário'),
+            ],
+          ),
           Expanded(
             flex: 1,
             child: TabBarView(
@@ -78,22 +87,6 @@ class ProfileHeader extends StatelessWidget {
           ),
         ],
       ),
-    );
-  }
-}
-
-class ProfileTabs extends StatelessWidget {
-  const ProfileTabs();
-
-  @override
-  Widget build(BuildContext context) {
-    return TabBar(
-      labelColor: Colors.black,
-      tabs: [
-        Tab(icon: Icon(Icons.directions_car)),
-        Tab(icon: Icon(Icons.directions_transit)),
-        Tab(icon: Icon(Icons.directions_bike)),
-      ],
     );
   }
 }
