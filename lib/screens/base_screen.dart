@@ -7,8 +7,6 @@ import 'package:yoganath/screens/sadhana_screen.dart';
 import 'package:yoganath/screens/schedule_screen.dart';
 
 class Base extends StatefulWidget {
-  // Base({Key key}) : super(key: key);
-
   @override
   _BaseState createState() => _BaseState();
 }
@@ -35,11 +33,9 @@ class _BaseState extends State<Base> {
       child: Scaffold(
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: _widgetOptions.elementAt(_selectedIndex),
-          ),
+          // Must not be wrapped in a SingleChildScrollView
+          child: _widgetOptions.elementAt(_selectedIndex),
         ),
-        // body: _widgetOptions.elementAt(_selectedIndex),
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(

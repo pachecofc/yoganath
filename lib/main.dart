@@ -35,7 +35,6 @@ class YogaNath extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
-        // appBarTheme: AppBarTheme(brightness: Brightness.dark),
       ),
     );
   }

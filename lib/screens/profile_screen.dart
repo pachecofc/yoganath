@@ -5,12 +5,25 @@ import 'package:yoganath/widgets/reusableTitle.dart';
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        ReusableTitle(text: 'Meu Perfil', isPremium: false),
-        ProfileHeader(),
-        Tabs(),
-      ],
+    return DefaultTabController(
+      length: 3,
+      child: Column(
+        children: <Widget>[
+          ReusableTitle(text: 'Meu Perfil', isPremium: false),
+          ProfileHeader(),
+          ProfileTabs(),
+          Expanded(
+            flex: 1,
+            child: TabBarView(
+              children: [
+                Icon(Icons.directions_car),
+                Icon(Icons.directions_transit),
+                Icon(Icons.directions_bike),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 }
@@ -69,27 +82,18 @@ class ProfileHeader extends StatelessWidget {
   }
 }
 
-class Tabs extends StatefulWidget {
-  @override
-  _TabsState createState() => _TabsState();
-}
-
-class _TabsState extends State<Tabs> with SingleTickerProviderStateMixin {
-  TabController _tabController;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _tabController = TabController(
-      length: 3,
-      vsync: this,
-      initialIndex: 0,
-    );
-  }
+class ProfileTabs extends StatelessWidget {
+  const ProfileTabs();
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return TabBar(
+      labelColor: Colors.black,
+      tabs: [
+        Tab(icon: Icon(Icons.directions_car)),
+        Tab(icon: Icon(Icons.directions_transit)),
+        Tab(icon: Icon(Icons.directions_bike)),
+      ],
+    );
   }
 }
