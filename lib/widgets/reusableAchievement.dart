@@ -6,11 +6,13 @@ class ReusableAchievement extends StatelessWidget {
   const ReusableAchievement(
       {@required this.goalTitle,
       @required this.goalDescription,
-      @required this.progress});
+      @required this.progress,
+      @required this.numOfStars});
 
   final String goalTitle;
   final String goalDescription;
   final double progress;
+  final int numOfStars;
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +56,18 @@ class ReusableAchievement extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 14.0),
                   child: Row(
                     children: <Widget>[
-                      ReusableStar(starStyle: Icons.star_border),
-                      ReusableStar(starStyle: Icons.star_border),
-                      ReusableStar(starStyle: Icons.star_border),
-                      ReusableStar(starStyle: Icons.star_border),
+                      numOfStars >= 1
+                          ? ReusableStar(starStyle: Icons.star)
+                          : ReusableStar(starStyle: Icons.star_border),
+                      numOfStars >= 2
+                          ? ReusableStar(starStyle: Icons.star)
+                          : ReusableStar(starStyle: Icons.star_border),
+                      numOfStars >= 3
+                          ? ReusableStar(starStyle: Icons.star)
+                          : ReusableStar(starStyle: Icons.star_border),
+                      numOfStars == 4
+                          ? ReusableStar(starStyle: Icons.star)
+                          : ReusableStar(starStyle: Icons.star_border),
                     ],
                   ),
                 ),
