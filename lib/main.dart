@@ -35,6 +35,13 @@ class YogaNath extends StatelessWidget {
             color: Colors.black87,
           ),
         ),
+        sliderTheme: SliderTheme.of(context).copyWith(
+          activeTrackColor: Color(0xff32643E),
+          inactiveTrackColor: Color(0xff8ec397),
+          thumbColor: Color(0xff32643E),
+          valueIndicatorColor: Color(0xff32643E),
+          overlayColor: Color(0xff8ec397),
+        ),
       ),
     );
   }

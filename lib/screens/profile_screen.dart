@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/achievements_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
+
+import 'login_screen.dart';
 
 class Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Color primaryColor = Theme.of(context).primaryColor;
+
     return DefaultTabController(
       length: 3,
       child: Column(
@@ -12,8 +17,8 @@ class Profile extends StatelessWidget {
           ReusableTitle(text: 'Meu Perfil', isPremium: false),
           ProfileHeader(),
           TabBar(
-            labelColor: Theme.of(context).primaryColor,
-            indicatorColor: Theme.of(context).primaryColor,
+            labelColor: primaryColor,
+            indicatorColor: primaryColor,
             unselectedLabelColor: Colors.black45,
             tabs: [
               Tab(text: 'Conquistas'),
@@ -25,8 +30,8 @@ class Profile extends StatelessWidget {
             flex: 1,
             child: TabBarView(
               children: [
-                Icon(Icons.directions_car),
-                Icon(Icons.directions_transit),
+                Achievements(),
+                Login(),
                 Icon(Icons.directions_bike),
               ],
             ),
@@ -43,7 +48,7 @@ class ProfileHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 21.0),
+      padding: const EdgeInsets.symmetric(vertical: 11.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
