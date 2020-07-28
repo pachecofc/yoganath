@@ -3,9 +3,88 @@ import 'package:yoganath/screens/achievements_screen.dart';
 import 'package:yoganath/screens/calendar_screen.dart';
 import 'package:yoganath/screens/ranking_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
+import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
 
-class Profile extends StatelessWidget {
+class Profile extends StatefulWidget {
+  @override
+  _ProfileState createState() => _ProfileState();
+}
+
+class _ProfileState extends State<Profile> {
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      key: scaffoldKey,
+      endDrawer: Drawer(
+        child: ListView(
+          primary: false,
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text(
+                'Configurações do Perfil',
+                style: Theme.of(context).textTheme.headline6,
+              ),
+            ),
+            ListTile(
+              title: Text('Conta'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Assinatura'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Suporte'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Sobre o YogaNath'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Administração do app'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ReusableRaisedButton(
+                buttonText: 'ENCERRAR SESSÃO',
+                onPressed: () {
+                  Navigator.pop(context);
+                })
+          ],
+        ),
+      ),
+      body: Stack(
+        children: <Widget>[
+          Positioned(
+            right: 0,
+            top: 0,
+            child: IconButton(
+              icon: Icon(Icons.menu),
+              onPressed: () => scaffoldKey.currentState.openEndDrawer(),
+            ),
+          ),
+          PageContent(),
+        ],
+      ),
+    );
+  }
+}
+
+class PageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color primaryColor = Theme.of(context).primaryColor;

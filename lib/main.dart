@@ -23,7 +23,8 @@ class YogaNath extends StatelessWidget {
         primaryColorDark: Color(0xff996E48),
         buttonColor: Color(0xff5F9269),
         accentColor: Color(0xff32643E),
-        canvasColor: Color(0xffDEA97E),
+        bottomAppBarColor: Color(0xffDEA97E),
+        canvasColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
         textTheme: Typography.blackMountainView.copyWith(
           bodyText2: TextStyle(color: Colors.black54, fontSize: 16.0),
