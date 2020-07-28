@@ -7,28 +7,43 @@ class Ranking extends StatelessWidget {
       child: Column(
         children: <Widget>[
           ListTile(
+            leading: Text('1o'),
             title: Text(
               'Bruce Lee',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text('2000 YP'),
-            leading: Image.asset('assets/images/first.png'),
+            trailing: Image.asset(
+              'assets/images/first.png',
+              height: 24,
+              width: 24,
+            ),
           ),
           ListTile(
+            leading: Text('2o'),
             title: Text(
               'Chuck Norris',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text('1900 YP'),
-            leading: Image.asset('assets/images/second.png'),
+            trailing: Image.asset(
+              'assets/images/second.png',
+              height: 24,
+              width: 24,
+            ),
           ),
           ListTile(
+            leading: Text('3o'),
             title: Text(
               'Van Damme',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text('1800 YP'),
-            leading: Image.asset('assets/images/third.png'),
+            trailing: Image.asset(
+              'assets/images/third.png',
+              height: 24,
+              width: 24,
+            ),
           ),
           ListTile(
             title: Text(
@@ -36,10 +51,7 @@ class Ranking extends StatelessWidget {
               style: TextStyle(fontWeight: FontWeight.bold),
             ),
             subtitle: Text('512 YP'),
-            leading: Text(
-              '15o',
-              style: TextStyle(fontSize: 26.0),
-            ),
+            leading: Text('15o'),
           ),
         ],
       ),
