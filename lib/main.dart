@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 
 import 'screens/splash_screen.dart';
 
-void main() => runApp(YogaNath());
+void main() {
+  initializeDateFormatting().then((_) => runApp(YogaNath()));
+}
 
 class YogaNath extends StatelessWidget {
   @override

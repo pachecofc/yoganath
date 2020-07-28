@@ -8,15 +8,6 @@ class Ranking extends StatelessWidget {
         children: <Widget>[
           ListTile(
             title: Text(
-              'Nome',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Text('Pontuação'),
-            leading: Text('Posição'),
-          ),
-          Divider(),
-          ListTile(
-            title: Text(
               'Bruce Lee',
               style: TextStyle(fontWeight: FontWeight.bold),
             ),

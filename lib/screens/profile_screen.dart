@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/screens/achievements_screen.dart';
+import 'package:yoganath/screens/calendar_screen.dart';
 import 'package:yoganath/screens/ranking_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
@@ -31,7 +32,7 @@ class Profile extends StatelessWidget {
               children: [
                 Achievements(),
                 Ranking(),
-                Icon(Icons.directions_bike),
+                Calendar(),
               ],
             ),
           )
