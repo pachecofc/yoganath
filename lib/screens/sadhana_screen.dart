@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
 
@@ -26,6 +27,9 @@ class Sadhana extends StatelessWidget {
             firstTextLine: 'Dia 3 / 21',
             secondTextLine: '30 min',
             isChecked: true,
+            onTap: () {
+              Navigator.pushNamed(context, RouteGenerator.kPREMIUM_ROUTE);
+            },
           ),
           ReusableTitle(
             text: 'Desafio Semanal',

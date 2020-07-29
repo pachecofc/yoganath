@@ -4,6 +4,7 @@ import 'package:yoganath/screens/base_screen.dart';
 import 'package:yoganath/screens/birthday_screen.dart';
 import 'package:yoganath/screens/level_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
+import 'package:yoganath/screens/premium_screen.dart';
 import 'package:yoganath/screens/signup_screen.dart';
 import 'package:yoganath/screens/splash_screen.dart';
 
@@ -14,6 +15,7 @@ class RouteGenerator {
   static const String kLEVEL_ROUTE = '/level';
   static const String kBIRTHDAY_ROUTE = '/birthday';
   static const String kBASE_ROUTE = '/base';
+  static const String kPREMIUM_ROUTE = '/premium';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -34,6 +36,9 @@ class RouteGenerator {
         break;
       case kBASE_ROUTE:
         return MaterialPageRoute(builder: (_) => Base());
+        break;
+      case kPREMIUM_ROUTE:
+        return MaterialPageRoute(builder: (_) => Premium());
         break;
       default:
         _routeNotFound();
