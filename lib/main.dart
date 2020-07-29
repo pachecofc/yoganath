@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/utilities/setOrientation.dart';
 
 import 'screens/splash_screen.dart';
 
 void main() {
+  // Set portrait orientation as default
+  setOrientation('portrait');
   initializeDateFormatting().then((_) => runApp(YogaNath()));
 }
 
