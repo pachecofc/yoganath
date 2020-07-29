@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/plans_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
@@ -89,7 +90,13 @@ class Footer extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: ReusableRaisedButton(
-                buttonText: 'SEJA PREMIUM', onPressed: () {}),
+                buttonText: 'SEJA PREMIUM',
+                onPressed: () {
+                  showModalBottomSheet(
+                    context: context,
+                    builder: (context) => Plans(),
+                  );
+                }),
           ),
           Expanded(
             child: ReusableFlatButton(
