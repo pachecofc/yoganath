@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 
 class Plans extends StatelessWidget {
+  final String expensive = '\$\$';
+  final String mostExpensive = '\$\$\$';
+
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -13,12 +16,12 @@ class Plans extends StatelessWidget {
         ReusablePlanCard(
           planName: 'Semestral',
           planPrice: 'R\$ 165,6 / ano, equivale a R\$ 13,80 / mês',
-          planSymbol: '\$\$',
+          planSymbol: expensive,
         ),
         ReusablePlanCard(
           planName: 'Mensal',
           planPrice: 'R\$ 18,50 / mês',
-          planSymbol: '\$\$\$',
+          planSymbol: mostExpensive,
         ),
       ],
     );
