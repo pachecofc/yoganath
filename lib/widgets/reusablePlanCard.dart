@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 
 class ReusablePlanCard extends StatelessWidget {
@@ -47,7 +48,11 @@ class ReusablePlanCard extends StatelessWidget {
               ),
             ),
             ReusableRaisedButton(
-                buttonText: 'ESCOLHER ESTE PLANO', onPressed: () {}),
+                buttonText: 'ESCOLHER ESTE PLANO',
+                onPressed: () {
+                  Navigator.pushReplacementNamed(
+                      context, RouteGenerator.kCLASS_ROUTE);
+                }),
           ],
         ),
       ),
