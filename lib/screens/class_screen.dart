@@ -1,6 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
-import 'package:yoganath/utilities/setOrientation.dart';
 
 class Class extends StatefulWidget {
   @override
@@ -8,72 +8,67 @@ class Class extends StatefulWidget {
 }
 
 class _ClassState extends State<Class> {
-  VideoPlayerController _controller;
+  VideoPlayerController _videoPlayerController;
+  bool startedPlaying = false;
 
   @override
   void initState() {
     super.initState();
-    // _controller = VideoPlayerController.network(
-    //     'https://www.sample-videos.com/video123/mp4/720/big_buck_bunny_720p_20mb.mp4')
-    //   ..initialize().then((_) {
-    //     // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
-    //     setState(() {
-    //       // Plays the video automatically after it is initialized
-    //       _controller.play();
-    //     });
-    //   });
-    _controller = VideoPlayerController.asset('assets/videos/exemplo.mp4')
-      // TODO Remove the line below after testing.
-      ..setLooping(true)
-      ..initialize().then((_) {
-        setState(() {});
-      });
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    // Adjust orientation to landscape
-    setOrientation('landscape');
-    return Scaffold(
-      body: Center(
-        child: _controller.value.initialized
-            ? AspectRatio(
-                aspectRatio: _controller.value.aspectRatio,
-                child: Stack(
-                  alignment: Alignment.bottomCenter,
-                  children: <Widget>[
-                    VideoPlayer(_controller),
-                    _PlayPauseOverlay(
-                      controller: _controller,
-                    ),
-                    VideoProgressIndicator(
-                      _controller,
-                      allowScrubbing: true,
-                    )
-                  ],
-                ),
-              )
-            : Container(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller.value.isPlaying
-                ? _controller.pause()
-                : _controller.play();
-          });
-        },
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
-      ),
-    );
+    _videoPlayerController =
+        VideoPlayerController.asset('assets/videos/exemplo.mp4');
+    _videoPlayerController.addListener(() {
+      if (startedPlaying && !_videoPlayerController.value.isPlaying) {
+        Navigator.pop(context);
+      }
+    });
   }
 
   @override
   void dispose() {
+    _videoPlayerController.dispose();
     super.dispose();
-    _controller.dispose();
+  }
+
+  Future<bool> started() async {
+    await _videoPlayerController.initialize();
+    await _videoPlayerController.play();
+    startedPlaying = true;
+    return true;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      elevation: 0,
+      child: Center(
+        child: FutureBuilder<bool>(
+          future: started(),
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (snapshot.data == true) {
+              return AspectRatio(
+                aspectRatio: _videoPlayerController.value.aspectRatio,
+                child: Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: <Widget>[
+                    VideoPlayer(_videoPlayerController),
+                    _PlayPauseOverlay(
+                      controller: _videoPlayerController,
+                    ),
+                    VideoProgressIndicator(
+                      _videoPlayerController,
+                      allowScrubbing: true,
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return const Text('Aguardando o vídeo carregar...');
+            }
+          },
+        ),
+      ),
+    );
   }
 }
 
