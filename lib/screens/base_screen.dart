@@ -7,6 +7,9 @@ import 'package:yoganath/screens/sadhana_screen.dart';
 import 'package:yoganath/screens/schedule_screen.dart';
 
 class Base extends StatefulWidget {
+  Base({this.fromFeedback});
+  final bool fromFeedback;
+
   @override
   _BaseState createState() => _BaseState();
 }
@@ -25,6 +28,18 @@ class _BaseState extends State<Base> {
     setState(() {
       _selectedIndex = index;
     });
+  }
+
+  @override
+  void initState() {
+    // If a student arrived here after giving feedback
+    // for a yoga class, redirect him/her to profile tab.
+    if (widget.fromFeedback) {
+      setState(() {
+        _selectedIndex = 4;
+      });
+    }
+    super.initState();
   }
 
   @override

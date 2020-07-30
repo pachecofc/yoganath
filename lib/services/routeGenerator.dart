@@ -17,6 +17,7 @@ class RouteGenerator {
   static const String kLEVEL_ROUTE = '/level';
   static const String kBIRTHDAY_ROUTE = '/birthday';
   static const String kBASE_ROUTE = '/base';
+  static const String kPROFILE_ROUTE = '/profile';
   static const String kPREMIUM_ROUTE = '/premium';
   static const String kCLASS_ROUTE = '/class';
   static const String kFEEDBACK_ROUTE = '/feedback';
@@ -40,6 +41,9 @@ class RouteGenerator {
         break;
       case kBASE_ROUTE:
         return MaterialPageRoute(builder: (_) => Base());
+        break;
+      case kPROFILE_ROUTE:
+        return MaterialPageRoute(builder: (_) => Base(fromFeedback: true));
         break;
       case kPREMIUM_ROUTE:
         return MaterialPageRoute(builder: (_) => Premium());

@@ -48,7 +48,7 @@ class ClassFeedback extends StatelessWidget {
                     buttonText: 'CONCLUIR',
                     onPressed: () {
                       Navigator.pushReplacementNamed(
-                          context, RouteGenerator.kBASE_ROUTE);
+                          context, RouteGenerator.kPROFILE_ROUTE);
                     }),
               ],
             ),

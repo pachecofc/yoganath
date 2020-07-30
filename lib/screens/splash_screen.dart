@@ -12,10 +12,12 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    Timer(Duration(seconds: 5), () {
+    Timer(Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(
         context,
-        RouteGenerator.kLOGIN_ROUTE,
+        // TODO Replace line below after testing
+        // RouteGenerator.kLOGIN_ROUTE,
+        RouteGenerator.kFEEDBACK_ROUTE,
       );
     });
   }
