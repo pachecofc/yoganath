@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/utilities/setOrientation.dart';
 
 class Class extends StatefulWidget {
@@ -20,7 +21,7 @@ class _ClassState extends State<Class> {
         VideoPlayerController.asset('assets/videos/exemplo.mp4');
     _videoPlayerController.addListener(() {
       if (startedPlaying && !_videoPlayerController.value.isPlaying) {
-        Navigator.pop(context);
+        Navigator.pushReplacementNamed(context, RouteGenerator.kFEEDBACK_ROUTE);
       }
     });
   }

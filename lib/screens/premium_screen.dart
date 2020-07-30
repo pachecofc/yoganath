@@ -52,12 +52,6 @@ class Premium extends StatelessWidget {
       children: _benefits
           .map(
             (benefit) => ListTile(
-              // leading: Icon(
-              //   _benefits.indexOf(benefit) < 5
-              //       ? Icons.check_box
-              //       : Icons.check_box_outline_blank,
-              //   color: Theme.of(context).accentColor,
-              // ),
               leading: isPremium
                   ? Icon(
                       Icons.check_box,

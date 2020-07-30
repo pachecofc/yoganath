@@ -12,7 +12,7 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  var scaffoldKey = GlobalKey<ScaffoldState>();
+  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,36 +29,11 @@ class _ProfileState extends State<Profile> {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            ListTile(
-              title: Text('Conta'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Assinatura'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Suporte'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Sobre o YogaNath'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-            ListTile(
-              title: Text('Administração do app'),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
+            buildListTile(context, 'Conta'),
+            buildListTile(context, 'Assinatura'),
+            buildListTile(context, 'Suporte'),
+            buildListTile(context, 'Sobre o YogaNath'),
+            buildListTile(context, 'Administração do app'),
             ReusableRaisedButton(
                 buttonText: 'ENCERRAR SESSÃO',
                 onPressed: () {
@@ -80,6 +55,15 @@ class _ProfileState extends State<Profile> {
           PageContent(),
         ],
       ),
+    );
+  }
+
+  ListTile buildListTile(BuildContext context, String title) {
+    return ListTile(
+      title: Text(title),
+      onTap: () {
+        Navigator.pop(context);
+      },
     );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:yoganath/screens/base_screen.dart';
 import 'package:yoganath/screens/birthday_screen.dart';
 import 'package:yoganath/screens/class_screen.dart';
+import 'package:yoganath/screens/feedback_screen.dart';
 import 'package:yoganath/screens/level_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
 import 'package:yoganath/screens/premium_screen.dart';
@@ -18,6 +19,7 @@ class RouteGenerator {
   static const String kBASE_ROUTE = '/base';
   static const String kPREMIUM_ROUTE = '/premium';
   static const String kCLASS_ROUTE = '/class';
+  static const String kFEEDBACK_ROUTE = '/feedback';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -44,6 +46,9 @@ class RouteGenerator {
         break;
       case kCLASS_ROUTE:
         return MaterialPageRoute(builder: (_) => Class());
+        break;
+      case kFEEDBACK_ROUTE:
+        return MaterialPageRoute(builder: (_) => ClassFeedback());
         break;
       default:
         _routeNotFound();
