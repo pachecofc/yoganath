@@ -1,16 +1,16 @@
 import 'package:flutter/services.dart';
 import 'package:flutter/material.dart';
 
-void setOrientation(String orientation) {
+void setOrientation(Orientation orientation) {
   // Restrict device orientation to portrait
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (orientation == 'portrait') {
+  if (orientation == Orientation.portrait) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-  } else {
+  } else if (orientation == Orientation.landscape) {
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,

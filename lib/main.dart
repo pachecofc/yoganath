@@ -7,7 +7,7 @@ import 'screens/splash_screen.dart';
 
 void main() {
   // Set portrait orientation as default
-  setOrientation('portrait');
+  setOrientation(Orientation.portrait);
   initializeDateFormatting().then((_) => runApp(YogaNath()));
 }
 

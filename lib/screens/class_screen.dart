@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
+import 'package:yoganath/utilities/setOrientation.dart';
 
 class Class extends StatefulWidget {
   @override
@@ -39,6 +40,7 @@ class _ClassState extends State<Class> {
 
   @override
   Widget build(BuildContext context) {
+    setOrientation(Orientation.landscape);
     return Material(
       elevation: 0,
       child: Center(
