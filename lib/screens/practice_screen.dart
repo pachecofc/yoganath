@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableCard.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
@@ -15,7 +16,7 @@ class Practice extends StatelessWidget {
         ReusableCard(
           cardImage: 'trikonasana.jpg',
           cardText: 'Ásanas',
-          routeName: '',
+          routeName: RouteGenerator.kASANAS_ROUTE,
         ),
         ReusableCard(
           cardImage: 'time.png',

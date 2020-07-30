@@ -15,9 +15,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(
         context,
-        // TODO Replace line below after testing
-        // RouteGenerator.kLOGIN_ROUTE,
-        RouteGenerator.kFEEDBACK_ROUTE,
+        RouteGenerator.kLOGIN_ROUTE,
       );
     });
   }

@@ -39,6 +39,9 @@ class Sadhana extends StatelessWidget {
             imageName: 'corvo.jpg',
             firstTextLine: 'Semana 2 / 7',
             isChecked: false,
+            onTap: () {
+              Navigator.pushNamed(context, RouteGenerator.kPREMIUM_ROUTE);
+            },
           ),
         ],
       ),
