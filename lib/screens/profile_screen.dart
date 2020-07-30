@@ -5,6 +5,7 @@ import 'package:yoganath/screens/ranking_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
+import 'package:yoganath/widgets/reusableYogaPoints.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -139,20 +140,7 @@ class ProfileHeader extends StatelessWidget {
             ],
           ),
           // User score
-          Column(
-            children: <Widget>[
-              Image.asset(
-                'assets/images/lotus.png',
-                width: 24.0,
-                height: 24.0,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text('512'),
-              ),
-              Text('YogaPoints'),
-            ],
-          ),
+          ReusableYogaPoints(score: 512),
         ],
       ),
     );
