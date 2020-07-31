@@ -12,7 +12,7 @@ class Schedule extends StatelessWidget {
         children: <Widget>[
           ReusableTitle(text: 'Nath Agenda', isPremium: false),
           Card(
-            shadowColor: Theme.of(context).canvasColor,
+            shadowColor: Theme.of(context).bottomAppBarColor,
             child: Column(
               children: <Widget>[
                 Row(
@@ -38,7 +38,10 @@ class Schedule extends StatelessWidget {
                 Text(
                     'Greyhound divisively hello coldly wonderfully marginally far…'),
                 ReusableFlatButton(
-                    buttonText: 'ADICIONAR AO CALENDÁRIO', onPressed: () {}),
+                    buttonText: 'ADICIONAR AO CALENDÁRIO',
+                    onPressed: () {
+                      buildSnackBar(context);
+                    }),
               ],
             ),
           ),
@@ -50,11 +53,23 @@ class Schedule extends StatelessWidget {
             cardImage: 'sirshasana.jpg',
             cardText: 'Data: 01/ago/2020',
             secondTextLine: 'Horário: 19:30',
-            reusableFlatButton:
-                ReusableFlatButton(buttonText: 'AGENDAR', onPressed: () {}),
+            reusableFlatButton: ReusableFlatButton(
+                buttonText: 'AGENDAR',
+                onPressed: () {
+                  buildSnackBar(context);
+                }),
           ),
         ],
       ),
     );
+  }
+
+  void buildSnackBar(BuildContext context) {
+    final snackbar = SnackBar(
+      backgroundColor: Theme.of(context).buttonColor,
+      duration: Duration(seconds: 3),
+      content: Text('Evento agendado com sucesso!'),
+    );
+    Scaffold.of(context).showSnackBar(snackbar);
   }
 }
