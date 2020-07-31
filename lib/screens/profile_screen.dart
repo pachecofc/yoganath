@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yoganath/screens/achievements_screen.dart';
 import 'package:yoganath/screens/calendar_screen.dart';
 import 'package:yoganath/screens/ranking_screen.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
@@ -30,11 +31,14 @@ class _ProfileState extends State<Profile> {
                 style: Theme.of(context).textTheme.headline6,
               ),
             ),
-            buildListTile(context, 'Conta'),
-            buildListTile(context, 'Assinatura'),
-            buildListTile(context, 'Suporte'),
-            buildListTile(context, 'Sobre o YogaNath'),
-            buildListTile(context, 'Administração do app'),
+            buildListTile(context, 'Conta', RouteGenerator.kACCOUNT_ROUTE),
+            buildListTile(
+                context, 'Assinatura', RouteGenerator.kSUBSCRIPTION_ROUTE),
+            buildListTile(context, 'Suporte', RouteGenerator.kSUPPORT_ROUTE),
+            buildListTile(
+                context, 'Sobre o YogaNath', RouteGenerator.kABOUT_ROUTE),
+            buildListTile(
+                context, 'Administração do app', RouteGenerator.kADMIN_ROUTE),
             ReusableRaisedButton(
                 buttonText: 'ENCERRAR SESSÃO',
                 onPressed: () {
@@ -59,11 +63,11 @@ class _ProfileState extends State<Profile> {
     );
   }
 
-  ListTile buildListTile(BuildContext context, String title) {
+  ListTile buildListTile(BuildContext context, String title, String routeName) {
     return ListTile(
       title: Text(title),
       onTap: () {
-        Navigator.pop(context);
+        Navigator.pushNamed(context, routeName);
       },
     );
   }

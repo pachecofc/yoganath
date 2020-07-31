@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/account_screen.dart';
 import 'package:yoganath/screens/asanaInfo_screen.dart';
 import 'package:yoganath/screens/asanas_screen.dart';
 import 'package:yoganath/screens/base_screen.dart';
@@ -30,6 +31,11 @@ class RouteGenerator {
   static const String kPRANA_ROUTE = '/pranayamas';
   static const String kMEDITATION_ROUTE = '/meditation';
   static const String kLEARN_ROUTE = '/learn';
+  static const String kACCOUNT_ROUTE = '/account';
+  static const String kSUBSCRIPTION_ROUTE = '/subscription';
+  static const String kSUPPORT_ROUTE = '/support';
+  static const String kABOUT_ROUTE = '/about';
+  static const String kADMIN_ROUTE = '/admin';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -76,6 +82,22 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Meditation());
         break;
       case kLEARN_ROUTE:
+        return MaterialPageRoute(builder: (_) => LearnMore());
+        break;
+      case kACCOUNT_ROUTE:
+        return MaterialPageRoute(builder: (_) => Account());
+        break;
+      // TODO Fix routes below after creating respective classes.
+      case kSUBSCRIPTION_ROUTE:
+        return MaterialPageRoute(builder: (_) => LearnMore());
+        break;
+      case kSUPPORT_ROUTE:
+        return MaterialPageRoute(builder: (_) => LearnMore());
+        break;
+      case kABOUT_ROUTE:
+        return MaterialPageRoute(builder: (_) => LearnMore());
+        break;
+      case kADMIN_ROUTE:
         return MaterialPageRoute(builder: (_) => LearnMore());
         break;
       default:
