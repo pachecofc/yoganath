@@ -4,6 +4,7 @@ class ReusableTextFormField extends StatelessWidget {
   ReusableTextFormField(
       {@required this.textEditingController,
       @required this.isObscure,
+      this.suffixIcon,
       @required this.label,
       @required this.hint,
       @required this.errorMessage,
@@ -11,6 +12,7 @@ class ReusableTextFormField extends StatelessWidget {
 
   final TextEditingController textEditingController;
   final bool isObscure;
+  final Widget suffixIcon;
   final String label;
   final String hint;
   final String errorMessage;
@@ -18,16 +20,6 @@ class ReusableTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    IconButton showEyeIcon() {
-      if (isObscure) {
-        return IconButton(
-          icon: Icon(Icons.visibility),
-          onPressed: null,
-        );
-      }
-      return null;
-    }
-
     return TextFormField(
       keyboardType: keyboardType,
       controller: textEditingController,
@@ -35,7 +27,7 @@ class ReusableTextFormField extends StatelessWidget {
         labelText: label,
         hintText: hint,
         filled: true,
-        suffixIcon: showEyeIcon(),
+        suffixIcon: suffixIcon,
       ),
       cursorColor: Theme.of(context).colorScheme.primary,
       obscureText: isObscure,

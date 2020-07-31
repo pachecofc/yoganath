@@ -67,6 +67,7 @@ class Signup extends StatelessWidget {
                         child: ReusableTextFormField(
                           textEditingController: _passController,
                           isObscure: true,
+                          suffixIcon: Icon(Icons.visibility),
                           label: 'Senha',
                           hint: null,
                           errorMessage: 'Por favor, digite sua senha',
