@@ -21,12 +21,12 @@ class Practice extends StatelessWidget {
         ReusableCard(
           cardImage: 'time.png',
           cardText: 'Timer Meditação',
-          routeName: '',
+          routeName: RouteGenerator.kMEDITATION_ROUTE,
         ),
         ReusableCard(
           cardImage: 'pranayama.png',
           cardText: 'Pranayamas',
-          routeName: '',
+          routeName: RouteGenerator.kPRANA_ROUTE,
         ),
         SizedBox(
           height: 44.0,
