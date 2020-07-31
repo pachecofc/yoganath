@@ -5,6 +5,7 @@ import 'package:yoganath/screens/base_screen.dart';
 import 'package:yoganath/screens/birthday_screen.dart';
 import 'package:yoganath/screens/class_screen.dart';
 import 'package:yoganath/screens/feedback_screen.dart';
+import 'package:yoganath/screens/learnMore_screen.dart';
 import 'package:yoganath/screens/level_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
 import 'package:yoganath/screens/meditation_screen.dart';
@@ -28,6 +29,7 @@ class RouteGenerator {
   static const String kASANAS_ROUTE = '/asanas';
   static const String kPRANA_ROUTE = '/pranayamas';
   static const String kMEDITATION_ROUTE = '/meditation';
+  static const String kLEARN_ROUTE = '/learn';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -72,6 +74,9 @@ class RouteGenerator {
         break;
       case kMEDITATION_ROUTE:
         return MaterialPageRoute(builder: (_) => Meditation());
+        break;
+      case kLEARN_ROUTE:
+        return MaterialPageRoute(builder: (_) => LearnMore());
         break;
       default:
         _routeNotFound();
