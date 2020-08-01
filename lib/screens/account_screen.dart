@@ -152,7 +152,28 @@ class Account extends StatelessWidget {
             ReusableDangerButton(
                 buttonText: 'Excluir conta',
                 onPressed: () {
-                  // TODO Create snackbar on Login Page after deleting an account
+                  showCancelConfirmationDialog(context);
+                }),
+          ],
+        );
+      },
+    );
+  }
+
+  void showCancelConfirmationDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: ReusableSubtitle(text: 'Conta Cancelada'),
+          titlePadding: EdgeInsets.all(43.0),
+          content: Text(
+              'Sentimos muito que tenha cancelado sua conta. Esperamos te ver novamente em breve.'),
+          contentPadding: EdgeInsets.fromLTRB(43.0, 0.0, 43.0, 26.0),
+          actions: <Widget>[
+            ReusableRaisedButton(
+                buttonText: 'SAIR',
+                onPressed: () {
                   Navigator.pushReplacementNamed(
                       context, RouteGenerator.kLOGIN_ROUTE);
                 }),
