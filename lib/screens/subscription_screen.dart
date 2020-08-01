@@ -35,6 +35,7 @@ class Subscription extends StatelessWidget {
                         hint: null,
                         errorMessage: null,
                         keyboardType: TextInputType.text,
+                        readOnly: true,
                       ),
                       SizedBox(
                         height: 32.0,
@@ -46,6 +47,7 @@ class Subscription extends StatelessWidget {
                         hint: null,
                         errorMessage: null,
                         keyboardType: TextInputType.text,
+                        readOnly: true,
                       ),
                       SizedBox(
                         height: 32.0,
@@ -72,6 +74,8 @@ class Subscription extends StatelessWidget {
                         buttonText: 'Cancelar assinatura',
                         onPressed: () {
                           // Ask for confirmation
+                          Navigator.pushNamed(context,
+                              RouteGenerator.kCANCELSUBSCRIPTION_ROUTE);
                         }),
                   ],
                 ),

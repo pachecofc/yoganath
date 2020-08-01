@@ -4,6 +4,7 @@ import 'package:yoganath/screens/asanaInfo_screen.dart';
 import 'package:yoganath/screens/asanas_screen.dart';
 import 'package:yoganath/screens/base_screen.dart';
 import 'package:yoganath/screens/birthday_screen.dart';
+import 'package:yoganath/screens/cancel_subscription_screen.dart';
 import 'package:yoganath/screens/class_screen.dart';
 import 'package:yoganath/screens/feedback_screen.dart';
 import 'package:yoganath/screens/learnMore_screen.dart';
@@ -34,6 +35,7 @@ class RouteGenerator {
   static const String kLEARN_ROUTE = '/learn';
   static const String kACCOUNT_ROUTE = '/account';
   static const String kSUBSCRIPTION_ROUTE = '/subscription';
+  static const String kCANCELSUBSCRIPTION_ROUTE = '/cancelsub';
   static const String kSUPPORT_ROUTE = '/support';
   static const String kABOUT_ROUTE = '/about';
   static const String kADMIN_ROUTE = '/admin';
@@ -90,6 +92,9 @@ class RouteGenerator {
         break;
       case kSUBSCRIPTION_ROUTE:
         return MaterialPageRoute(builder: (_) => Subscription());
+        break;
+      case kCANCELSUBSCRIPTION_ROUTE:
+        return MaterialPageRoute(builder: (_) => CancelSubscription());
         break;
       // TODO Fix routes below after creating respective classes.
       case kSUPPORT_ROUTE:

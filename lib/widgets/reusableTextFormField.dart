@@ -8,7 +8,8 @@ class ReusableTextFormField extends StatelessWidget {
       @required this.label,
       @required this.hint,
       @required this.errorMessage,
-      @required this.keyboardType});
+      @required this.keyboardType,
+      this.readOnly = false});
 
   final TextEditingController textEditingController;
   final bool isObscure;
@@ -17,12 +18,14 @@ class ReusableTextFormField extends StatelessWidget {
   final String hint;
   final String errorMessage;
   final TextInputType keyboardType;
+  final bool readOnly;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       keyboardType: keyboardType,
       controller: textEditingController,
+      readOnly: readOnly,
       decoration: InputDecoration(
         labelText: label,
         hintText: hint,

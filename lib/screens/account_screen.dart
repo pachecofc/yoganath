@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/utilities/cancelConfirmationDialog.dart';
 import 'package:yoganath/widgets/reusableDangerButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableSubtitle.dart';
@@ -13,6 +14,9 @@ class Account extends StatelessWidget {
   final _passController = TextEditingController();
   final _phoneController = TextEditingController();
   final _dateController = TextEditingController();
+  final String _message =
+      'Sentimos muito que tenha cancelado sua conta. Esperamos te ver novamente em breve.';
+  final String _title = 'Conta Cancelada';
 
   @override
   Widget build(BuildContext context) {
@@ -152,30 +156,7 @@ class Account extends StatelessWidget {
             ReusableDangerButton(
                 buttonText: 'Excluir conta',
                 onPressed: () {
-                  showCancelConfirmationDialog(context);
-                }),
-          ],
-        );
-      },
-    );
-  }
-
-  void showCancelConfirmationDialog(BuildContext context) {
-    showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: ReusableSubtitle(text: 'Conta Cancelada'),
-          titlePadding: EdgeInsets.all(43.0),
-          content: Text(
-              'Sentimos muito que tenha cancelado sua conta. Esperamos te ver novamente em breve.'),
-          contentPadding: EdgeInsets.fromLTRB(43.0, 0.0, 43.0, 26.0),
-          actions: <Widget>[
-            ReusableRaisedButton(
-                buttonText: 'SAIR',
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, RouteGenerator.kLOGIN_ROUTE);
+                  showCancelConfirmationDialog(context, _message, _title);
                 }),
           ],
         );
