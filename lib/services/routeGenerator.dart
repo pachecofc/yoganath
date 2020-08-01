@@ -14,6 +14,7 @@ import 'package:yoganath/screens/pranayamas_screen.dart';
 import 'package:yoganath/screens/premium_screen.dart';
 import 'package:yoganath/screens/signup_screen.dart';
 import 'package:yoganath/screens/splash_screen.dart';
+import 'package:yoganath/screens/subscription_screen.dart';
 
 class RouteGenerator {
   static const String kROOT_ROUTE = '/';
@@ -87,10 +88,10 @@ class RouteGenerator {
       case kACCOUNT_ROUTE:
         return MaterialPageRoute(builder: (_) => Account());
         break;
-      // TODO Fix routes below after creating respective classes.
       case kSUBSCRIPTION_ROUTE:
-        return MaterialPageRoute(builder: (_) => LearnMore());
+        return MaterialPageRoute(builder: (_) => Subscription());
         break;
+      // TODO Fix routes below after creating respective classes.
       case kSUPPORT_ROUTE:
         return MaterialPageRoute(builder: (_) => LearnMore());
         break;
