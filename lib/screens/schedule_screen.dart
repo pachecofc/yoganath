@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/utilities/showSnackBar.dart';
 import 'package:yoganath/widgets/reusableCard.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableSubtitle.dart';
@@ -40,7 +41,7 @@ class Schedule extends StatelessWidget {
                 ReusableFlatButton(
                     buttonText: 'ADICIONAR AO CALENDÁRIO',
                     onPressed: () {
-                      buildSnackBar(context);
+                      buildSnackBar(context, 'Evento agendado com sucesso!');
                     }),
               ],
             ),
@@ -56,20 +57,11 @@ class Schedule extends StatelessWidget {
             reusableFlatButton: ReusableFlatButton(
                 buttonText: 'AGENDAR',
                 onPressed: () {
-                  buildSnackBar(context);
+                  buildSnackBar(context, 'Evento agendado com sucesso!');
                 }),
           ),
         ],
       ),
     );
-  }
-
-  void buildSnackBar(BuildContext context) {
-    final snackbar = SnackBar(
-      backgroundColor: Theme.of(context).buttonColor,
-      duration: Duration(seconds: 3),
-      content: Text('Evento agendado com sucesso!'),
-    );
-    Scaffold.of(context).showSnackBar(snackbar);
   }
 }
