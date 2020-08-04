@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:yoganath/screens/about_more_screen.dart';
 import 'package:yoganath/screens/about_screen.dart';
 import 'package:yoganath/screens/account_screen.dart';
+import 'package:yoganath/screens/admin_screen.dart';
 import 'package:yoganath/screens/asanaInfo_screen.dart';
 import 'package:yoganath/screens/asanas_screen.dart';
 import 'package:yoganath/screens/base_screen.dart';
@@ -109,9 +110,8 @@ class RouteGenerator {
       case kABOUTMORE_ROUTE:
         return MaterialPageRoute(builder: (_) => AboutMore());
         break;
-      // TODO Fix routes below after creating respective classes.
       case kADMIN_ROUTE:
-        return MaterialPageRoute(builder: (_) => LearnMore());
+        return MaterialPageRoute(builder: (_) => Admin());
         break;
       default:
         _routeNotFound();

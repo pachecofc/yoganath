@@ -31,11 +31,13 @@ class About extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: <Widget>[
+                    // @nathsteins
                     Image.asset(
                       'assets/images/Instagram.png',
                       width: 24.0,
                       height: 24.0,
                     ),
+                    // @ioganath
                     Image.asset(
                       'assets/images/Facebook.png',
                       width: 24.0,
