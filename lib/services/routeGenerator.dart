@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/about_more_screen.dart';
+import 'package:yoganath/screens/about_screen.dart';
 import 'package:yoganath/screens/account_screen.dart';
 import 'package:yoganath/screens/asanaInfo_screen.dart';
 import 'package:yoganath/screens/asanas_screen.dart';
@@ -39,6 +41,7 @@ class RouteGenerator {
   static const String kCANCELSUBSCRIPTION_ROUTE = '/cancelsub';
   static const String kSUPPORT_ROUTE = '/support';
   static const String kABOUT_ROUTE = '/about';
+  static const String kABOUTMORE_ROUTE = '/aboutmore';
   static const String kADMIN_ROUTE = '/admin';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -100,10 +103,13 @@ class RouteGenerator {
       case kSUPPORT_ROUTE:
         return MaterialPageRoute(builder: (_) => Support());
         break;
-      // TODO Fix routes below after creating respective classes.
       case kABOUT_ROUTE:
-        return MaterialPageRoute(builder: (_) => LearnMore());
+        return MaterialPageRoute(builder: (_) => About());
         break;
+      case kABOUTMORE_ROUTE:
+        return MaterialPageRoute(builder: (_) => AboutMore());
+        break;
+      // TODO Fix routes below after creating respective classes.
       case kADMIN_ROUTE:
         return MaterialPageRoute(builder: (_) => LearnMore());
         break;
