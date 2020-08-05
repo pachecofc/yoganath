@@ -33,7 +33,7 @@ class Sadhana extends StatelessWidget {
           ),
           ReusableTitle(
             text: 'Desafio Semanal',
-            isPremium: true,
+            isPremium: false,
           ),
           ReusableMidiaCard(
             imageName: 'corvo.jpg',
