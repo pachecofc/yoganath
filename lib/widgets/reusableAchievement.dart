@@ -65,7 +65,10 @@ class ReusableAchievement extends StatelessWidget {
                       numOfStars >= 3
                           ? ReusableStar(starStyle: Icons.star)
                           : ReusableStar(starStyle: Icons.star_border),
-                      numOfStars == 4
+                      numOfStars >= 4
+                          ? ReusableStar(starStyle: Icons.star)
+                          : ReusableStar(starStyle: Icons.star_border),
+                      numOfStars == 5
                           ? ReusableStar(starStyle: Icons.star)
                           : ReusableStar(starStyle: Icons.star_border),
                     ],
