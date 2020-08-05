@@ -11,7 +11,6 @@ import 'package:yoganath/screens/cancel_subscription_screen.dart';
 import 'package:yoganath/screens/class_screen.dart';
 import 'package:yoganath/screens/feedback_screen.dart';
 import 'package:yoganath/screens/learnMore_screen.dart';
-import 'package:yoganath/screens/level_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
 import 'package:yoganath/screens/meditation_screen.dart';
 import 'package:yoganath/screens/pranayamas_screen.dart';
@@ -25,7 +24,6 @@ class RouteGenerator {
   static const String kROOT_ROUTE = '/';
   static const String kLOGIN_ROUTE = '/login';
   static const String kSIGNUP_ROUTE = '/signup';
-  static const String kLEVEL_ROUTE = '/level';
   static const String kBIRTHDAY_ROUTE = '/birthday';
   static const String kBASE_ROUTE = '/base';
   static const String kPROFILE_ROUTE = '/profile';
@@ -55,9 +53,6 @@ class RouteGenerator {
         break;
       case kSIGNUP_ROUTE:
         return MaterialPageRoute(builder: (_) => Signup());
-        break;
-      case kLEVEL_ROUTE:
-        return MaterialPageRoute(builder: (_) => Level());
         break;
       case kBIRTHDAY_ROUTE:
         return MaterialPageRoute(builder: (_) => Birthday());

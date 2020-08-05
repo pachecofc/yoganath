@@ -81,7 +81,7 @@ class Signup extends StatelessWidget {
                         buttonText: 'CADASTRAR',
                         onPressed: () {
                           Navigator.pushReplacementNamed(
-                              context, RouteGenerator.kLEVEL_ROUTE);
+                              context, RouteGenerator.kBASE_ROUTE);
                         },
                       ),
                     ],
