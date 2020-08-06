@@ -18,6 +18,11 @@ class _ProfileState extends State<Profile> {
 
   @override
   Widget build(BuildContext context) {
+    final List<Widget> aboutBoxChildren = <Widget>[
+      SizedBox(height: 24),
+      Text('YogaNath é um aplicativo para práticas de yoga.'),
+    ];
+
     return Scaffold(
       key: scaffoldKey,
       endDrawer: Drawer(
@@ -36,9 +41,21 @@ class _ProfileState extends State<Profile> {
                 context, 'Assinatura', RouteGenerator.kSUBSCRIPTION_ROUTE),
             buildListTile(context, 'Suporte', RouteGenerator.kSUPPORT_ROUTE),
             buildListTile(
-                context, 'Sobre o YogaNath', RouteGenerator.kABOUT_ROUTE),
+                context, 'Conheça a Nath', RouteGenerator.kABOUT_ROUTE),
             buildListTile(
                 context, 'Administração do app', RouteGenerator.kADMIN_ROUTE),
+            AboutListTile(
+              icon: Icon(Icons.info),
+              applicationIcon: Image.asset(
+                'assets/images/logo.jpg',
+                height: 24.0,
+                width: 48.0,
+              ),
+              applicationName: 'YogaNath',
+              applicationVersion: '1.0.0',
+              applicationLegalese: '(c) 2020 AppLab',
+              aboutBoxChildren: aboutBoxChildren,
+            ),
             ReusableRaisedButton(
                 buttonText: 'ENCERRAR SESSÃO',
                 onPressed: () {

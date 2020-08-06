@@ -10,7 +10,7 @@ class About extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Sobre a Nath'),
+          title: Text('Conheça a Nath'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
