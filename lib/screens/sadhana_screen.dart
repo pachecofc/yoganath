@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/widgets/reusableChallenge.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
 
@@ -35,14 +36,7 @@ class Sadhana extends StatelessWidget {
             text: 'Desafio Semanal',
             isPremium: false,
           ),
-          ReusableMidiaCard(
-            imageName: 'corvo.jpg',
-            firstTextLine: 'Semana 2 / 7',
-            isChecked: false,
-            onTap: () {
-              Navigator.pushNamed(context, RouteGenerator.kPREMIUM_ROUTE);
-            },
-          ),
+          for (var i = 0; i < 50; i++) ReusableChallenge()
         ],
       ),
     );

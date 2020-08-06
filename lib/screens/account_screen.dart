@@ -124,7 +124,6 @@ class Account extends StatelessWidget {
                           onPressed: () {
                             showAlertDialog(context);
                           }),
-                      // RaisedButton(onPressed: null)
                     ],
                   ),
                 ),
