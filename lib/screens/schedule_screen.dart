@@ -52,8 +52,8 @@ class Schedule extends StatelessWidget {
           ReusableTitle(text: 'Aulas ao Vivo', isPremium: true),
           ReusableCard(
             cardImage: 'sirshasana.jpg',
-            cardText: 'Data: 01/ago/2020',
-            secondTextLine: 'Horário: 19:30',
+            cardText: '01/ago/2020',
+            secondTextLine: '19:30',
             reusableFlatButton: ReusableFlatButton(
                 buttonText: 'AGENDAR',
                 onPressed: () {

@@ -8,23 +8,27 @@ class ReusableTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          text,
-          style: Theme.of(context).textTheme.headline5,
+    return FittedBox(
+      child: Container(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Text(
+              text,
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            isPremium
+                ? Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0, left: 8.0),
+                    child: Icon(
+                      Icons.star_border,
+                      color: Theme.of(context).accentColor,
+                    ),
+                  )
+                : Container(),
+          ],
         ),
-        isPremium
-            ? Padding(
-                padding: const EdgeInsets.only(bottom: 10.0, left: 8.0),
-                child: Icon(
-                  Icons.star_border,
-                  color: Theme.of(context).accentColor,
-                ),
-              )
-            : Container(),
-      ],
+      ),
     );
   }
 }
