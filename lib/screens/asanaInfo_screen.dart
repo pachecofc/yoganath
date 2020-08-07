@@ -18,10 +18,6 @@ class _AsanaInfoState extends State<AsanaInfo> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            // Video class
-            // Center(
-            //   child: Text('video here...'),
-            // ),
             Class(),
             AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,

@@ -18,6 +18,7 @@ class ReusablePlanCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -41,11 +42,7 @@ class ReusablePlanCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                children: <Widget>[
-                  Text(planPrice),
-                ],
-              ),
+              child: Text(planPrice),
             ),
             ReusableRaisedButton(
                 buttonText: 'ESCOLHER ESTE PLANO',

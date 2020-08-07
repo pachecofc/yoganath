@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
-import 'package:yoganath/widgets/reusableTitle.dart';
 
 class Asanas extends StatefulWidget {
   @override
@@ -15,13 +14,12 @@ class _AsanasState extends State<Asanas> {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Práticas Avulsas'),
+          title: Text('Ásanas'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
-              ReusableTitle(text: 'Ásanas', isPremium: false),
               Padding(
                 padding: const EdgeInsets.only(bottom: 8.0),
                 child: ReusableTextFormField(

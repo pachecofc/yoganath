@@ -11,9 +11,9 @@ class Premium extends StatelessWidget {
     'Timer meditação',
     'Agenda de eventos',
     'Leituras do Yoga',
+    'Desafios semanais',
     'Aulas personalizadas',
     'Aulas completas',
-    'Desafios semanais',
     'Aulas ao vivo',
   ];
 
@@ -57,7 +57,7 @@ class Premium extends StatelessWidget {
                       Icons.check_box,
                       color: secondaryColor,
                     )
-                  : _benefits.indexOf(benefit) < 5
+                  : _benefits.indexOf(benefit) < 6
                       ? Icon(
                           Icons.check_box,
                           color: secondaryColor,
@@ -78,8 +78,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.05,
+      height: MediaQuery.of(context).size.height * 0.1,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -109,18 +108,13 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
-      height: MediaQuery.of(context).size.height * 0.18,
+      height: MediaQuery.of(context).size.height * 0.38,
       child: Column(
         children: <Widget>[
           ReusableTitle(text: 'Seja Premium', isPremium: true),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: Row(
-              children: <Widget>[
-                Text('Veja os benefícios de um aluno Premium'),
-              ],
-            ),
+            child: Text('Veja os benefícios de um aluno Premium'),
           ),
           Row(
             children: <Widget>[
