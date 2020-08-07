@@ -50,10 +50,12 @@ class ReusableAchievement extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              ReusableSlider(initialValue: progress),
-              Container(
+              Expanded(
+                child: ReusableSlider(initialValue: progress),
+              ),
+              Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.only(right: 14.0),
+                  padding: const EdgeInsets.only(left: 10.0),
                   child: Row(
                     children: <Widget>[
                       numOfStars >= 1
