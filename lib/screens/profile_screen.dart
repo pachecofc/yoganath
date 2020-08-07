@@ -1,84 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/screens/achievements_screen.dart';
-import 'package:yoganath/screens/calendar_screen.dart';
-import 'package:yoganath/screens/ranking_screen.dart';
 import 'package:yoganath/services/routeGenerator.dart';
-import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
-import 'package:yoganath/widgets/reusableYogaPoints.dart';
 
 class Profile extends StatefulWidget {
   @override
   _ProfileState createState() => _ProfileState();
 }
 
-class _ProfileState extends State<Profile> {
-  GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
+class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
+  TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 3, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _tabController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final List<Widget> aboutBoxChildren = <Widget>[
-      SizedBox(height: 24),
-      Text('YogaNath é um aplicativo para práticas de yoga.'),
-    ];
+    final width = MediaQuery.of(context).size.width;
 
     return Scaffold(
-      key: scaffoldKey,
-      endDrawer: Drawer(
-        child: ListView(
-          primary: false,
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              child: Text(
-                'Configurações do Perfil',
-                style: Theme.of(context).textTheme.headline6,
-              ),
-            ),
-            buildListTile(context, 'Conta', RouteGenerator.kACCOUNT_ROUTE),
-            buildListTile(
-                context, 'Assinatura', RouteGenerator.kSUBSCRIPTION_ROUTE),
-            buildListTile(context, 'Suporte', RouteGenerator.kSUPPORT_ROUTE),
-            buildListTile(
-                context, 'Conheça a Nath', RouteGenerator.kABOUT_ROUTE),
-            buildListTile(
-                context, 'Administração do app', RouteGenerator.kADMIN_ROUTE),
-            AboutListTile(
-              icon: Icon(Icons.info),
-              applicationIcon: Image.asset(
-                'assets/images/logo.jpg',
-                height: 24.0,
-                width: 48.0,
-              ),
-              applicationName: 'YogaNath',
-              applicationVersion: '1.0.0',
-              applicationLegalese: '(c) 2020 AppLab',
-              aboutBoxChildren: aboutBoxChildren,
-            ),
-            ReusableRaisedButton(
-                buttonText: 'ENCERRAR SESSÃO',
-                onPressed: () {
-                  Navigator.pop(context);
-                })
-          ],
-        ),
+      appBar: AppBar(
+        title: ReusableTitle(text: 'Meu Perfil', isPremium: false),
+        bottom: TabBar(controller: _tabController, tabs: <Widget>[
+          width > 320 ? Text('Conquistas') : Icon(Icons.flare),
+          width > 320 ? Text('Ranking') : Icon(Icons.filter_1),
+          width > 320 ? Text('Calendário') : Icon(Icons.event),
+        ]),
+        backgroundColor: Colors.white,
+        elevation: 0,
       ),
-      body: Stack(
-        children: <Widget>[
-          Positioned(
-            right: 0,
-            top: 0,
-            child: IconButton(
-              icon: Icon(Icons.menu),
-              onPressed: () => scaffoldKey.currentState.openEndDrawer(),
-            ),
-          ),
-          PageContent(),
-        ],
-      ),
+      endDrawer: MyDrawer(),
+      body: TabBarView(controller: _tabController, children: <Widget>[
+        Achievements(),
+        Text('Ranking'),
+        Text('Calendário'),
+      ]),
     );
   }
+}
+
+class MyDrawer extends StatelessWidget {
+  final List<Widget> aboutBoxChildren = <Widget>[
+    SizedBox(height: 24),
+    Text('YogaNath é um aplicativo para práticas de yoga.'),
+  ];
 
   ListTile buildListTile(BuildContext context, String title, String routeName) {
     return ListTile(
@@ -88,80 +63,44 @@ class _ProfileState extends State<Profile> {
       },
     );
   }
-}
 
-class PageContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final Color primaryColor = Theme.of(context).primaryColor;
-
-    return DefaultTabController(
-      length: 3,
-      child: Column(
+    return Drawer(
+      child: ListView(
+        primary: false,
+        padding: EdgeInsets.zero,
         children: <Widget>[
-          ReusableTitle(text: 'Meu Perfil', isPremium: false),
-          ProfileHeader(),
-          TabBar(
-            labelColor: primaryColor,
-            indicatorColor: primaryColor,
-            unselectedLabelColor: Colors.black45,
-            tabs: [
-              Tab(text: 'Conquistas'),
-              Tab(text: 'Ranking'),
-              Tab(text: 'Calendário'),
-            ],
-          ),
-          Expanded(
-            flex: 1,
-            child: TabBarView(
-              children: [
-                Achievements(),
-                Ranking(),
-                Calendar(),
-              ],
+          DrawerHeader(
+            child: Text(
+              'Configurações do Perfil',
+              style: Theme.of(context).textTheme.headline6,
             ),
-          )
-        ],
-      ),
-    );
-  }
-}
-
-class ProfileHeader extends StatelessWidget {
-  const ProfileHeader();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 11.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          // Avatar
-          Column(
-            children: <Widget>[
-              Image.asset(
-                'assets/images/meditation.png',
-                width: 60.0,
-                height: 68.09,
-              ),
-              ReusableFlatButton(buttonText: 'INSERIR FOTO', onPressed: () {}),
-            ],
           ),
-          // User name and level
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: Text('João Silva'),
-              ),
-              Text('Iniciante'),
-            ],
+          buildListTile(context, 'Conta', RouteGenerator.kACCOUNT_ROUTE),
+          buildListTile(
+              context, 'Assinatura', RouteGenerator.kSUBSCRIPTION_ROUTE),
+          buildListTile(context, 'Suporte', RouteGenerator.kSUPPORT_ROUTE),
+          buildListTile(context, 'Conheça a Nath', RouteGenerator.kABOUT_ROUTE),
+          buildListTile(
+              context, 'Administração do app', RouteGenerator.kADMIN_ROUTE),
+          AboutListTile(
+            icon: Icon(Icons.info),
+            applicationIcon: Image.asset(
+              'assets/images/logo.jpg',
+              height: 24.0,
+              width: 48.0,
+            ),
+            applicationName: 'YogaNath',
+            applicationVersion: '1.0.0',
+            applicationLegalese: '(c) 2020 AppLab',
+            aboutBoxChildren: aboutBoxChildren,
           ),
-          // User score
-          ReusableYogaPoints(score: 512),
+          ReusableRaisedButton(
+              buttonText: 'ENCERRAR SESSÃO',
+              onPressed: () {
+                Navigator.pop(context);
+              })
         ],
       ),
     );
