@@ -21,6 +21,7 @@ class YogaNath extends StatelessWidget {
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
         typography: Typography.material2018(platform: TargetPlatform.android),
         primaryColor: Color(0xffcc9c74),
         primaryColorDark: Color(0xff996E48),
