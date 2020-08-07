@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/screens/achievements_screen.dart';
+import 'package:yoganath/screens/calendar_screen.dart';
+import 'package:yoganath/screens/ranking_screen.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
@@ -42,8 +44,8 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
       endDrawer: MyDrawer(),
       body: TabBarView(controller: _tabController, children: <Widget>[
         Achievements(),
-        Text('Ranking'),
-        Text('Calendário'),
+        Ranking(),
+        Calendar(),
       ]),
     );
   }

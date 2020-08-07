@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:yoganath/widgets/reusableSubtitle.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -108,10 +109,13 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    final height = MediaQuery.of(context).size.height;
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        _buildTableCalendar(),
+        height > 430
+            ? _buildTableCalendar()
+            : ReusableSubtitle(text: 'Eventos de hoje'),
         const SizedBox(
           height: 8.0,
         ),
