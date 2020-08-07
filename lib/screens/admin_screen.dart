@@ -27,7 +27,9 @@ class _AdminState extends State<Admin> {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
-              AdminHeader(),
+              MediaQuery.of(context).size.height > 430
+                  ? AdminHeader()
+                  : Container(),
               Expanded(
                 child: Text('Lista vai aqui...'),
               ),
@@ -44,7 +46,6 @@ class AdminHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height * 0.21,
       child: Column(
         children: <Widget>[

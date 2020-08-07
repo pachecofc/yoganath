@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
-import 'package:yoganath/widgets/reusableTitle.dart';
 
 class AboutMore extends StatelessWidget {
   @override
@@ -8,7 +7,7 @@ class AboutMore extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Quem é a Nath?'),
+          title: Text('Conheça a Nath'),
         ),
         body: Container(
           child: SingleChildScrollView(
@@ -16,7 +15,6 @@ class AboutMore extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: <Widget>[
-                  ReusableTitle(text: 'Quem é a Nath?', isPremium: false),
                   SizedBox(
                     width: 120.0,
                     child: ReusableMidiaCard(

@@ -11,56 +11,69 @@ class CancelSubscription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size screenSize = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Cancelamento de Assinatura'),
+          title: Text('Cancelar Assinatura'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
               Expanded(
+                flex: 2,
                 child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      Image.asset(
-                        'assets/images/logo.jpg',
-                        width: MediaQuery.of(context).size.width * 0.848,
-                      ),
-                      SizedBox(height: 32.0),
-                      Text(
-                          'Ao cancelar seu plano Premium, você deixará de usufruir dos seguintes benefícios:'),
-                      SizedBox(height: 43.0),
-                      LostBenefits(benefit: 'Aulas completas'),
-                      LostBenefits(benefit: 'Desafios semanais'),
-                      LostBenefits(benefit: 'Aulas ao vivo'),
-                      LostBenefits(benefit: 'Orientação profissional'),
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        screenSize.height > 430
+                            ? Image.asset(
+                                'assets/images/logo.jpg',
+                                width: screenSize.width * 0.848,
+                              )
+                            : Container(),
+                        screenSize.height > 430
+                            ? SizedBox(height: 32.0)
+                            : Container(),
+                        Text(
+                            'Ao cancelar seu plano Premium, você deixará de usufruir dos seguintes benefícios:'),
+                        screenSize.height > 430
+                            ? SizedBox(height: screenSize.height * 0.1)
+                            : Container(),
+                        LostBenefits(benefit: 'Aulas completas'),
+                        LostBenefits(benefit: 'Aulas ao vivo'),
+                        LostBenefits(benefit: 'Orientação profissional'),
+                      ],
+                    ),
                   ),
                 ),
               ),
-              Container(
-                height: 150.0,
-                child: Column(
-                  children: <Widget>[
-                    ReusableRaisedButton(
-                      buttonText: 'OK, MUDEI DE IDEIA :)',
-                      onPressed: () {
-                        Navigator.pushNamed(
-                            context, RouteGenerator.kBASE_ROUTE);
-                      },
-                    ),
-                    SizedBox(
-                      height: 32.0,
-                    ),
-                    ReusableDangerButton(
-                      buttonText: 'Cancelar assim mesmo :(',
-                      onPressed: () {
-                        showCancelConfirmationDialog(context, _message, _title);
-                      },
-                    ),
-                  ],
+              Expanded(
+                flex: 1,
+                child: Container(
+                  child: Column(
+                    children: <Widget>[
+                      ReusableRaisedButton(
+                        buttonText: 'OK, MUDEI DE IDEIA :)',
+                        onPressed: () {
+                          Navigator.pushNamed(
+                              context, RouteGenerator.kBASE_ROUTE);
+                        },
+                      ),
+                      screenSize.height > 430
+                          ? SizedBox(height: 32.0)
+                          : Container(),
+                      ReusableDangerButton(
+                        buttonText: 'Cancelar assim mesmo :(',
+                        onPressed: () {
+                          showCancelConfirmationDialog(
+                              context, _message, _title);
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

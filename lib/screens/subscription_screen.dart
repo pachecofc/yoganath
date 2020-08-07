@@ -3,7 +3,6 @@ import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableDangerButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
-import 'package:yoganath/widgets/reusableTitle.dart';
 
 class Subscription extends StatelessWidget {
   final TextEditingController _planType = TextEditingController();
@@ -14,7 +13,7 @@ class Subscription extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Assinatura'),
+          title: Text('Minha Assinatura'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -22,37 +21,38 @@ class Subscription extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: Container(
-                  child: Column(
-                    children: <Widget>[
-                      ReusableTitle(text: 'Minha Assinatura', isPremium: false),
-                      SizedBox(
-                        height: 5.0,
-                      ),
-                      ReusableTextFormField(
-                        textEditingController: _planType,
-                        isObscure: false,
-                        label: 'Plano',
-                        hint: null,
-                        errorMessage: null,
-                        keyboardType: TextInputType.text,
-                        readOnly: true,
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      ReusableTextFormField(
-                        textEditingController: _expiryDate,
-                        isObscure: false,
-                        label: 'Data de validade',
-                        hint: null,
-                        errorMessage: null,
-                        keyboardType: TextInputType.text,
-                        readOnly: true,
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                    ],
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: <Widget>[
+                        SizedBox(
+                          height: 5.0,
+                        ),
+                        ReusableTextFormField(
+                          textEditingController: _planType,
+                          isObscure: false,
+                          label: 'Plano',
+                          hint: null,
+                          errorMessage: null,
+                          keyboardType: TextInputType.text,
+                          readOnly: true,
+                        ),
+                        SizedBox(
+                          height: 32.0,
+                        ),
+                        ReusableTextFormField(
+                          textEditingController: _expiryDate,
+                          isObscure: false,
+                          label: 'Data de validade',
+                          hint: null,
+                          errorMessage: null,
+                          keyboardType: TextInputType.text,
+                          readOnly: true,
+                        ),
+                        SizedBox(
+                          height: 32.0,
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

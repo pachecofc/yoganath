@@ -5,7 +5,6 @@ import 'package:yoganath/widgets/reusableDangerButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableSubtitle.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
-import 'package:yoganath/widgets/reusableTitle.dart';
 
 class Account extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -23,14 +22,13 @@ class Account extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Perfil'),
+          title: Text('Minha Conta'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                ReusableTitle(text: 'Minha Conta', isPremium: false),
                 SizedBox(
                   height: 5.0,
                 ),
@@ -141,10 +139,8 @@ class Account extends StatelessWidget {
       builder: (context) {
         return AlertDialog(
           title: ReusableSubtitle(text: 'Tem certeza?'),
-          titlePadding: EdgeInsets.all(43.0),
           content: Text(
               'Excluir sua conta irá apagar permanentemente seus dados, mas isso **não** irá cancelar sua assinatura. Vá até Perfil > Assinatura para mais informações.'),
-          contentPadding: EdgeInsets.fromLTRB(43.0, 0.0, 43.0, 26.0),
           actions: <Widget>[
             ReusableRaisedButton(
                 buttonText: 'MANTER CONTA',

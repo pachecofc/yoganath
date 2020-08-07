@@ -8,14 +8,7 @@ class Support extends StatelessWidget {
     'Lorem ipsum dolor sit amet',
     'Consectetur adipiscing elit, sed do',
     'Eiusmod tempor incididunt ut labore',
-    'Lorem ipsum dolor sit amet',
-    'Consectetur adipiscing elit, sed do',
-    'Eiusmod tempor incididunt ut labore',
-    'Lorem ipsum dolor sit amet',
-    'Consectetur adipiscing elit, sed do',
-    'Eiusmod tempor incididunt ut labore',
   ];
-  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,24 +19,12 @@ class Support extends StatelessWidget {
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: ListView(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 8.0),
-                child: ReusableTextFormField(
-                  textEditingController: _searchController,
-                  isObscure: false,
-                  label: 'Termo de busca',
-                  hint: 'Digite o termo de busca',
-                  errorMessage: null,
-                  keyboardType: TextInputType.text,
-                  suffixIcon: Icon(Icons.search),
-                ),
+          child: Column(
+            children: <Widget>[
+              Header(),
+              Expanded(
+                child: buildSearchResults(context),
               ),
-              for (var hint in _searchHints)
-                ListTile(
-                  title: Text(hint),
-                ),
               Footer(),
             ],
           ),
@@ -51,15 +32,27 @@ class Support extends StatelessWidget {
       ),
     );
   }
+
+  ListView buildSearchResults(BuildContext context) {
+    return ListView(
+      children: _searchHints
+          .map(
+            (hint) => ListTile(
+              title: Text(hint),
+            ),
+          )
+          .toList(),
+    );
+  }
 }
 
 class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
-      child: Container(
-        // height: MediaQuery.of(context).size.height * 0.3,
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: MediaQuery.of(context).size.height * 0.3,
+      child: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Text(
@@ -77,6 +70,29 @@ class Footer extends StatelessWidget {
                 buttonText: 'AULAS PERSONALIZADAS', onPressed: () {}),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Header extends StatelessWidget {
+  final TextEditingController _searchController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Column(
+        children: <Widget>[
+          ReusableTextFormField(
+            textEditingController: _searchController,
+            isObscure: false,
+            label: 'Termo de busca',
+            hint: 'Digite o termo de busca',
+            errorMessage: null,
+            keyboardType: TextInputType.text,
+            suffixIcon: Icon(Icons.search),
+          ),
+        ],
       ),
     );
   }

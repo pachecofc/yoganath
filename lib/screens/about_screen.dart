@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
-import 'package:yoganath/widgets/reusableTitle.dart';
 
 class About extends StatelessWidget {
   @override
@@ -17,7 +16,6 @@ class About extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                ReusableTitle(text: 'Quem é a Nath?', isPremium: false),
                 ReusableMidiaCard(
                     imageName: 'sobre_Nath.png', isChecked: false),
                 Text(
