@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
-import 'package:yoganath/widgets/reusableCheckBox.dart';
+import 'package:yoganath/widgets/reusableAcceptTerms.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
 
@@ -84,10 +84,7 @@ class Signup extends StatelessWidget {
                     ],
                   ),
                 ),
-                ReusableCheckboxListTile(
-                  checkTitle:
-                      'Ao continuar, você concorda com os Termos de Uso e Política de Privacidade do YogaNath.',
-                ),
+                ReusableAcceptTerms(),
               ],
             ),
           ),

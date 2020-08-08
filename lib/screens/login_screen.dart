@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:yoganath/services/routeGenerator.dart';
-import 'package:yoganath/widgets/reusableCheckBox.dart';
+import 'package:yoganath/widgets/reusableAcceptTerms.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
@@ -33,7 +33,7 @@ class Login extends StatelessWidget {
                       width: _screenSize.width * 0.848,
                     ),
                   ),
-                  SizedBox(height: _screenSize.height * 0.1),
+                  SizedBox(height: _screenSize.height * 0.04),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -73,10 +73,8 @@ class Login extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(height: _screenSize.height * 0.047),
-                  Text(
-                    'Ainda não é cadastrado?',
-                  ),
+                  SizedBox(height: _screenSize.height * 0.03),
+                  Text('Ainda não é cadastrado?'),
                   ReusableFlatButton(
                     buttonText: 'Cadastrar',
                     onPressed: () {
@@ -84,10 +82,7 @@ class Login extends StatelessWidget {
                           context, RouteGenerator.kSIGNUP_ROUTE);
                     },
                   ),
-                  ReusableCheckboxListTile(
-                    checkTitle:
-                        'Ao continuar, você concorda com os Termos de Uso e Política de Privacidade do YogaNath.',
-                  ),
+                  ReusableAcceptTerms(),
                 ],
               ),
             ),
