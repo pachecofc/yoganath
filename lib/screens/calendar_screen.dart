@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:yoganath/widgets/reusableSubtitle.dart';
 
 class Calendar extends StatefulWidget {
   @override
@@ -92,13 +91,10 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    final _height = MediaQuery.of(context).size.height;
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        _height > 430
-            ? _buildTableCalendar()
-            : ReusableSubtitle(text: 'Eventos de hoje'),
+        _buildTableCalendar(),
         const SizedBox(
           height: 8.0,
         ),
@@ -109,8 +105,6 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
 // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
-    final _height = MediaQuery.of(context).size.height;
-
     return TableCalendar(
       locale: 'pt_BR',
       calendarController: _calendarController,
@@ -130,9 +124,20 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
       daysOfWeekStyle: DaysOfWeekStyle(
         weekendStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
-      initialCalendarFormat:
-          _height > 592 ? CalendarFormat.month : CalendarFormat.twoWeeks,
+      initialCalendarFormat: showCalendarFormat(context),
     );
+  }
+
+  CalendarFormat showCalendarFormat(BuildContext context) {
+    final _height = MediaQuery.of(context).size.height;
+
+    if (_height > 592) {
+      return CalendarFormat.month;
+    } else if (_height > 430) {
+      return CalendarFormat.twoWeeks;
+    } else {
+      return CalendarFormat.week;
+    }
   }
 
   Widget _buildEventList() {
