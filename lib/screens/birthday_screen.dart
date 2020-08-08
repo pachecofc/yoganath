@@ -7,6 +7,8 @@ import 'package:yoganath/widgets/reusableTitle.dart';
 class Birthday extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final double _height = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: Scaffold(
         body: Padding(
@@ -18,27 +20,21 @@ class Birthday extends StatelessWidget {
                   text: 'Namastê João',
                   isPremium: false,
                 ),
-                SizedBox(height: 17.0),
+                SizedBox(height: _height * 0.01),
                 ReusableSubtitle(
                   text: 'Feliz Aniversário pra Você!',
                 ),
-                SizedBox(
-                  height: 39.0,
-                ),
+                SizedBox(height: _height * 0.05),
                 Text(
                     'Eu, sua professora Nat, desejo a você muita saúde, paz e prosperidade!'),
                 Text('Feliz Aniversário e continue praticando Yoga conosco.'),
-                SizedBox(
-                  height: 57.0,
-                ),
+                SizedBox(height: _height * 0.05),
                 CircleAvatar(
                   backgroundImage: AssetImage('assets/images/baloons.jpg'),
-                  maxRadius: 150.0,
+                  maxRadius: _height * 0.19,
                   backgroundColor: Theme.of(context).primaryColor,
                 ),
-                SizedBox(
-                  height: 58.0,
-                ),
+                SizedBox(height: _height * 0.05),
                 ReusableRaisedButton(
                     buttonText: 'CONTINUAR',
                     onPressed: () {

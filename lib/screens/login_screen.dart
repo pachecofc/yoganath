@@ -13,6 +13,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _screenSize = MediaQuery.of(context).size;
+
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Color(0xff996E48),
@@ -28,12 +30,10 @@ class Login extends StatelessWidget {
                     tag: 'logo',
                     child: Image.asset(
                       'assets/images/logo.jpg',
-                      width: MediaQuery.of(context).size.width * 0.848,
+                      width: _screenSize.width * 0.848,
                     ),
                   ),
-                  SizedBox(
-                    height: 70.54,
-                  ),
+                  SizedBox(height: _screenSize.height * 0.1),
                   Form(
                     key: _formKey,
                     child: Column(
@@ -49,9 +49,7 @@ class Login extends StatelessWidget {
                             keyboardType: TextInputType.emailAddress,
                           ),
                         ),
-                        SizedBox(
-                          height: 50.0,
-                        ),
+                        SizedBox(height: _screenSize.height * 0.053),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8.0),
                           child: ReusableTextFormField(
@@ -64,9 +62,7 @@ class Login extends StatelessWidget {
                             keyboardType: TextInputType.text,
                           ),
                         ),
-                        SizedBox(
-                          height: 32.0,
-                        ),
+                        SizedBox(height: _screenSize.height * 0.047),
                         ReusableRaisedButton(
                           buttonText: 'ENTRAR',
                           onPressed: () {
@@ -82,9 +78,7 @@ class Login extends StatelessWidget {
                       ],
                     ),
                   ),
-                  SizedBox(
-                    height: 32.0,
-                  ),
+                  SizedBox(height: _screenSize.height * 0.047),
                   Text(
                     'Ainda não é cadastrado?',
                   ),
@@ -94,9 +88,6 @@ class Login extends StatelessWidget {
                       Navigator.pushNamed(
                           context, RouteGenerator.kSIGNUP_ROUTE);
                     },
-                  ),
-                  SizedBox(
-                    height: 70.0,
                   ),
                   ReusableCheckboxListTile(
                     checkTitle:

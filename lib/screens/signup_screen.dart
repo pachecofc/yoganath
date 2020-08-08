@@ -12,6 +12,7 @@ class Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _screenSize = MediaQuery.of(context).size;
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -26,11 +27,11 @@ class Signup extends StatelessWidget {
                   tag: 'logo',
                   child: Image.asset(
                     'assets/images/logo.jpg',
-                    width: MediaQuery.of(context).size.width * 0.848,
+                    width: _screenSize.width * 0.848,
                   ),
                 ),
                 SizedBox(
-                  height: 61.54,
+                  height: _screenSize.height * 0.05,
                 ),
                 Form(
                   key: _formKey,
@@ -47,9 +48,7 @@ class Signup extends StatelessWidget {
                           keyboardType: TextInputType.text,
                         ),
                       ),
-                      SizedBox(
-                        height: 50.0,
-                      ),
+                      SizedBox(height: _screenSize.height * 0.05),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ReusableTextFormField(
@@ -61,9 +60,7 @@ class Signup extends StatelessWidget {
                           keyboardType: TextInputType.emailAddress,
                         ),
                       ),
-                      SizedBox(
-                        height: 50.0,
-                      ),
+                      SizedBox(height: _screenSize.height * 0.05),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: ReusableTextFormField(
@@ -76,9 +73,7 @@ class Signup extends StatelessWidget {
                           keyboardType: TextInputType.text,
                         ),
                       ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
+                      SizedBox(height: _screenSize.height * 0.04),
                       ReusableRaisedButton(
                         buttonText: 'CADASTRAR',
                         onPressed: () {
@@ -88,9 +83,6 @@ class Signup extends StatelessWidget {
                       ),
                     ],
                   ),
-                ),
-                SizedBox(
-                  height: 53.0,
                 ),
                 ReusableCheckboxListTile(
                   checkTitle:

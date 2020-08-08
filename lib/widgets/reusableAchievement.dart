@@ -19,7 +19,7 @@ class ReusableAchievement extends StatelessWidget {
     final Color primaryColor = Theme.of(context).primaryColor;
 
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 10.0),
+      margin: EdgeInsets.symmetric(vertical: 8.0),
       decoration: BoxDecoration(
         border: Border.all(color: primaryColor),
         borderRadius: BorderRadius.all(
@@ -32,8 +32,7 @@ class ReusableAchievement extends StatelessWidget {
           Container(
             color: primaryColor,
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 14.0, vertical: 8.0),
+              padding: const EdgeInsets.all(8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -46,39 +45,35 @@ class ReusableAchievement extends StatelessWidget {
               ),
             ),
           ),
-          // Achievement status
+          // Achievement Status
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              Expanded(
-                child: ReusableSlider(initialValue: progress),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: Row(
-                    children: <Widget>[
-                      numOfStars >= 1
-                          ? ReusableStar(starStyle: Icons.star)
-                          : ReusableStar(starStyle: Icons.star_border),
-                      numOfStars >= 2
-                          ? ReusableStar(starStyle: Icons.star)
-                          : ReusableStar(starStyle: Icons.star_border),
-                      numOfStars >= 3
-                          ? ReusableStar(starStyle: Icons.star)
-                          : ReusableStar(starStyle: Icons.star_border),
-                      numOfStars >= 4
-                          ? ReusableStar(starStyle: Icons.star)
-                          : ReusableStar(starStyle: Icons.star_border),
-                      numOfStars == 5
-                          ? ReusableStar(starStyle: Icons.star)
-                          : ReusableStar(starStyle: Icons.star_border),
-                    ],
-                  ),
+              ReusableSlider(initialValue: progress),
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: Row(
+                  children: <Widget>[
+                    numOfStars >= 1
+                        ? ReusableStar(starStyle: Icons.star)
+                        : ReusableStar(starStyle: Icons.star_border),
+                    numOfStars >= 2
+                        ? ReusableStar(starStyle: Icons.star)
+                        : ReusableStar(starStyle: Icons.star_border),
+                    numOfStars >= 3
+                        ? ReusableStar(starStyle: Icons.star)
+                        : ReusableStar(starStyle: Icons.star_border),
+                    numOfStars >= 4
+                        ? ReusableStar(starStyle: Icons.star)
+                        : ReusableStar(starStyle: Icons.star_border),
+                    numOfStars == 5
+                        ? ReusableStar(starStyle: Icons.star)
+                        : ReusableStar(starStyle: Icons.star_border),
+                  ],
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );

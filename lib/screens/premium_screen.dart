@@ -72,7 +72,7 @@ class Premium extends StatelessWidget {
                         ),
               title: Text(
                 benefit,
-                style: _screenWidth <= 360.0
+                style: _screenWidth <= 412.0
                     ? _benefitsTextStyle
                     : _defaultTextStyle,
               ),
@@ -87,7 +87,6 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.1,
       child: Row(
         children: <Widget>[
           Expanded(
@@ -104,9 +103,6 @@ class Footer extends StatelessWidget {
             child: ReusableFlatButton(
                 buttonText: 'Continue Grátis',
                 onPressed: () {
-                  // TODO remove prints after testing
-                  print('width: ${MediaQuery.of(context).size.width}');
-                  print('height: ${MediaQuery.of(context).size.height}');
                   Navigator.pop(context);
                 }),
           ),
