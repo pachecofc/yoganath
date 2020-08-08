@@ -34,9 +34,9 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
       appBar: AppBar(
         title: ReusableTitle(text: 'Meu Perfil', isPremium: false),
         bottom: TabBar(controller: _tabController, tabs: <Widget>[
-          width > 320 ? Text('Conquistas') : Icon(Icons.flare),
-          width > 320 ? Text('Ranking') : Icon(Icons.filter_1),
-          width > 320 ? Text('Calendário') : Icon(Icons.event),
+          width > 360 ? Text('Conquistas') : Icon(Icons.flare),
+          width > 360 ? Text('Ranking') : Icon(Icons.filter_1),
+          width > 360 ? Text('Calendário') : Icon(Icons.event),
         ]),
         backgroundColor: Colors.white,
         elevation: 0,

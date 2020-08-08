@@ -70,6 +70,11 @@ class Login extends StatelessWidget {
                         ReusableRaisedButton(
                           buttonText: 'ENTRAR',
                           onPressed: () {
+                            // TODO remove prints after testing
+                            print(
+                                'width: ${MediaQuery.of(context).size.width}');
+                            print(
+                                'height: ${MediaQuery.of(context).size.height}');
                             Navigator.pushReplacementNamed(
                                 context, RouteGenerator.kBIRTHDAY_ROUTE);
                           },

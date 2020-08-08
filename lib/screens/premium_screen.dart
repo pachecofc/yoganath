@@ -47,7 +47,11 @@ class Premium extends StatelessWidget {
   }
 
   ListView buildBenefits(BuildContext context, bool isPremium) {
-    Color secondaryColor = Theme.of(context).accentColor;
+    Color _secondaryColor = Theme.of(context).accentColor;
+    TextStyle _benefitsTextStyle = Theme.of(context).textTheme.caption;
+    TextStyle _defaultTextStyle = Theme.of(context).textTheme.bodyText2;
+    double _screenWidth = MediaQuery.of(context).size.width;
+
     return ListView(
       children: _benefits
           .map(
@@ -55,18 +59,23 @@ class Premium extends StatelessWidget {
               leading: isPremium
                   ? Icon(
                       Icons.check_box,
-                      color: secondaryColor,
+                      color: _secondaryColor,
                     )
                   : _benefits.indexOf(benefit) < 6
                       ? Icon(
                           Icons.check_box,
-                          color: secondaryColor,
+                          color: _secondaryColor,
                         )
                       : Icon(
                           Icons.check_box_outline_blank,
-                          color: secondaryColor,
+                          color: _secondaryColor,
                         ),
-              title: Text(benefit),
+              title: Text(
+                benefit,
+                style: _screenWidth <= 360.0
+                    ? _benefitsTextStyle
+                    : _defaultTextStyle,
+              ),
             ),
           )
           .toList(),
@@ -95,6 +104,9 @@ class Footer extends StatelessWidget {
             child: ReusableFlatButton(
                 buttonText: 'Continue Grátis',
                 onPressed: () {
+                  // TODO remove prints after testing
+                  print('width: ${MediaQuery.of(context).size.width}');
+                  print('height: ${MediaQuery.of(context).size.height}');
                   Navigator.pop(context);
                 }),
           ),
@@ -108,7 +120,6 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.38,
       child: Column(
         children: <Widget>[
           ReusableTitle(text: 'Seja Premium', isPremium: true),

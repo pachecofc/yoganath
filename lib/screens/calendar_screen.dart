@@ -90,30 +90,13 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
     super.dispose();
   }
 
-  void _onDaySelected(DateTime day, List events) {
-    print('CALLBACK: _onDaySelected');
-    setState(() {
-      _selectedEvents = events;
-    });
-  }
-
-  void _onVisibleDaysChanged(
-      DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onVisibleDaysChanged');
-  }
-
-  void _onCalendarCreated(
-      DateTime first, DateTime last, CalendarFormat format) {
-    print('CALLBACK: _onCalendarCreated');
-  }
-
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+    final _height = MediaQuery.of(context).size.height;
     return Column(
       mainAxisSize: MainAxisSize.max,
       children: <Widget>[
-        height > 430
+        _height > 430
             ? _buildTableCalendar()
             : ReusableSubtitle(text: 'Eventos de hoje'),
         const SizedBox(
@@ -126,6 +109,8 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
 
 // Simple TableCalendar configuration (using Styles)
   Widget _buildTableCalendar() {
+    final _height = MediaQuery.of(context).size.height;
+
     return TableCalendar(
       locale: 'pt_BR',
       calendarController: _calendarController,
@@ -145,9 +130,8 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
       daysOfWeekStyle: DaysOfWeekStyle(
         weekendStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
-      onDaySelected: _onDaySelected,
-      onVisibleDaysChanged: _onVisibleDaysChanged,
-      onCalendarCreated: _onCalendarCreated,
+      initialCalendarFormat:
+          _height > 592 ? CalendarFormat.month : CalendarFormat.twoWeeks,
     );
   }
 
