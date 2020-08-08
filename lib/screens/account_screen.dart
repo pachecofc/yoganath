@@ -111,7 +111,7 @@ class Account extends StatelessWidget {
                         buttonText: 'SALVAR ALTERAÇÕES',
                         onPressed: () {
                           Navigator.pushNamed(
-                              context, RouteGenerator.kBASE_ROUTE);
+                              context, RouteGenerator.kPROFILE_ROUTE);
                         },
                       ),
                       SizedBox(

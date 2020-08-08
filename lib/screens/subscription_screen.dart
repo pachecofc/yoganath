@@ -64,7 +64,7 @@ class Subscription extends StatelessWidget {
                       buttonText: 'RENOVAR ASSINATURA',
                       onPressed: () {
                         Navigator.pushNamed(
-                            context, RouteGenerator.kBASE_ROUTE);
+                            context, RouteGenerator.kPROFILE_ROUTE);
                       },
                     ),
                     SizedBox(
