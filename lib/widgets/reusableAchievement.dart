@@ -49,7 +49,10 @@ class ReusableAchievement extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-              ReusableSlider(initialValue: progress),
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.49,
+                child: ReusableSlider(initialValue: progress),
+              ),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
                 child: Row(
