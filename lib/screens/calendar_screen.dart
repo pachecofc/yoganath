@@ -89,6 +89,12 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
     super.dispose();
   }
 
+  void _onDaySelected(DateTime day, List events) {
+    setState(() {
+      _selectedEvents = events;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -125,13 +131,14 @@ class _CalendarState extends State<Calendar> with TickerProviderStateMixin {
         weekendStyle: TextStyle(fontWeight: FontWeight.bold),
       ),
       initialCalendarFormat: showCalendarFormat(context),
+      onDaySelected: _onDaySelected,
     );
   }
 
   CalendarFormat showCalendarFormat(BuildContext context) {
     final _height = MediaQuery.of(context).size.height;
 
-    if (_height > 592) {
+    if (_height > 600) {
       return CalendarFormat.month;
     } else if (_height > 430) {
       return CalendarFormat.twoWeeks;
