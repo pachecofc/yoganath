@@ -10,6 +10,8 @@ import 'package:yoganath/widgets/reusableYogaPoints.dart';
 class ClassFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final double _screenHeight = MediaQuery.of(context).size.height;
+
     setOrientation(Orientation.portrait);
     return SafeArea(
       child: Scaffold(
@@ -22,13 +24,13 @@ class ClassFeedback extends StatelessWidget {
                   text: 'Parabéns, João!',
                   isPremium: false,
                 ),
-                SizedBox(height: 19.0),
+                SizedBox(height: _screenHeight * 0.005),
                 ReusableSubtitle(text: 'Você ganhou'),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10.0),
                   child: ReusableYogaPoints(score: 100),
                 ),
-                SizedBox(height: 55.0),
+                SizedBox(height: _screenHeight * 0.005),
                 ReusableSubtitle(text: 'Como você se sente?'),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -41,7 +43,7 @@ class ClassFeedback extends StatelessWidget {
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 24.0),
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Sentiment(),
                 ),
                 ReusableRaisedButton(
