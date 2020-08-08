@@ -3,7 +3,6 @@ import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
-import 'package:yoganath/widgets/reusableTitle.dart';
 
 class Meditation extends StatelessWidget {
   @override
