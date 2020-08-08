@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ReusableTextFormField extends StatelessWidget {
-  ReusableTextFormField(
-      {@required this.textEditingController,
-      @required this.isObscure,
-      this.suffixIcon,
-      @required this.label,
-      @required this.hint,
-      @required this.errorMessage,
-      @required this.keyboardType,
-      this.readOnly = false});
+  ReusableTextFormField({
+    @required this.textEditingController,
+    @required this.isObscure,
+    this.suffixIcon,
+    @required this.label,
+    @required this.hint,
+    @required this.errorMessage,
+    @required this.keyboardType,
+    this.readOnly = false,
+  });
 
   final TextEditingController textEditingController;
   final bool isObscure;

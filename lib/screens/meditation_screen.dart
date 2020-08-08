@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
@@ -99,20 +100,31 @@ class _SoundState extends State<Sound> {
 }
 
 class AdjustTimer extends StatelessWidget {
-  final _formKey = GlobalKey<FormState>();
-  final _hourController = TextEditingController();
-  final _minuteController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _hourController = TextEditingController();
+  final TextEditingController _minuteController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final double _width = MediaQuery.of(context).size.width;
+
     return Container(
+      // child: ReusableTextFormField(
+      //     textEditingController: _hourController,
+      //     isObscure: false,
+      //     label: 'Hora',
+      //     hint: null,
+      //     errorMessage: null,
+      //     keyboardType: TextInputType.number),
+      // TODO Fix input errors
       child: Form(
         key: _formKey,
+        autovalidate: true,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
             SizedBox(
-              width: 70.0,
+              width: _width * 0.34,
               child: ReusableTextFormField(
                 textEditingController: _hourController,
                 isObscure: false,
@@ -123,7 +135,7 @@ class AdjustTimer extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 70.0,
+              width: _width * 0.34,
               child: ReusableTextFormField(
                 textEditingController: _minuteController,
                 isObscure: false,

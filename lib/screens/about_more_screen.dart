@@ -16,7 +16,7 @@ class AboutMore extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    width: 120.0,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     child: ReusableMidiaCard(
                         imageName: 'sobre_Nath.png', isChecked: false),
                   ),
