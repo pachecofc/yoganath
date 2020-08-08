@@ -34,8 +34,7 @@ class _AsanasState extends State<Asanas> {
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,
-                  mainAxisSpacing: 8.0,
-                  crossAxisSpacing: 16.0,
+                  crossAxisSpacing: 8.0,
                   children: <Widget>[
                     ReusableMidiaCard(
                       imageName: 'padmasana.png',

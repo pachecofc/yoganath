@@ -8,29 +8,29 @@ import 'package:yoganath/widgets/reusableTitle.dart';
 class Meditation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final Size _screenSize = MediaQuery.of(context).size;
+
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Práticas Avulsas'),
+          title: Text('Timer para Meditação'),
         ),
         body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: SingleChildScrollView(
             child: Column(
               children: <Widget>[
-                ReusableTitle(text: 'Timer para Meditação', isPremium: false),
-                SizedBox(height: 31.0),
                 SizedBox(
-                  height: 183,
-                  width: 301,
+                  height: _screenSize.height * 0.27,
+                  width: _screenSize.width * 0.54,
                   child: ReusableMidiaCard(
                       imageName: 'meditating.jpg', isChecked: false),
                 ),
-                SizedBox(height: 54.0),
+                SizedBox(height: _screenSize.height * 0.07),
                 AdjustTimer(),
-                SizedBox(height: 25.5),
+                SizedBox(height: _screenSize.height * 0.07),
                 Sound(),
-                SizedBox(height: 46.5),
+                SizedBox(height: _screenSize.height * 0.07),
                 ReusableRaisedButton(
                     buttonText: 'INICIAR',
                     onPressed: () {

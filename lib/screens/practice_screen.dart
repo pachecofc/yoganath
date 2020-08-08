@@ -30,7 +30,7 @@ class Practice extends StatelessWidget {
             routeName: RouteGenerator.kPRANA_ROUTE,
           ),
           SizedBox(
-            height: 44.0,
+            height: MediaQuery.of(context).size.height * 0.04,
           ),
           ReusableTitle(text: 'Aulas Personalizadas', isPremium: true),
           ReusableRaisedButton(

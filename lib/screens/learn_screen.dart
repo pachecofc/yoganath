@@ -32,7 +32,7 @@ class Learn extends StatelessWidget {
             routeName: RouteGenerator.kLEARN_ROUTE,
           ),
           SizedBox(
-            height: 40.0,
+            height: MediaQuery.of(context).size.height * 0.02,
           ),
           ReusableTitle(text: 'Você sabia?', isPremium: false),
           Text(

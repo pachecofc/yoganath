@@ -27,12 +27,14 @@ class ReusableCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size _screenSize = MediaQuery.of(context).size;
+
     return GestureDetector(
       onTap: () {
         Navigator.pushNamed(context, routeName);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 11.0),
+        margin: EdgeInsets.symmetric(vertical: 10.0),
         decoration: BoxDecoration(
           border: Border.all(color: Theme.of(context).primaryColor),
           borderRadius: BorderRadius.all(
@@ -46,8 +48,8 @@ class ReusableCard extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.all(1.0),
                 child: SizedBox(
-                  height: 120.0,
-                  width: 120.0,
+                  height: _screenSize.height * 0.16,
+                  width: _screenSize.height * 0.16,
                   child: Image.asset(
                     'assets/images/$cardImage',
                     fit: BoxFit.cover,

@@ -8,9 +8,25 @@ import 'package:yoganath/widgets/reusableTitle.dart';
 class Schedule extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final double _screenHeight = MediaQuery.of(context).size.height;
+
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
+          ReusableTitle(text: 'Aulas ao Vivo', isPremium: true),
+          ReusableCard(
+            cardImage: 'sirshasana.jpg',
+            cardText: '01/ago/2020',
+            secondTextLine: '19:30',
+            reusableFlatButton: ReusableFlatButton(
+                buttonText: 'AGENDAR',
+                onPressed: () {
+                  buildSnackBar(context, 'Evento agendado com sucesso!');
+                }),
+          ),
+          SizedBox(
+            height: _screenHeight * 0.02,
+          ),
           ReusableTitle(text: 'Nath Agenda', isPremium: false),
           Card(
             shadowColor: Theme.of(context).bottomAppBarColor,
@@ -45,20 +61,6 @@ class Schedule extends StatelessWidget {
                     }),
               ],
             ),
-          ),
-          SizedBox(
-            height: 46.5,
-          ),
-          ReusableTitle(text: 'Aulas ao Vivo', isPremium: true),
-          ReusableCard(
-            cardImage: 'sirshasana.jpg',
-            cardText: '01/ago/2020',
-            secondTextLine: '19:30',
-            reusableFlatButton: ReusableFlatButton(
-                buttonText: 'AGENDAR',
-                onPressed: () {
-                  buildSnackBar(context, 'Evento agendado com sucesso!');
-                }),
           ),
         ],
       ),
