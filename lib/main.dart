@@ -14,6 +14,8 @@ void main() {
 class YogaNath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final double curScaleFactor = MediaQuery.of(context).textScaleFactor;
+
     return MaterialApp(
       title: 'YogaNath',
       home: SplashScreen(),
@@ -31,15 +33,16 @@ class YogaNath extends StatelessWidget {
         canvasColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
         textTheme: Typography.blackMountainView.copyWith(
-          bodyText2: TextStyle(color: Colors.black54, fontSize: 16.0),
+          bodyText2:
+              TextStyle(color: Colors.black54, fontSize: 16.0 * curScaleFactor),
           headline5: TextStyle(
             fontFamily: 'Indie Flower',
-            fontSize: 33.0,
+            fontSize: 33.0 * curScaleFactor,
             color: Color(0xff5F9269),
           ),
           headline6: TextStyle(
             fontFamily: 'Indie Flower',
-            fontSize: 27.0,
+            fontSize: 27.0 * curScaleFactor,
             color: Colors.black87,
           ),
         ),
