@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/utilities/setOrientation.dart';
+import 'dart:io' show Platform;
 
 import 'screens/splash_screen.dart';
 
@@ -22,7 +23,9 @@ class YogaNath extends StatelessWidget {
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
-        typography: Typography.material2018(platform: TargetPlatform.android),
+        typography: Typography.material2018(
+            platform:
+                Platform.isIOS ? TargetPlatform.iOS : TargetPlatform.android),
         primaryColor: Color(0xffcc9c74),
         primaryColorDark: Color(0xff996E48),
         buttonColor: Color(0xff5F9269),
@@ -31,7 +34,7 @@ class YogaNath extends StatelessWidget {
         canvasColor: Colors.white,
         scaffoldBackgroundColor: Colors.white,
         textTheme: Typography.blackMountainView.copyWith(
-          bodyText2: TextStyle(color: Colors.black54, fontSize: 16.0),
+          bodyText2: TextStyle(color: Colors.black54),
           headline5: TextStyle(
             fontFamily: 'Indie Flower',
             fontSize: 33.0,
