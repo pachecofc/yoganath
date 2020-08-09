@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ReusableSlider extends StatelessWidget {
@@ -7,13 +8,14 @@ class ReusableSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Slider(
+    return Slider.adaptive(
       value: initialValue,
       min: 0,
       max: 100,
       divisions: 9,
       label: '$initialValue%',
       onChanged: (double newValue) {},
+      activeColor: Theme.of(context).sliderTheme.activeTrackColor,
     );
   }
 }
