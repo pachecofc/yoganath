@@ -55,6 +55,7 @@ class _ReusableAcceptTermsState extends State<ReusableAcceptTerms> {
                 TextSpan(
                   text: 'Política de Privacidade',
                   style: TextStyle(decoration: TextDecoration.underline),
+                  recognizer: _privacyRecognizer,
                 ),
                 TextSpan(
                   text: ' do YogaNath.',
