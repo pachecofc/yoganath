@@ -50,12 +50,14 @@ class Premium extends StatelessWidget {
     Color _secondaryColor = Theme.of(context).accentColor;
     TextStyle _benefitsTextStyle = Theme.of(context).textTheme.caption;
     TextStyle _defaultTextStyle = Theme.of(context).textTheme.bodyText2;
-    double _screenWidth = MediaQuery.of(context).size.width;
+    Size _screenSize = MediaQuery.of(context).size;
 
     return ListView(
       children: _benefits
           .map(
             (benefit) => ListTile(
+              contentPadding: EdgeInsets.symmetric(horizontal: 0),
+              dense: _screenSize.height <= 667 ? true : false,
               leading: isPremium
                   ? Icon(
                       Icons.check_box,
@@ -70,11 +72,14 @@ class Premium extends StatelessWidget {
                           Icons.check_box_outline_blank,
                           color: _secondaryColor,
                         ),
-              title: Text(
-                benefit,
-                style: _screenWidth <= 412.0
-                    ? _benefitsTextStyle
-                    : _defaultTextStyle,
+              title: Transform(
+                transform: Matrix4.translationValues(-26.0, 0.0, 0.0),
+                child: Text(
+                  benefit,
+                  style: _screenSize.width <= 412.0
+                      ? _benefitsTextStyle
+                      : _defaultTextStyle,
+                ),
               ),
             ),
           )
@@ -127,6 +132,7 @@ class Header extends StatelessWidget {
             children: <Widget>[
               Expanded(
                 child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 0),
                   title: Text(
                     'Premium',
                     style: TextStyle(color: Theme.of(context).buttonColor),
@@ -135,6 +141,7 @@ class Header extends StatelessWidget {
               ),
               Expanded(
                 child: ListTile(
+                  contentPadding: EdgeInsets.symmetric(horizontal: 0),
                   title: Text('Gratuito'),
                 ),
               ),
