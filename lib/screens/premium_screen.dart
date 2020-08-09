@@ -49,15 +49,13 @@ class Premium extends StatelessWidget {
   ListView buildBenefits(BuildContext context, bool isPremium) {
     Color _secondaryColor = Theme.of(context).accentColor;
     TextStyle _benefitsTextStyle = Theme.of(context).textTheme.caption;
-    TextStyle _defaultTextStyle = Theme.of(context).textTheme.bodyText2;
-    Size _screenSize = MediaQuery.of(context).size;
 
     return ListView(
       children: _benefits
           .map(
             (benefit) => ListTile(
               contentPadding: EdgeInsets.symmetric(horizontal: 0),
-              dense: _screenSize.height <= 667 ? true : false,
+              dense: true,
               leading: isPremium
                   ? Icon(
                       Icons.check_box,
@@ -76,9 +74,7 @@ class Premium extends StatelessWidget {
                 transform: Matrix4.translationValues(-26.0, 0.0, 0.0),
                 child: Text(
                   benefit,
-                  style: _screenSize.width <= 412.0
-                      ? _benefitsTextStyle
-                      : _defaultTextStyle,
+                  style: _benefitsTextStyle,
                 ),
               ),
             ),
