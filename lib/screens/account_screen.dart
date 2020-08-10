@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/utilities/cancelConfirmationDialog.dart';
 import 'package:yoganath/widgets/reusableDangerButton.dart';
@@ -13,9 +15,6 @@ class Account extends StatelessWidget {
   final _passController = TextEditingController();
   final _phoneController = TextEditingController();
   final _dateController = TextEditingController();
-  final String _message =
-      'Sentimos muito que tenha cancelado sua conta. Esperamos te ver novamente em breve.';
-  final String _title = 'Conta Cancelada';
 
   @override
   Widget build(BuildContext context) {
@@ -134,28 +133,122 @@ class Account extends StatelessWidget {
   }
 
   void showAlertDialog(BuildContext context) {
+    final String _accountCancelConfirmTitle = 'Conta Cancelada';
+    final String _accountCancelConfirmMessage =
+        'Sentimos muito que tenha cancelado sua conta. Esperamos te ver novamente em breve.';
+    final String _title = 'Tem certeza?';
+    final String _content = 'Excluir sua conta irá apagar permanentemente '
+        'seus dados, mas isso **não** irá cancelar sua assinatura. Vá até '
+        'Perfil > Assinatura para mais informações.';
+
     showDialog(
       context: context,
       builder: (context) {
-        return AlertDialog(
-          title: ReusableSubtitle(text: 'Tem certeza?'),
-          content: Text(
-              'Excluir sua conta irá apagar permanentemente seus dados, mas isso **não** irá cancelar sua assinatura. Vá até Perfil > Assinatura para mais informações.'),
-          actions: <Widget>[
-            ReusableRaisedButton(
-                buttonText: 'MANTER CONTA',
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, RouteGenerator.kBASE_ROUTE);
-                }),
-            ReusableDangerButton(
-                buttonText: 'Excluir conta',
-                onPressed: () {
-                  showCancelConfirmationDialog(context, _message, _title);
-                }),
-          ],
-        );
+        return Platform.isIOS
+            ? IosAlertDialog(
+                title: _title,
+                content: _content,
+                accountCancelConfirmMessage: _accountCancelConfirmMessage,
+                accountCancelConfirmTitle: _accountCancelConfirmTitle)
+            : AndroidAlertDialog(
+                title: _title,
+                content: _content,
+                accountCancelConfirmMessage: _accountCancelConfirmMessage,
+                accountCancelConfirmTitle: _accountCancelConfirmTitle);
       },
+    );
+  }
+}
+
+class AndroidAlertDialog extends StatelessWidget {
+  const AndroidAlertDialog({
+    Key key,
+    @required String title,
+    @required String content,
+    @required String accountCancelConfirmMessage,
+    @required String accountCancelConfirmTitle,
+  })  : _title = title,
+        _content = content,
+        _accountCancelConfirmMessage = accountCancelConfirmMessage,
+        _accountCancelConfirmTitle = accountCancelConfirmTitle,
+        super(key: key);
+
+  final String _title;
+  final String _content;
+  final String _accountCancelConfirmMessage;
+  final String _accountCancelConfirmTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: ReusableSubtitle(text: _title),
+      content: Text(_content),
+      actions: [
+        ReusableRaisedButton(
+          buttonText: 'MANTER CONTA',
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, RouteGenerator.kBASE_ROUTE);
+          },
+        ),
+        ReusableDangerButton(
+          buttonText: 'Excluir conta',
+          onPressed: () {
+            showCancelConfirmationDialog(context, _accountCancelConfirmMessage,
+                _accountCancelConfirmTitle);
+          },
+        ),
+      ],
+    );
+  }
+}
+
+class IosAlertDialog extends StatelessWidget {
+  const IosAlertDialog({
+    Key key,
+    @required String title,
+    @required String content,
+    @required String accountCancelConfirmMessage,
+    @required String accountCancelConfirmTitle,
+  })  : _title = title,
+        _content = content,
+        _accountCancelConfirmMessage = accountCancelConfirmMessage,
+        _accountCancelConfirmTitle = accountCancelConfirmTitle,
+        super(key: key);
+
+  final String _title;
+  final String _content;
+  final String _accountCancelConfirmMessage;
+  final String _accountCancelConfirmTitle;
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoAlertDialog(
+      title: Text(_title),
+      content: Text(_content),
+      actions: [
+        CupertinoDialogAction(
+          child: Text(
+            'MANTER CONTA',
+            style: TextStyle(color: Theme.of(context).buttonColor),
+          ),
+          isDefaultAction: true,
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, RouteGenerator.kBASE_ROUTE);
+          },
+        ),
+        CupertinoDialogAction(
+          child: Text(
+            'Excluir conta',
+            style: TextStyle(
+              color: Color(0xffA2001D),
+            ),
+          ),
+          onPressed: () {
+            showCancelConfirmationDialog(context, _accountCancelConfirmMessage,
+                _accountCancelConfirmTitle);
+          },
+        ),
+      ],
     );
   }
 }
