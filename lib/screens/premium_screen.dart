@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:yoganath/screens/plans_screen.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
@@ -94,10 +97,15 @@ class Footer extends StatelessWidget {
             child: ReusableRaisedButton(
                 buttonText: 'SEJA PREMIUM',
                 onPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) => Plans(),
-                  );
+                  Platform.isIOS
+                      ? showCupertinoModalPopup(
+                          context: context,
+                          builder: (context) => Plans(),
+                        )
+                      : showModalBottomSheet(
+                          context: context,
+                          builder: (context) => Plans(),
+                        );
                 }),
           ),
           Expanded(
