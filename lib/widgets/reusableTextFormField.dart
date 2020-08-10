@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -24,21 +26,128 @@ class ReusableTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Platform.isIOS
+        ? IosTextField(
+            keyboardType: keyboardType,
+            textEditingController: textEditingController,
+            readOnly: readOnly,
+            hint: hint,
+            suffixIcon: suffixIcon,
+            isObscure: isObscure,
+            errorMessage: errorMessage)
+        : AndroidTextField(
+            keyboardType: keyboardType,
+            textEditingController: textEditingController,
+            readOnly: readOnly,
+            label: label,
+            hint: hint,
+            suffixIcon: suffixIcon,
+            isObscure: isObscure,
+            errorMessage: errorMessage);
+  }
+}
+
+class AndroidTextField extends StatefulWidget {
+  const AndroidTextField({
+    Key key,
+    @required this.keyboardType,
+    @required this.textEditingController,
+    @required this.readOnly,
+    @required this.label,
+    @required this.hint,
+    @required this.suffixIcon,
+    @required this.isObscure,
+    @required this.errorMessage,
+  }) : super(key: key);
+
+  final TextInputType keyboardType;
+  final TextEditingController textEditingController;
+  final bool readOnly;
+  final String label;
+  final String hint;
+  final Widget suffixIcon;
+  final bool isObscure;
+  final String errorMessage;
+
+  @override
+  _AndroidTextFieldState createState() => _AndroidTextFieldState();
+}
+
+class _AndroidTextFieldState extends State<AndroidTextField> {
+  @override
+  void dispose() {
+    widget.textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: keyboardType,
-      controller: textEditingController,
-      readOnly: readOnly,
+      keyboardType: widget.keyboardType,
+      controller: widget.textEditingController,
+      readOnly: widget.readOnly,
       decoration: InputDecoration(
-        labelText: label,
-        hintText: hint,
+        labelText: widget.label,
+        hintText: widget.hint,
         filled: true,
-        suffixIcon: suffixIcon,
+        suffixIcon: widget.suffixIcon,
       ),
       cursorColor: Theme.of(context).colorScheme.primary,
-      obscureText: isObscure,
-      validator: (typedEmail) {
-        if (typedEmail.isEmpty) {
-          return errorMessage;
+      obscureText: widget.isObscure,
+      validator: (value) {
+        if (value.isEmpty) {
+          return widget.errorMessage;
+        }
+        return null;
+      },
+    );
+  }
+}
+
+class IosTextField extends StatefulWidget {
+  const IosTextField({
+    Key key,
+    @required this.keyboardType,
+    @required this.textEditingController,
+    @required this.readOnly,
+    @required this.hint,
+    @required this.suffixIcon,
+    @required this.isObscure,
+    @required this.errorMessage,
+  }) : super(key: key);
+
+  final TextInputType keyboardType;
+  final TextEditingController textEditingController;
+  final bool readOnly;
+  final String hint;
+  final Widget suffixIcon;
+  final bool isObscure;
+  final String errorMessage;
+
+  @override
+  _IosTextFieldState createState() => _IosTextFieldState();
+}
+
+class _IosTextFieldState extends State<IosTextField> {
+  @override
+  void dispose() {
+    widget.textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoTextField(
+      keyboardType: widget.keyboardType,
+      controller: widget.textEditingController,
+      readOnly: widget.readOnly,
+      placeholder: widget.hint,
+      suffix: widget.suffixIcon,
+      obscureText: widget.isObscure,
+      cursorColor: Theme.of(context).primaryColor,
+      onSubmitted: (value) {
+        if (value.isEmpty) {
+          return widget.errorMessage;
         }
         return null;
       },
