@@ -1,5 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'dart:io' show Platform;
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/utilities/dropdownLists.dart';
 import 'package:yoganath/utilities/setOrientation.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableSmiley.dart';
@@ -7,7 +10,53 @@ import 'package:yoganath/widgets/reusableSubtitle.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
 import 'package:yoganath/widgets/reusableYogaPoints.dart';
 
-class ClassFeedback extends StatelessWidget {
+class ClassFeedback extends StatefulWidget {
+  @override
+  _ClassFeedbackState createState() => _ClassFeedbackState();
+}
+
+class _ClassFeedbackState extends State<ClassFeedback> {
+  String _selectedFeeling = feelings[0];
+
+  DropdownButton<String> androidDropdown() {
+    List<DropdownMenuItem<String>> dropdownItems = [];
+
+    for (String feeling in feelings) {
+      DropdownMenuItem<String> newItem = DropdownMenuItem(
+        child: Text(feeling),
+        value: feeling,
+      );
+
+      dropdownItems.add(newItem);
+    }
+
+    return DropdownButton<String>(
+      value: _selectedFeeling,
+      items: dropdownItems,
+      onChanged: (value) {
+        setState(() {
+          _selectedFeeling = value;
+        });
+      },
+    );
+  }
+
+  CupertinoPicker iOSPicker() {
+    List<Text> picker = [];
+    for (String feeling in feelings) {
+      picker.add(Text(feeling));
+    }
+
+    return CupertinoPicker(
+      backgroundColor: Theme.of(context).bottomAppBarColor,
+      itemExtent: 32.0,
+      onSelectedItemChanged: (selectedIndex) {
+        //print(selectedIndex);
+      },
+      children: picker,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final double _screenHeight = MediaQuery.of(context).size.height;
@@ -44,7 +93,7 @@ class ClassFeedback extends StatelessWidget {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Sentiment(),
+                  child: Platform.isIOS ? iOSPicker() : androidDropdown(),
                 ),
                 ReusableRaisedButton(
                     buttonText: 'CONCLUIR',
@@ -57,49 +106,6 @@ class ClassFeedback extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Sentiment extends StatefulWidget {
-  @override
-  _SentimentState createState() => _SentimentState();
-}
-
-class _SentimentState extends State<Sentiment> {
-  String _selectedSentiment = 'Eu me sinto...';
-
-  @override
-  Widget build(BuildContext context) {
-    return DropdownButton<String>(
-      value: _selectedSentiment,
-      items: [
-        DropdownMenuItem(
-          child: Text('Eu me sinto...'),
-          value: 'Eu me sinto...',
-        ),
-        DropdownMenuItem(
-          child: Text('Tranquilo (a)'),
-          value: 'tranquilo',
-        ),
-        DropdownMenuItem(
-          child: Text('Dolorido (a)'),
-          value: 'dolorido',
-        ),
-        DropdownMenuItem(
-          child: Text('Relaxado (a)'),
-          value: 'relaxado',
-        ),
-        DropdownMenuItem(
-          child: Text('Feliz'),
-          value: 'feliz',
-        ),
-      ],
-      onChanged: (value) {
-        setState(() {
-          _selectedSentiment = value;
-        });
-      },
     );
   }
 }
