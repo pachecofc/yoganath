@@ -2,61 +2,16 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:yoganath/services/routeGenerator.dart';
-import 'package:yoganath/utilities/dropdownLists.dart';
 import 'package:yoganath/utilities/setOrientation.dart';
+import 'package:yoganath/widgets/reusableDropdown.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableSmiley.dart';
 import 'package:yoganath/widgets/reusableSubtitle.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
 import 'package:yoganath/widgets/reusableYogaPoints.dart';
+import 'package:yoganath/utilities/dropdownLists.dart';
 
-class ClassFeedback extends StatefulWidget {
-  @override
-  _ClassFeedbackState createState() => _ClassFeedbackState();
-}
-
-class _ClassFeedbackState extends State<ClassFeedback> {
-  String _selectedFeeling = feelings[0];
-
-  DropdownButton<String> androidDropdown() {
-    List<DropdownMenuItem<String>> dropdownItems = [];
-
-    for (String feeling in feelings) {
-      DropdownMenuItem<String> newItem = DropdownMenuItem(
-        child: Text(feeling),
-        value: feeling,
-      );
-
-      dropdownItems.add(newItem);
-    }
-
-    return DropdownButton<String>(
-      value: _selectedFeeling,
-      items: dropdownItems,
-      onChanged: (value) {
-        setState(() {
-          _selectedFeeling = value;
-        });
-      },
-    );
-  }
-
-  CupertinoPicker iOSPicker() {
-    List<Text> picker = [];
-    for (String feeling in feelings) {
-      picker.add(Text(feeling));
-    }
-
-    return CupertinoPicker(
-      backgroundColor: Theme.of(context).bottomAppBarColor,
-      itemExtent: 32.0,
-      onSelectedItemChanged: (selectedIndex) {
-        //print(selectedIndex);
-      },
-      children: picker,
-    );
-  }
-
+class ClassFeedback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double _screenHeight = MediaQuery.of(context).size.height;
@@ -93,7 +48,11 @@ class _ClassFeedbackState extends State<ClassFeedback> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Platform.isIOS ? iOSPicker() : androidDropdown(),
+                  child: Platform.isIOS
+                      ? IosPicker()
+                      : AndroidDropdown(
+                          sourceList: feelings,
+                        ),
                 ),
                 ReusableRaisedButton(
                     buttonText: 'CONCLUIR',

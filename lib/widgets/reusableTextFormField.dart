@@ -92,7 +92,7 @@ class _AndroidTextFieldState extends State<AndroidTextField> {
         filled: true,
         suffixIcon: widget.suffixIcon,
       ),
-      cursorColor: Theme.of(context).colorScheme.primary,
+      cursorColor: Theme.of(context).primaryColor,
       obscureText: widget.isObscure,
       validator: (value) {
         if (value.isEmpty) {
@@ -144,7 +144,7 @@ class _IosTextFieldState extends State<IosTextField> {
       placeholder: widget.hint,
       suffix: widget.suffixIcon,
       obscureText: widget.isObscure,
-      cursorColor: Theme.of(context).primaryColor,
+      cursorColor: CupertinoTheme.of(context).primaryColor,
       onSubmitted: (value) {
         if (value.isEmpty) {
           return widget.errorMessage;

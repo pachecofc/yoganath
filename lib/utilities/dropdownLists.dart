@@ -4,3 +4,10 @@ const List<String> feelings = [
   'Relaxado (a)',
   'Feliz',
 ];
+
+const List<String> sounds = [
+  'Cachoeira',
+  'Pássaros',
+  'Sino Tibetano',
+  'Rio',
+];
