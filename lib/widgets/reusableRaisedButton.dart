@@ -59,7 +59,7 @@ class IosButton extends StatelessWidget {
         buttonText,
         style: TextStyle(color: Colors.white),
       ),
-      color: Theme.of(context).buttonColor,
+      color: CupertinoTheme.of(context).primaryContrastingColor,
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       onPressed: onPressed,
     );

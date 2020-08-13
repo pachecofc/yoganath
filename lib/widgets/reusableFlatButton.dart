@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ReusableFlatButton extends StatelessWidget {
@@ -13,7 +15,9 @@ class ReusableFlatButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         buttonText,
-        style: TextStyle(color: Theme.of(context).primaryColor),
+        style: Platform.isIOS
+            ? TextStyle(color: CupertinoTheme.of(context).primaryColor)
+            : TextStyle(color: Theme.of(context).primaryColor),
       ),
     );
   }

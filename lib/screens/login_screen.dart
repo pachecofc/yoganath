@@ -16,8 +16,7 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size _screenSize = MediaQuery.of(context).size;
-
-    var pageBody = Padding(
+    final Padding pageBody = Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
         child: Column(
@@ -79,11 +78,17 @@ class Login extends StatelessWidget {
                 Navigator.pushNamed(context, RouteGenerator.kSIGNUP_ROUTE);
               },
             ),
-            ReusableAcceptTerms(),
+            Platform.isIOS
+                ? Material(
+                    child: ReusableAcceptTerms(),
+                    color: CupertinoTheme.of(context).scaffoldBackgroundColor,
+                  )
+                : ReusableAcceptTerms(),
           ],
         ),
       ),
     );
+
     return Platform.isIOS
         ? SafeArea(
             child: CupertinoPageScaffold(child: pageBody),
