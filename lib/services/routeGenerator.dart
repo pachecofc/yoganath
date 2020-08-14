@@ -58,7 +58,7 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => Birthday());
         break;
       case kBASE_ROUTE:
-        return MaterialPageRoute(builder: (_) => Base(fromFeedback: false));
+        return MaterialPageRoute(builder: (_) => Base());
         break;
       case kPROFILE_ROUTE:
         return MaterialPageRoute(builder: (_) => Base(fromFeedback: true));

@@ -16,23 +16,6 @@ class Signup extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size _screenSize = MediaQuery.of(context).size;
     final Text appBarTitle = Text('Cadastre-se');
-    final PreferredSizeWidget appBar = Platform.isIOS
-        ? CupertinoNavigationBar(
-            backgroundColor: CupertinoTheme.of(context).primaryColor,
-            middle: appBarTitle,
-            leading: GestureDetector(
-              child: Icon(
-                CupertinoIcons.back,
-                color: CupertinoColors.black,
-              ),
-              onTap: () {
-                Navigator.pop(context);
-              },
-            ),
-          )
-        : AppBar(
-            title: appBarTitle,
-          );
     final Padding pageBody = Padding(
       padding: const EdgeInsets.all(16.0),
       child: SingleChildScrollView(
@@ -118,11 +101,25 @@ class Signup extends StatelessWidget {
     return SafeArea(
       child: Platform.isIOS
           ? CupertinoPageScaffold(
-              navigationBar: appBar,
+              navigationBar: CupertinoNavigationBar(
+                backgroundColor: CupertinoTheme.of(context).primaryColor,
+                middle: appBarTitle,
+                leading: GestureDetector(
+                  child: Icon(
+                    CupertinoIcons.back,
+                    color: CupertinoColors.black,
+                  ),
+                  onTap: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ),
               child: pageBody,
             )
           : Scaffold(
-              appBar: appBar,
+              appBar: AppBar(
+                title: appBarTitle,
+              ),
               body: pageBody,
             ),
     );

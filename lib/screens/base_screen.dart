@@ -1,3 +1,6 @@
+import 'dart:io' show Platform;
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'package:yoganath/screens/learn_screen.dart';
@@ -5,9 +8,10 @@ import 'package:yoganath/screens/practice_screen.dart';
 import 'package:yoganath/screens/profile_screen.dart';
 import 'package:yoganath/screens/sadhana_screen.dart';
 import 'package:yoganath/screens/schedule_screen.dart';
+import 'package:yoganath/utilities/constants.dart';
 
 class Base extends StatefulWidget {
-  Base({this.fromFeedback});
+  Base({this.fromFeedback = false});
   final bool fromFeedback;
 
   @override
@@ -44,43 +48,69 @@ class _BaseState extends State<Base> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          // Must not be wrapped in a SingleChildScrollView
-          child: _widgetOptions.elementAt(_selectedIndex),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Theme.of(context).bottomAppBarColor,
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              icon: Icon(Icons.spa),
-              title: Text('Jornada'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.accessibility_new),
-              title: Text('Práticas'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.calendar_today),
-              title: Text('Agenda'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              title: Text('Estudos'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.account_circle),
-              title: Text('Perfil'),
-            ),
-          ],
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _selectedIndex,
-          fixedColor: Colors.black87,
-          onTap: _onItemTapped,
-        ),
+    final Padding pageBody = Padding(
+      padding: const EdgeInsets.all(16.0),
+      // Must not be wrapped in a SingleChildScrollView
+      child: _widgetOptions.elementAt(_selectedIndex),
+    );
+
+    const List<BottomNavigationBarItem> _bottomBarItems =
+        <BottomNavigationBarItem>[
+      BottomNavigationBarItem(
+        icon: Icon(Icons.spa),
+        title: Text('Jornada'),
       ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.accessibility_new),
+        title: Text('Práticas'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.calendar_today),
+        title: Text('Agenda'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.school),
+        title: Text('Estudos'),
+      ),
+      BottomNavigationBarItem(
+        icon: Icon(Icons.account_circle),
+        title: Text('Perfil'),
+      ),
+    ];
+    return SafeArea(
+      child: Platform.isIOS
+          ? CupertinoTabScaffold(
+              tabBar: CupertinoTabBar(
+                backgroundColor: ColorConstants.kCupertinoTabBar,
+                activeColor: ColorConstants.kTabBarActiveColor,
+                inactiveColor: ColorConstants.kTabBarInactiveColor,
+                items: _bottomBarItems,
+                currentIndex: _selectedIndex,
+                onTap: _onItemTapped,
+              ),
+              tabBuilder: (BuildContext context, int index) {
+                return CupertinoTabView(
+                  builder: (BuildContext context) {
+                    return CupertinoPageScaffold(
+                      // TODO Replace for pageBody after all the corresponding screens have been adapted
+                      child: Center(
+                        child: Text('Página $index'),
+                      ),
+                    );
+                  },
+                );
+              })
+          : Scaffold(
+              body: pageBody,
+              bottomNavigationBar: BottomNavigationBar(
+                backgroundColor: Theme.of(context).bottomAppBarColor,
+                items: _bottomBarItems,
+                type: BottomNavigationBarType.fixed,
+                currentIndex: _selectedIndex,
+                fixedColor: Colors.black87,
+                onTap: _onItemTapped,
+              ),
+            ),
     );
   }
 }
