@@ -11,10 +11,16 @@ class AndroidDropdown extends StatefulWidget {
 }
 
 class _AndroidDropdownState extends State<AndroidDropdown> {
+  String selectedItem;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedItem = widget.sourceList[0];
+  }
+
   @override
   Widget build(BuildContext context) {
-    // TODO fix this widget issue
-    String selectedItem = widget.sourceList[0];
     List<DropdownMenuItem<String>> dropdownItems = [];
 
     for (String sourceListItem in widget.sourceList) {
