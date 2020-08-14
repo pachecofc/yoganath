@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:yoganath/utilities/constants.dart';
 
 class ReusableMidiaCard extends StatelessWidget {
   const ReusableMidiaCard(
@@ -35,7 +38,10 @@ class ReusableMidiaCard extends StatelessWidget {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                border: Border.all(color: Theme.of(context).primaryColor),
+                border: Border.all(
+                    color: Platform.isIOS
+                        ? CupertinoTheme.of(context).primaryColor
+                        : Theme.of(context).primaryColor),
                 borderRadius: BorderRadius.all(
                   Radius.circular(4.0),
                 ),
@@ -52,7 +58,7 @@ class ReusableMidiaCard extends StatelessWidget {
                 ? Container()
                 : Container(
                     decoration: BoxDecoration(
-                      color: Color(0x888EC397),
+                      color: ColorConstants.kTransparentLighterGreen,
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -88,7 +94,9 @@ class ReusableMidiaCard extends StatelessWidget {
                   ? Container()
                   : Icon(
                       Icons.check_circle,
-                      color: Color(0xff5F9269),
+                      color: Platform.isIOS
+                          ? CupertinoTheme.of(context).primaryContrastingColor
+                          : Theme.of(context).buttonColor,
                     ),
               right: 10,
               top: 10,

@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/widgets/reusableChallenge.dart';
@@ -36,7 +38,13 @@ class Sadhana extends StatelessWidget {
             text: 'Desafio Semanal',
             isPremium: false,
           ),
-          for (var i = 0; i < 50; i++) ReusableChallenge()
+          for (var i = 0; i < 50; i++)
+            Platform.isIOS
+                ? Material(
+                    color: CupertinoTheme.of(context).scaffoldBackgroundColor,
+                    child: ReusableChallenge(),
+                  )
+                : ReusableChallenge()
         ],
       ),
     );

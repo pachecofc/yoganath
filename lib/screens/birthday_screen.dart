@@ -48,7 +48,7 @@ class Birthday extends StatelessWidget {
     return SafeArea(
       child: Platform.isIOS
           ? CupertinoPageScaffold(
-              child: CupertinoScrollbar(child: pageBody),
+              child: pageBody,
             )
           : Scaffold(
               body: pageBody,

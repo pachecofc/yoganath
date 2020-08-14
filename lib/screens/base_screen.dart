@@ -92,10 +92,7 @@ class _BaseState extends State<Base> {
                 return CupertinoTabView(
                   builder: (BuildContext context) {
                     return CupertinoPageScaffold(
-                      // TODO Replace for pageBody after all the corresponding screens have been adapted
-                      child: Center(
-                        child: Text('Página $index'),
-                      ),
+                      child: pageBody,
                     );
                   },
                 );
