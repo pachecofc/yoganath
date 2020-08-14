@@ -89,21 +89,15 @@ class Login extends StatelessWidget {
       ),
     );
 
-    return Platform.isIOS
-        ? SafeArea(
-            child: CupertinoPageScaffold(
-              child: pageBody,
-            ),
-          )
-        : AnnotatedRegion<SystemUiOverlayStyle>(
-            value: SystemUiOverlayStyle(
-              statusBarColor: Color(0xff996E48),
-            ),
-            child: SafeArea(
-              child: Scaffold(
-                body: pageBody,
-              ),
-            ),
-          );
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle(
+        statusBarColor: Color(0xff996E48),
+      ),
+      child: SafeArea(
+        child: Platform.isIOS
+            ? CupertinoPageScaffold(child: pageBody)
+            : Scaffold(body: pageBody),
+      ),
+    );
   }
 }

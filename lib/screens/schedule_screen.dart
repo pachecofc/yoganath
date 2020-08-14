@@ -1,4 +1,7 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:yoganath/utilities/constants.dart';
 import 'package:yoganath/utilities/showSnackBar.dart';
 import 'package:yoganath/widgets/reusableCard.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
@@ -29,7 +32,9 @@ class Schedule extends StatelessWidget {
           ),
           ReusableTitle(text: 'Nath Agenda', isPremium: false),
           Card(
-            shadowColor: Theme.of(context).bottomAppBarColor,
+            shadowColor: Platform.isIOS
+                ? ColorConstants.kCupertinoTabBar
+                : Theme.of(context).bottomAppBarColor,
             child: Column(
               children: <Widget>[
                 Row(
@@ -37,7 +42,9 @@ class Schedule extends StatelessWidget {
                   children: <Widget>[
                     Icon(
                       Icons.calendar_today,
-                      color: Theme.of(context).buttonColor,
+                      color: Platform.isIOS
+                          ? CupertinoTheme.of(context).primaryContrastingColor
+                          : Theme.of(context).buttonColor,
                     ),
                     Column(
                       children: <Widget>[
@@ -45,10 +52,16 @@ class Schedule extends StatelessWidget {
                         Text('Presenciais'),
                       ],
                     ),
-                    Icon(
-                      Icons.share,
-                      color: Theme.of(context).buttonColor,
-                    )
+                    Platform.isIOS
+                        ? Icon(
+                            CupertinoIcons.share,
+                            color: CupertinoTheme.of(context)
+                                .primaryContrastingColor,
+                          )
+                        : Icon(
+                            Icons.share,
+                            color: Theme.of(context).buttonColor,
+                          )
                   ],
                 ),
                 Image.asset('assets/images/mapa.png'),
