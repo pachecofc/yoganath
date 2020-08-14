@@ -91,7 +91,9 @@ class Login extends StatelessWidget {
 
     return Platform.isIOS
         ? SafeArea(
-            child: CupertinoPageScaffold(child: pageBody),
+            child: CupertinoPageScaffold(
+              child: CupertinoScrollbar(child: pageBody),
+            ),
           )
         : AnnotatedRegion<SystemUiOverlayStyle>(
             value: SystemUiOverlayStyle(
