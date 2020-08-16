@@ -28,10 +28,10 @@ flutter:
     - assets/videos/
 
   fonts:
-    - family: Roboto
+    - family: Montserrat
       fonts:
-        - asset: assets/fonts/Roboto-Regular.ttf
-        - asset: assets/fonts/Roboto-Medium.ttf
+        - asset: assets/fonts/Montserrat-ExtraLight.ttf
+        - asset: assets/fonts/Montserrat-Regular.ttf
     - family: Indie Flower
       fonts:
         - asset: assets/fonts/IndieFlower-Regular.ttf

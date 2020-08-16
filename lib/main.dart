@@ -16,57 +16,57 @@ void main() {
 class YogaNath extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Platform.isIOS
-        ? CupertinoApp(
-            title: 'YogaNath',
-            home: SplashScreen(),
-            debugShowCheckedModeBanner: false,
-            initialRoute: '/',
-            onGenerateRoute: RouteGenerator.generateRoute,
-            theme: CupertinoThemeData(
-              scaffoldBackgroundColor: CupertinoColors.white,
-              primaryColor: Color(0xffcc9c74),
-              primaryContrastingColor: Color(0xff5F9269),
-            ),
-          )
-        : MaterialApp(
-            title: 'YogaNath',
-            home: SplashScreen(),
-            debugShowCheckedModeBanner: false,
-            initialRoute: '/',
-            onGenerateRoute: RouteGenerator.generateRoute,
-            theme: ThemeData(
-              visualDensity: VisualDensity.adaptivePlatformDensity,
-              typography:
-                  Typography.material2018(platform: TargetPlatform.android),
-              primaryColor: Color(0xffcc9c74),
-              primaryColorDark: Color(0xff996E48),
-              buttonColor: Color(0xff5F9269),
-              accentColor: Color(0xff32643E),
-              bottomAppBarColor: Color(0xffDEA97E),
-              canvasColor: Colors.white,
-              scaffoldBackgroundColor: Colors.white,
-              textTheme: Typography.blackMountainView.copyWith(
-                bodyText2: TextStyle(color: Colors.black54),
-                headline5: TextStyle(
-                  fontFamily: 'Indie Flower',
-                  fontSize: 33.0,
-                  color: Color(0xff5F9269),
-                ),
-                headline6: TextStyle(
-                  fontFamily: 'Indie Flower',
-                  fontSize: 27.0,
-                  color: Colors.black87,
-                ),
-              ),
-              sliderTheme: SliderTheme.of(context).copyWith(
-                activeTrackColor: Color(0xff32643E),
-                inactiveTrackColor: Color(0xff8ec397),
-                thumbColor: Color(0xff32643E),
-                valueIndicatorColor: Color(0xff32643E),
-                overlayColor: Color(0xff8ec397),
-              ),
-            ),
-          );
+    return MaterialApp(
+      title: 'YogaNath',
+      home: SplashScreen(),
+      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      onGenerateRoute: RouteGenerator.generateRoute,
+      theme: ThemeData(
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+        typography: Typography.material2018(
+            platform:
+                Platform.isIOS ? TargetPlatform.iOS : TargetPlatform.android),
+        primaryColor: Color(0xffcc9c74),
+        primaryColorDark: Color(0xff996E48),
+        buttonColor: Color(0xff5F9269),
+        accentColor: Color(0xff32643E),
+        bottomAppBarColor: Color(0xffDEA97E),
+        canvasColor: Colors.white,
+        scaffoldBackgroundColor: Colors.white,
+        errorColor: Color(0xffA2001D),
+        textTheme: Typography.blackMountainView.copyWith(
+          headline5: TextStyle(
+            fontFamily: 'Indie Flower',
+            fontSize: 33.0,
+            color: Color(0xff5F9269),
+          ),
+          headline6: TextStyle(
+            fontFamily: 'Indie Flower',
+            fontSize: 27.0,
+            color: Colors.black87,
+          ),
+          bodyText2: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 16.0,
+          ),
+          button: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 14.0,
+          ),
+          caption: TextStyle(
+            fontFamily: 'Montserrat',
+            fontSize: 12.0,
+          ),
+        ),
+        sliderTheme: SliderTheme.of(context).copyWith(
+          activeTrackColor: Color(0xff32643E),
+          inactiveTrackColor: Color(0xff8ec397),
+          thumbColor: Color(0xff32643E),
+          valueIndicatorColor: Color(0xff32643E),
+          overlayColor: Color(0xff8ec397),
+        ),
+      ),
+    );
   }
 }
