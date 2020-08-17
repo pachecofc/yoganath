@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
@@ -38,10 +37,7 @@ class ReusableCard extends StatelessWidget {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 10.0),
         decoration: BoxDecoration(
-          border: Border.all(
-              color: Platform.isIOS
-                  ? CupertinoTheme.of(context).primaryColor
-                  : Theme.of(context).primaryColor),
+          border: Border.all(color: Theme.of(context).primaryColor),
           borderRadius: BorderRadius.all(
             Radius.circular(4.0),
           ),
@@ -69,8 +65,12 @@ class ReusableCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text(cardText),
-                    containsSecondLine() ? Text(secondTextLine) : Container(),
+                    Material(child: Text(cardText)),
+                    containsSecondLine()
+                        ? Material(
+                            child: Text(secondTextLine),
+                          )
+                        : Container(),
                     containsButton() ? reusableFlatButton : Container(),
                   ],
                 ),

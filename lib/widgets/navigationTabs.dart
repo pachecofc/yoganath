@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:yoganath/screens/achievements_screen.dart';
+import 'package:yoganath/screens/calendar_screen.dart';
+import 'package:yoganath/screens/ranking_screen.dart';
 
 class NavigationTabs extends StatefulWidget {
   @override
@@ -13,41 +16,35 @@ class _NavigationTabsState extends State<NavigationTabs> {
     1: Icon(Icons.filter_1),
     2: Icon(Icons.event),
   };
-  // Creates the Tab titles with icons
-  Map<int, Widget> textMap = {
-    0: Text('Conquistas'),
-    1: Text('Ranking'),
-    2: Text('Calendário'),
-  };
   // Shows the respective widget associated with the Tab
   List<Widget> childWidgets = [
-    // Achievements(),
-    Text('Conquistas'),
-    Text('Ranking'),
-    Text('Calendário'),
+    Material(child: Achievements()),
+    Material(child: Ranking()),
+    Material(child: Calendar()),
   ];
   // By default, the first tab is selected
   int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-
     return Column(
       children: [
         CupertinoSlidingSegmentedControl(
-          children: width > 375
-              ? textMap
-              : iconMap, // The tabs which are assigned in the form of map
+          children: iconMap, // The tabs which are assigned in the form of map
           onValueChanged: (value) {
             // Callback function executed when user changes the Tabs
             setState(() {
               selectedIndex = value;
             });
           },
-          groupValue: selectedIndex, // The current selected Index or key
+          groupValue: selectedIndex,
+          thumbColor: Theme.of(context)
+              .primaryColor, // The current selected Index or key
         ),
-        childWidgets[selectedIndex],
+        Container(
+          child: childWidgets[selectedIndex],
+          height: MediaQuery.of(context).size.height * 0.7,
+        )
       ],
     );
   }

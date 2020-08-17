@@ -35,8 +35,10 @@ class Learn extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 0.02,
           ),
           ReusableTitle(text: 'Você sabia?', isPremium: false),
-          Text(
-              'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.'),
+          Material(
+            child: Text(
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.'),
+          ),
         ],
       ),
     );

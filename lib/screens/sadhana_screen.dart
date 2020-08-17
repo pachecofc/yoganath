@@ -18,8 +18,10 @@ class Sadhana extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 15.0),
-            child: Text(
-                'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.'),
+            child: Material(
+              child: Text(
+                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.'),
+            ),
           ),
           ReusableTitle(
             text: 'Prática Diária',
@@ -41,7 +43,7 @@ class Sadhana extends StatelessWidget {
           for (var i = 0; i < 50; i++)
             Platform.isIOS
                 ? Material(
-                    color: CupertinoTheme.of(context).scaffoldBackgroundColor,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                     child: ReusableChallenge(),
                   )
                 : ReusableChallenge()

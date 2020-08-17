@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yoganath/utilities/constants.dart';
@@ -38,10 +37,7 @@ class ReusableMidiaCard extends StatelessWidget {
           children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                border: Border.all(
-                    color: Platform.isIOS
-                        ? CupertinoTheme.of(context).primaryColor
-                        : Theme.of(context).primaryColor),
+                border: Border.all(color: Theme.of(context).primaryColor),
                 borderRadius: BorderRadius.all(
                   Radius.circular(4.0),
                 ),
@@ -69,23 +65,26 @@ class ReusableMidiaCard extends StatelessWidget {
                               children: <Widget>[
                                 Text(
                                   firstTextLine,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      .copyWith(fontWeight: FontWeight.bold),
                                 ),
                                 Text(
                                   secondTextLine,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .caption
+                                      .copyWith(fontWeight: FontWeight.bold),
                                 ),
                               ],
                             )
                           : Text(
                               firstTextLine,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .caption
+                                  .copyWith(fontWeight: FontWeight.bold),
                             ),
                     ),
                   ),
@@ -94,9 +93,7 @@ class ReusableMidiaCard extends StatelessWidget {
                   ? Container()
                   : Icon(
                       Icons.check_circle,
-                      color: Platform.isIOS
-                          ? CupertinoTheme.of(context).primaryContrastingColor
-                          : Theme.of(context).buttonColor,
+                      color: Theme.of(context).buttonColor,
                     ),
               right: 10,
               top: 10,

@@ -16,33 +16,17 @@ class AboutYogaNath extends StatelessWidget {
     return Platform.isIOS
         ? CupertinoActionSheetAction(
             onPressed: () {
-              showCupertinoDialog(
-                context: context,
-                builder: (context) => CupertinoAlertDialog(
-                  title: Text('Sobre o YogaNath'),
-                  content: Column(
-                    children: [
-                      AppInfo.appIcon,
-                      Text(AppInfo.kAppName),
-                      Text(AppInfo.kAppVersion),
-                      Text(AppInfo.kAppLegalese),
-                      aboutBoxChildren[0],
-                      Text('Licenças disponíveis em Settings '
-                          '-> YogaNath -> Acknowledgements.'),
-                    ],
-                  ),
-                  actions: [
-                    CupertinoButton(
-                      child: Text('Fechar'),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-              );
+              showAboutDialog(
+                  context: context,
+                  applicationName: AppInfo.kAppName,
+                  applicationVersion: AppInfo.kAppVersion,
+                  applicationIcon: AppInfo.appIcon,
+                  applicationLegalese: AppInfo.kAppLegalese);
             },
-            child: Text('Sobre o YogaNath'),
+            child: Text(
+              'Sobre o YogaNath',
+              style: TextStyle(color: Theme.of(context).primaryColor),
+            ),
           )
         : AboutListTile(
             icon: Icon(Icons.info),
@@ -118,31 +102,46 @@ class IosProfileOptions extends StatelessWidget {
           onPressed: () {
             Navigator.pushNamed(context, RouteGenerator.kACCOUNT_ROUTE);
           },
-          child: Text(AuxProfileOptions.kDrawerAccount),
+          child: Text(
+            AuxProfileOptions.kDrawerAccount,
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
         CupertinoActionSheetAction(
           onPressed: () {
             Navigator.pushNamed(context, RouteGenerator.kSUBSCRIPTION_ROUTE);
           },
-          child: Text(AuxProfileOptions.kDrawerSubscription),
+          child: Text(
+            AuxProfileOptions.kDrawerSubscription,
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
         CupertinoActionSheetAction(
           onPressed: () {
             Navigator.pushNamed(context, RouteGenerator.kSUPPORT_ROUTE);
           },
-          child: Text(AuxProfileOptions.kDrawerSupport),
+          child: Text(
+            AuxProfileOptions.kDrawerSupport,
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
         CupertinoActionSheetAction(
           onPressed: () {
             Navigator.pushNamed(context, RouteGenerator.kABOUT_ROUTE);
           },
-          child: Text(AuxProfileOptions.kDrawerAbout),
+          child: Text(
+            AuxProfileOptions.kDrawerAbout,
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
         CupertinoActionSheetAction(
           onPressed: () {
             Navigator.pushNamed(context, RouteGenerator.kADMIN_ROUTE);
           },
-          child: Text(AuxProfileOptions.kDrawerAdmin),
+          child: Text(
+            AuxProfileOptions.kDrawerAdmin,
+            style: TextStyle(color: Theme.of(context).primaryColor),
+          ),
         ),
         AboutYogaNath(),
       ],

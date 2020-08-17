@@ -36,27 +36,25 @@ class _ProfileState extends State<Profile> with SingleTickerProviderStateMixin {
         ReusableTitle(text: 'Meu Perfil', isPremium: false);
 
     return Platform.isIOS
-        ? CupertinoPageScaffold(
-            child: Column(
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ReusableTitle(text: 'Meu Perfil', isPremium: false),
-                    GestureDetector(
-                      child: Icon(CupertinoIcons.settings),
-                      onTap: () {
-                        showCupertinoModalPopup(
-                          context: context,
-                          builder: (context) => IosProfileOptions(),
-                        );
-                      },
-                    ),
-                  ],
-                ),
-                NavigationTabs()
-              ],
-            ),
+        ? Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  ReusableTitle(text: 'Meu Perfil', isPremium: false),
+                  GestureDetector(
+                    child: Icon(CupertinoIcons.settings),
+                    onTap: () {
+                      showCupertinoModalPopup(
+                        context: context,
+                        builder: (context) => IosProfileOptions(),
+                      );
+                    },
+                  ),
+                ],
+              ),
+              NavigationTabs()
+            ],
           )
         : Scaffold(
             appBar: AppBar(
