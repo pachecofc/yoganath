@@ -94,7 +94,9 @@ class Login extends StatelessWidget {
         statusBarColor: Color(0xff996E48),
       ),
       child: SafeArea(
-        child: Scaffold(body: pageBody),
+        child: Scaffold(
+          body: pageBody,
+        ),
       ),
     );
   }
