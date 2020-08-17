@@ -15,9 +15,7 @@ class ReusableFlatButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         buttonText,
-        style: Platform.isIOS
-            ? TextStyle(color: CupertinoTheme.of(context).primaryColor)
-            : TextStyle(color: Theme.of(context).primaryColor),
+        style: TextStyle(color: Theme.of(context).primaryColor),
       ),
     );
   }

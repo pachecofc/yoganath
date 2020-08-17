@@ -59,9 +59,9 @@ class IosButton extends StatelessWidget {
     return CupertinoButton(
       child: Text(
         buttonText,
-        style: TextStyle(color: ColorConstants.kCupertinoButtonText),
+        style: TextStyle(color: Theme.of(context).canvasColor),
       ),
-      color: CupertinoTheme.of(context).primaryContrastingColor,
+      color: Theme.of(context).buttonColor,
       padding: EdgeInsets.symmetric(horizontal: 16.0),
       onPressed: onPressed,
     );

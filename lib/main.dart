@@ -20,6 +20,7 @@ class YogaNath extends StatelessWidget {
       title: 'YogaNath',
       home: SplashScreen(),
       debugShowCheckedModeBanner: false,
+      locale: Locale('pt-BR', 'BR'),
       initialRoute: '/',
       onGenerateRoute: RouteGenerator.generateRoute,
       theme: ThemeData(

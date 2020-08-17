@@ -144,7 +144,7 @@ class _IosTextFieldState extends State<IosTextField> {
       placeholder: widget.hint,
       suffix: widget.suffixIcon,
       obscureText: widget.isObscure,
-      cursorColor: CupertinoTheme.of(context).primaryColor,
+      cursorColor: Theme.of(context).primaryColor,
       onSubmitted: (value) {
         if (value.isEmpty) {
           return widget.errorMessage;

@@ -51,7 +51,10 @@ class Login extends StatelessWidget {
                       textEditingController: _passController,
                       isObscure: true,
                       suffixIcon: Platform.isIOS
-                          ? Icon(CupertinoIcons.eye)
+                          ? Icon(
+                              CupertinoIcons.eye,
+                              color: Theme.of(context).primaryColor,
+                            )
                           : Icon(Icons.visibility),
                       label: 'Senha',
                       hint: null,
@@ -71,19 +74,16 @@ class Login extends StatelessWidget {
               ),
             ),
             SizedBox(height: _screenSize.height * 0.03),
-            Text('Ainda não é cadastrado?'),
+            Text(
+              'Ainda não é cadastrado?',
+            ),
             ReusableFlatButton(
               buttonText: 'Cadastrar',
               onPressed: () {
                 Navigator.pushNamed(context, RouteGenerator.kSIGNUP_ROUTE);
               },
             ),
-            Platform.isIOS
-                ? Material(
-                    child: ReusableAcceptTerms(),
-                    color: CupertinoTheme.of(context).scaffoldBackgroundColor,
-                  )
-                : ReusableAcceptTerms(),
+            ReusableAcceptTerms(),
           ],
         ),
       ),
@@ -94,9 +94,7 @@ class Login extends StatelessWidget {
         statusBarColor: Color(0xff996E48),
       ),
       child: SafeArea(
-        child: Platform.isIOS
-            ? CupertinoPageScaffold(child: pageBody)
-            : Scaffold(body: pageBody),
+        child: Scaffold(body: pageBody),
       ),
     );
   }

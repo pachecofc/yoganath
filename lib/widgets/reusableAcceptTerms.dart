@@ -42,7 +42,7 @@ class _ReusableAcceptTermsState extends State<ReusableAcceptTerms> {
           child: RichText(
             text: TextSpan(
               text: 'Ao continuar, você concorda com os ',
-              style: Theme.of(context).textTheme.bodyText2,
+              style: Theme.of(context).textTheme.caption,
               children: <TextSpan>[
                 TextSpan(
                   text: 'Termos de Uso',
