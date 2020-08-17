@@ -111,7 +111,7 @@ class IosProfileOptions extends StatelessWidget {
     return CupertinoActionSheet(
       title: Text(
         AuxProfileOptions.kDrawerTitle,
-        style: TextConstants.kHeadline2,
+        style: Theme.of(context).textTheme.headline6,
       ),
       actions: [
         CupertinoActionSheetAction(
@@ -152,7 +152,7 @@ class IosProfileOptions extends StatelessWidget {
         },
         child: Text(
           'Encerrar Sessão',
-          style: TextStyle(color: ColorConstants.kDangerAction),
+          style: TextStyle(color: Theme.of(context).errorColor),
         ),
       ),
     );

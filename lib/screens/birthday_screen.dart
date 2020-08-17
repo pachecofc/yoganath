@@ -1,4 +1,3 @@
-import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
@@ -46,13 +45,9 @@ class Birthday extends StatelessWidget {
       ),
     );
     return SafeArea(
-      child: Platform.isIOS
-          ? CupertinoPageScaffold(
-              child: pageBody,
-            )
-          : Scaffold(
-              body: pageBody,
-            ),
+      child: Scaffold(
+        body: pageBody,
+      ),
     );
   }
 }

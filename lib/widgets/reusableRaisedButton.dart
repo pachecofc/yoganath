@@ -2,8 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
-import 'package:yoganath/utilities/constants.dart';
-
 class ReusableRaisedButton extends StatelessWidget {
   const ReusableRaisedButton({
     @required this.buttonText,
@@ -35,7 +33,7 @@ class AndroidRaisedButton extends StatelessWidget {
     return RaisedButton(
       child: Text(
         buttonText,
-        style: TextStyle(color: ColorConstants.kButtonText),
+        style: TextStyle(color: Theme.of(context).canvasColor),
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4),

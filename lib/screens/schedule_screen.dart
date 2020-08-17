@@ -1,7 +1,6 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yoganath/utilities/constants.dart';
 import 'package:yoganath/utilities/showSnackBar.dart';
 import 'package:yoganath/widgets/reusableCard.dart';
 import 'package:yoganath/widgets/reusableFlatButton.dart';
@@ -32,9 +31,7 @@ class Schedule extends StatelessWidget {
           ),
           ReusableTitle(text: 'Nath Agenda', isPremium: false),
           Card(
-            shadowColor: Platform.isIOS
-                ? ColorConstants.kCupertinoTabBar
-                : Theme.of(context).bottomAppBarColor,
+            shadowColor: Theme.of(context).bottomAppBarColor,
             child: Column(
               children: <Widget>[
                 Row(

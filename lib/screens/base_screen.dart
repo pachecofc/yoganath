@@ -81,7 +81,7 @@ class _BaseState extends State<Base> {
       child: Platform.isIOS
           ? CupertinoTabScaffold(
               tabBar: CupertinoTabBar(
-                backgroundColor: ColorConstants.kCupertinoTabBar,
+                backgroundColor: Theme.of(context).bottomAppBarColor,
                 activeColor: ColorConstants.kTabBarActiveColor,
                 inactiveColor: ColorConstants.kTabBarInactiveColor,
                 items: _bottomBarItems,

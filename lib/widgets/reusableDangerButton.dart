@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:yoganath/utilities/constants.dart';
 
 class ReusableDangerButton extends StatelessWidget {
   const ReusableDangerButton(
@@ -11,8 +10,8 @@ class ReusableDangerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FlatButton(
-      textColor: ColorConstants.kDangerAction,
-      shape: Border.all(color: ColorConstants.kDangerAction),
+      textColor: Theme.of(context).errorColor,
+      shape: Border.all(color: Theme.of(context).errorColor),
       onPressed: onPressed,
       child: Text(buttonText),
     );

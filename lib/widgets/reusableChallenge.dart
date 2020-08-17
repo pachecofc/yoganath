@@ -1,7 +1,6 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yoganath/utilities/constants.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableSlider.dart';
 import 'package:yoganath/widgets/reusableSubtitle.dart';
@@ -30,7 +29,7 @@ class ReusableChallenge extends StatelessWidget {
           child: Checkbox(
             value: true,
             onChanged: (newValue) {},
-            activeColor: ColorConstants.kDarkerGreen,
+            activeColor: Theme.of(context).accentColor,
           ),
         ),
       ],

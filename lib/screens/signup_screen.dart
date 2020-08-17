@@ -67,7 +67,7 @@ class Signup extends StatelessWidget {
                       suffixIcon: Platform.isIOS
                           ? Icon(
                               CupertinoIcons.eye,
-                              color: CupertinoTheme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColor,
                             )
                           : Icon(Icons.visibility),
                       label: 'Senha',
@@ -90,7 +90,7 @@ class Signup extends StatelessWidget {
             Platform.isIOS
                 ? Material(
                     child: ReusableAcceptTerms(),
-                    color: CupertinoTheme.of(context).scaffoldBackgroundColor,
+                    color: Theme.of(context).scaffoldBackgroundColor,
                   )
                 : ReusableAcceptTerms(),
           ],
@@ -102,7 +102,7 @@ class Signup extends StatelessWidget {
       child: Platform.isIOS
           ? CupertinoPageScaffold(
               navigationBar: CupertinoNavigationBar(
-                backgroundColor: CupertinoTheme.of(context).primaryColor,
+                backgroundColor: Theme.of(context).primaryColor,
                 middle: appBarTitle,
                 leading: GestureDetector(
                   child: Icon(
