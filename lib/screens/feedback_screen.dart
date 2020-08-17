@@ -49,7 +49,10 @@ class ClassFeedback extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Platform.isIOS
-                      ? IosPicker()
+                      ? Container(
+                          width: MediaQuery.of(context).size.width * 0.4,
+                          child: IosPicker(),
+                        )
                       : AndroidDropdown(
                           sourceList: feelings,
                         ),

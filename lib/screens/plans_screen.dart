@@ -65,28 +65,19 @@ class IosPlansList extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoActionSheet(
       actions: [
-        CupertinoActionSheetAction(
-          onPressed: () {},
-          child: ReusablePlanCard(
-            planName: firstPlanName,
-            planPrice: firstPlanPrice,
-          ),
+        ReusablePlanCard(
+          planName: firstPlanName,
+          planPrice: firstPlanPrice,
         ),
-        CupertinoActionSheetAction(
-          onPressed: () {},
-          child: ReusablePlanCard(
-            planName: secondPlanName,
-            planPrice: secondPlanPrice,
-            planSymbol: expensive,
-          ),
+        ReusablePlanCard(
+          planName: secondPlanName,
+          planPrice: secondPlanPrice,
+          planSymbol: expensive,
         ),
-        CupertinoActionSheetAction(
-          onPressed: () {},
-          child: ReusablePlanCard(
-            planName: thirdPlanName,
-            planPrice: thirdPlanPrice,
-            planSymbol: mostExpensive,
-          ),
+        ReusablePlanCard(
+          planName: thirdPlanName,
+          planPrice: thirdPlanPrice,
+          planSymbol: mostExpensive,
         ),
       ],
     );

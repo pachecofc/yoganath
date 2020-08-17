@@ -1,3 +1,5 @@
+import 'dart:io' show Platform;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yoganath/screens/class_screen.dart';
 import 'package:yoganath/utilities/setOrientation.dart';
@@ -18,7 +20,7 @@ class _AsanaInfoState extends State<AsanaInfo> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            Class(),
+            // Class(),
             AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,
               duration: Duration(milliseconds: 500),
@@ -27,11 +29,17 @@ class _AsanaInfoState extends State<AsanaInfo> {
             Positioned(
               right: 16.0,
               child: IconButton(
-                icon: Icon(
-                  Icons.info_outline,
-                  color: Theme.of(context).accentColor,
-                  size: 48.0,
-                ),
+                icon: Platform.isIOS
+                    ? Icon(
+                        CupertinoIcons.info,
+                        color: Theme.of(context).accentColor,
+                        size: 48.0,
+                      )
+                    : Icon(
+                        Icons.info_outline,
+                        color: Theme.of(context).accentColor,
+                        size: 48.0,
+                      ),
                 onPressed: () {
                   setState(() {
                     _visible = !_visible;

@@ -2,6 +2,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/utilities/buildNavigationBar.dart';
 import 'package:yoganath/widgets/reusableAcceptTerms.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
@@ -101,19 +102,7 @@ class Signup extends StatelessWidget {
     return SafeArea(
       child: Platform.isIOS
           ? CupertinoPageScaffold(
-              navigationBar: CupertinoNavigationBar(
-                backgroundColor: Theme.of(context).primaryColor,
-                middle: appBarTitle,
-                leading: GestureDetector(
-                  child: Icon(
-                    CupertinoIcons.back,
-                    color: CupertinoColors.black,
-                  ),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ),
+              navigationBar: buildCupertinoNavigationBar(context, appBarTitle),
               child: pageBody,
             )
           : Scaffold(

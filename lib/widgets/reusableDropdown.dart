@@ -53,7 +53,7 @@ class IosPicker extends StatelessWidget {
     }
 
     return CupertinoPicker(
-      backgroundColor: Theme.of(context).bottomAppBarColor,
+      // backgroundColor: Theme.of(context).bottomAppBarColor,
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIndex) {
         //print(selectedIndex);

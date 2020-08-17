@@ -15,6 +15,12 @@ class ReusablePlanCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(
+          Radius.circular(8.0),
+        ),
+      ),
+      elevation: 0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -33,7 +39,7 @@ class ReusablePlanCard extends StatelessWidget {
                   child: Text(
                     planSymbol,
                     style: TextStyle(
-                      color: Theme.of(context).buttonColor,
+                      color: Colors.black87,
                       fontSize: 18.0,
                     ),
                   ),

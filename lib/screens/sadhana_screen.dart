@@ -33,7 +33,13 @@ class Sadhana extends StatelessWidget {
             secondTextLine: '30 min',
             isChecked: true,
             onTap: () {
-              Navigator.pushNamed(context, RouteGenerator.kPREMIUM_ROUTE);
+              Platform.isIOS
+                  ? CupertinoFullscreenDialogTransition(
+                      primaryRouteAnimation: null,
+                      secondaryRouteAnimation: null,
+                      child: null,
+                      linearTransition: null)
+                  : Navigator.pushNamed(context, RouteGenerator.kPREMIUM_ROUTE);
             },
           ),
           ReusableTitle(

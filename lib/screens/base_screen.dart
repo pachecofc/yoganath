@@ -8,6 +8,7 @@ import 'package:yoganath/screens/practice_screen.dart';
 import 'package:yoganath/screens/profile_screen.dart';
 import 'package:yoganath/screens/sadhana_screen.dart';
 import 'package:yoganath/screens/schedule_screen.dart';
+import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/utilities/constants.dart';
 
 class Base extends StatefulWidget {
@@ -95,6 +96,7 @@ class _BaseState extends State<Base> {
                       body: pageBody,
                     );
                   },
+                  onGenerateRoute: RouteGenerator.generateRoute,
                 );
               })
           : Scaffold(
