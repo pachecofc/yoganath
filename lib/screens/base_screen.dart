@@ -91,8 +91,8 @@ class _BaseState extends State<Base> {
               tabBuilder: (BuildContext context, int index) {
                 return CupertinoTabView(
                   builder: (BuildContext context) {
-                    return CupertinoPageScaffold(
-                      child: pageBody,
+                    return Scaffold(
+                      body: pageBody,
                     );
                   },
                 );

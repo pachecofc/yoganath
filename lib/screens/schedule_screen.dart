@@ -39,9 +39,7 @@ class Schedule extends StatelessWidget {
                   children: <Widget>[
                     Icon(
                       Icons.calendar_today,
-                      color: Platform.isIOS
-                          ? CupertinoTheme.of(context).primaryContrastingColor
-                          : Theme.of(context).buttonColor,
+                      color: Theme.of(context).buttonColor,
                     ),
                     Column(
                       children: <Widget>[
@@ -52,8 +50,7 @@ class Schedule extends StatelessWidget {
                     Platform.isIOS
                         ? Icon(
                             CupertinoIcons.share,
-                            color: CupertinoTheme.of(context)
-                                .primaryContrastingColor,
+                            color: Theme.of(context).buttonColor,
                           )
                         : Icon(
                             Icons.share,
