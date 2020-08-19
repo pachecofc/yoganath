@@ -20,25 +20,25 @@ class _AsanaInfoState extends State<AsanaInfo> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            // Class(),
+            Class(),
             AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,
               duration: Duration(milliseconds: 500),
               child: AsanaBenefits(),
             ),
             Positioned(
-              right: 16.0,
+              right: 8.0,
               child: IconButton(
                 icon: Platform.isIOS
                     ? Icon(
                         CupertinoIcons.info,
                         color: Theme.of(context).accentColor,
-                        size: 48.0,
+                        size: 40.0,
                       )
                     : Icon(
                         Icons.info_outline,
                         color: Theme.of(context).accentColor,
-                        size: 48.0,
+                        size: 40.0,
                       ),
                 onPressed: () {
                   setState(() {

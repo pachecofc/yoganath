@@ -1,7 +1,7 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/screens/asanaInfo_screen.dart';
 import 'package:yoganath/utilities/buildNavigationBar.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
@@ -44,7 +44,15 @@ class _AsanasState extends State<Asanas> {
                   isChecked: false,
                   firstTextLine: 'Padmasana',
                   onTap: () {
-                    Navigator.pushNamed(context, RouteGenerator.kADHOC_ROUTE);
+                    showCupertinoModalPopup(
+                      context: context,
+                      builder: (_) {
+                        return CupertinoPopupSurface(
+                          child: AsanaInfo(),
+                        );
+                      },
+                    );
+                    // Navigator.pushNamed(context, RouteGenerator.kADHOC_ROUTE);
                   },
                 ),
                 ReusableMidiaCard(
