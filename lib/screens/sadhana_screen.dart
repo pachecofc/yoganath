@@ -1,7 +1,7 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/screens/premium_screen.dart';
 import 'package:yoganath/widgets/reusableChallenge.dart';
 import 'package:yoganath/widgets/reusableMidiaCard.dart';
 import 'package:yoganath/widgets/reusableTitle.dart';
@@ -33,13 +33,14 @@ class Sadhana extends StatelessWidget {
             secondTextLine: '30 min',
             isChecked: true,
             onTap: () {
-              Platform.isIOS
-                  ? CupertinoFullscreenDialogTransition(
-                      primaryRouteAnimation: null,
-                      secondaryRouteAnimation: null,
-                      child: null,
-                      linearTransition: null)
-                  : Navigator.pushNamed(context, RouteGenerator.kPREMIUM_ROUTE);
+              showCupertinoModalPopup(
+                context: context,
+                builder: (_) {
+                  return CupertinoPopupSurface(
+                    child: Premium(),
+                  );
+                },
+              );
             },
           ),
           ReusableTitle(
