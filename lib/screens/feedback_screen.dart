@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/utilities/buildDropdown.dart';
 import 'package:yoganath/utilities/setOrientation.dart';
 import 'package:yoganath/widgets/reusableDropdown.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
@@ -49,13 +50,15 @@ class ClassFeedback extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 16.0),
                   child: Platform.isIOS
-                      ? Container(
-                          width: MediaQuery.of(context).size.width * 0.4,
-                          child: IosPicker(),
+                      ?
+                      // IosPicker(sourceList: feelings)
+                      GestureDetector(
+                          child: Text('Eu me sinto...'),
+                          onTap: () {
+                            buildDropdownPopup(context, feelings);
+                          },
                         )
-                      : AndroidDropdown(
-                          sourceList: feelings,
-                        ),
+                      : AndroidDropdown(sourceList: feelings),
                 ),
                 ReusableRaisedButton(
                     buttonText: 'CONCLUIR',

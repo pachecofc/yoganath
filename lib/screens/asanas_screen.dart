@@ -52,7 +52,6 @@ class _AsanasState extends State<Asanas> {
                         );
                       },
                     );
-                    // Navigator.pushNamed(context, RouteGenerator.kADHOC_ROUTE);
                   },
                 ),
                 ReusableMidiaCard(

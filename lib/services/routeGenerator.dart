@@ -3,7 +3,6 @@ import 'package:yoganath/screens/about_more_screen.dart';
 import 'package:yoganath/screens/about_screen.dart';
 import 'package:yoganath/screens/account_screen.dart';
 import 'package:yoganath/screens/admin_screen.dart';
-import 'package:yoganath/screens/asanaInfo_screen.dart';
 import 'package:yoganath/screens/asanas_screen.dart';
 import 'package:yoganath/screens/base_screen.dart';
 import 'package:yoganath/screens/birthday_screen.dart';
@@ -13,7 +12,6 @@ import 'package:yoganath/screens/feedback_screen.dart';
 import 'package:yoganath/screens/learnMore_screen.dart';
 import 'package:yoganath/screens/login_screen.dart';
 import 'package:yoganath/screens/meditation_screen.dart';
-import 'package:yoganath/screens/pranayamas_screen.dart';
 import 'package:yoganath/screens/premium_screen.dart';
 import 'package:yoganath/screens/signup_screen.dart';
 import 'package:yoganath/screens/splash_screen.dart';
@@ -29,10 +27,8 @@ class RouteGenerator {
   static const String kPROFILE_ROUTE = '/profile';
   static const String kPREMIUM_ROUTE = '/premium';
   static const String kCLASS_ROUTE = '/class';
-  static const String kADHOC_ROUTE = '/adhoc';
   static const String kFEEDBACK_ROUTE = '/feedback';
   static const String kASANAS_ROUTE = '/asanas';
-  static const String kPRANA_ROUTE = '/pranayamas';
   static const String kMEDITATION_ROUTE = '/meditation';
   static const String kLEARN_ROUTE = '/learn';
   static const String kACCOUNT_ROUTE = '/account';
@@ -74,12 +70,6 @@ class RouteGenerator {
         break;
       case kASANAS_ROUTE:
         return MaterialPageRoute(builder: (_) => Asanas());
-        break;
-      case kPRANA_ROUTE:
-        return MaterialPageRoute(builder: (_) => Pranayamas());
-        break;
-      case kADHOC_ROUTE:
-        return MaterialPageRoute(builder: (_) => AsanaInfo());
         break;
       case kMEDITATION_ROUTE:
         return MaterialPageRoute(builder: (_) => Meditation());

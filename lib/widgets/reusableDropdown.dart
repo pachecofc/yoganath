@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:yoganath/utilities/dropdownLists.dart';
 
 class AndroidDropdown extends StatefulWidget {
   AndroidDropdown({@required this.sourceList});
@@ -45,18 +44,21 @@ class _AndroidDropdownState extends State<AndroidDropdown> {
 }
 
 class IosPicker extends StatelessWidget {
+  IosPicker({@required this.sourceList});
+  final List<String> sourceList;
+
   @override
   Widget build(BuildContext context) {
     List<Text> picker = [];
-    for (String feeling in feelings) {
-      picker.add(Text(feeling));
+    for (String sourceListItem in sourceList) {
+      picker.add(Text(sourceListItem));
     }
 
     return CupertinoPicker(
       // backgroundColor: Theme.of(context).bottomAppBarColor,
       itemExtent: 32.0,
       onSelectedItemChanged: (selectedIndex) {
-        //print(selectedIndex);
+        // print(selectedIndex);
       },
       children: picker,
     );

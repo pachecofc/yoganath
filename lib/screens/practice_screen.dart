@@ -27,7 +27,7 @@ class Practice extends StatelessWidget {
           ReusableCard(
             cardImage: 'pranayama.png',
             cardText: 'Pranayamas',
-            routeName: RouteGenerator.kPRANA_ROUTE,
+            routeName: RouteGenerator.kASANAS_ROUTE,
           ),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.04,
