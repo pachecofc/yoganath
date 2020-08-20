@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 import 'package:yoganath/services/routeGenerator.dart';
+import 'package:yoganath/utilities/buildNavigationBar.dart';
 import 'package:yoganath/utilities/cancelConfirmationDialog.dart';
 import 'package:yoganath/widgets/reusableDangerButton.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
@@ -18,117 +19,130 @@ class Account extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Minha Conta'),
-        ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: 5.0,
-                ),
-                Form(
-                  key: _formKey,
-                  child: Column(
-                    children: <Widget>[
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ReusableTextFormField(
-                          textEditingController: _nameController,
-                          isObscure: false,
-                          label: 'Nome',
-                          hint: 'Seu Nome',
-                          errorMessage: 'Por favor, digite seu nome',
-                          keyboardType: TextInputType.text,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ReusableTextFormField(
-                          textEditingController: _emailController,
-                          isObscure: false,
-                          label: 'E-mail',
-                          hint: 'seu@email.com',
-                          errorMessage: 'Por favor, digite seu e-mail',
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ReusableTextFormField(
-                          textEditingController: _passController,
-                          isObscure: true,
-                          suffixIcon: Icon(Icons.visibility),
-                          label: 'Senha',
-                          hint: null,
-                          errorMessage: 'Por favor, digite sua senha',
-                          keyboardType: TextInputType.text,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ReusableTextFormField(
-                          textEditingController: _phoneController,
-                          isObscure: false,
-                          label: 'Telefone',
-                          hint: '(85) 98765-1234',
-                          errorMessage: null,
-                          keyboardType: TextInputType.number,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: ReusableTextFormField(
-                          textEditingController: _dateController,
-                          isObscure: false,
-                          label: 'Data de nascimento',
-                          hint: '01/jul/1985',
-                          errorMessage: null,
-                          keyboardType: TextInputType.text,
-                        ),
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      ReusableRaisedButton(
-                        buttonText: 'SALVAR ALTERAÇÕES',
-                        onPressed: () {
-                          Navigator.pushNamed(
-                              context, RouteGenerator.kPROFILE_ROUTE);
-                        },
-                      ),
-                      SizedBox(
-                        height: 32.0,
-                      ),
-                      ReusableDangerButton(
-                          buttonText: 'Excluir conta',
-                          onPressed: () {
-                            showAlertDialog(context);
-                          }),
-                    ],
-                  ),
-                ),
-              ],
+    var pageBody = Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5.0,
             ),
-          ),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ReusableTextFormField(
+                      textEditingController: _nameController,
+                      isObscure: false,
+                      label: 'Nome',
+                      hint: 'Seu Nome',
+                      errorMessage: 'Por favor, digite seu nome',
+                      keyboardType: TextInputType.text,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 32.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ReusableTextFormField(
+                      textEditingController: _emailController,
+                      isObscure: false,
+                      label: 'E-mail',
+                      hint: 'seu@email.com',
+                      errorMessage: 'Por favor, digite seu e-mail',
+                      keyboardType: TextInputType.emailAddress,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 32.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ReusableTextFormField(
+                      textEditingController: _passController,
+                      isObscure: true,
+                      suffixIcon: Platform.isIOS
+                          ? Icon(
+                              CupertinoIcons.eye,
+                              color: Theme.of(context).primaryColor,
+                            )
+                          : Icon(Icons.visibility),
+                      label: 'Senha',
+                      hint: null,
+                      errorMessage: 'Por favor, digite sua senha',
+                      keyboardType: TextInputType.text,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 32.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ReusableTextFormField(
+                      textEditingController: _phoneController,
+                      isObscure: false,
+                      label: 'Telefone',
+                      hint: '(85) 98765-1234',
+                      errorMessage: null,
+                      keyboardType: TextInputType.number,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 32.0,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ReusableTextFormField(
+                      textEditingController: _dateController,
+                      isObscure: false,
+                      label: 'Data de nascimento',
+                      hint: '01/jul/1985',
+                      errorMessage: null,
+                      keyboardType: TextInputType.text,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 32.0,
+                  ),
+                  ReusableRaisedButton(
+                    buttonText: 'SALVAR ALTERAÇÕES',
+                    onPressed: () {
+                      Navigator.pushNamed(
+                          context, RouteGenerator.kPROFILE_ROUTE);
+                    },
+                  ),
+                  SizedBox(
+                    height: 32.0,
+                  ),
+                  ReusableDangerButton(
+                      buttonText: 'Excluir conta',
+                      onPressed: () {
+                        showAlertDialog(context);
+                      }),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
+    );
+    var appBarTitle = Text('Minha Conta');
+
+    return SafeArea(
+      child: Platform.isIOS
+          ? CupertinoPageScaffold(
+              navigationBar: buildCupertinoNavigationBar(context, appBarTitle),
+              child: pageBody,
+            )
+          : Scaffold(
+              appBar: AppBar(
+                title: appBarTitle,
+              ),
+              body: pageBody,
+            ),
     );
   }
 
@@ -240,7 +254,7 @@ class IosAlertDialog extends StatelessWidget {
           child: Text(
             'Excluir conta',
             style: TextStyle(
-              color: Color(0xffA2001D),
+              color: Theme.of(context).errorColor,
             ),
           ),
           onPressed: () {
