@@ -83,7 +83,10 @@ class Login extends StatelessWidget {
                 Navigator.pushNamed(context, RouteGenerator.kSIGNUP_ROUTE);
               },
             ),
-            ReusableAcceptTerms(),
+            ReusableAcceptTerms(
+              withCheckbox: true,
+              startingText: 'Ao continuar, você concorda com os ',
+            ),
           ],
         ),
       ),

@@ -20,7 +20,7 @@ class _AsanaInfoState extends State<AsanaInfo> {
       child: Scaffold(
         body: Stack(
           children: <Widget>[
-            Class(),
+            _visible ? Container() : Class(),
             AnimatedOpacity(
               opacity: _visible ? 1.0 : 0.0,
               duration: Duration(milliseconds: 500),

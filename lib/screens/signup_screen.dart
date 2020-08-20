@@ -88,12 +88,13 @@ class Signup extends StatelessWidget {
                 ],
               ),
             ),
-            Platform.isIOS
-                ? Material(
-                    child: ReusableAcceptTerms(),
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  )
-                : ReusableAcceptTerms(),
+            Material(
+              child: ReusableAcceptTerms(
+                withCheckbox: true,
+                startingText: 'Ao continuar, você concorda com os ',
+              ),
+              color: Theme.of(context).scaffoldBackgroundColor,
+            )
           ],
         ),
       ),

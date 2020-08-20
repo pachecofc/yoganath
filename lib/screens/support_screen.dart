@@ -45,7 +45,10 @@ class Support extends StatelessWidget {
           for (var hint in _searchHints)
             Material(
               child: ListTile(
-                title: Text(hint),
+                title: Text(
+                  hint,
+                  style: Theme.of(context).textTheme.bodyText2,
+                ),
               ),
             ),
           Footer(),

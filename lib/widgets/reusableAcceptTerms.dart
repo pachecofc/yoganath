@@ -2,6 +2,11 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class ReusableAcceptTerms extends StatefulWidget {
+  ReusableAcceptTerms(
+      {@required this.withCheckbox, @required this.startingText});
+  final bool withCheckbox;
+  final String startingText;
+
   @override
   _ReusableAcceptTermsState createState() => _ReusableAcceptTermsState();
 }
@@ -36,12 +41,14 @@ class _ReusableAcceptTermsState extends State<ReusableAcceptTerms> {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Checkbox(value: false, onChanged: (newValue) {}),
+        widget.withCheckbox
+            ? Checkbox(value: false, onChanged: (newValue) {})
+            : Container(),
         Container(
           width: MediaQuery.of(context).size.width * 0.77,
           child: RichText(
             text: TextSpan(
-              text: 'Ao continuar, você concorda com os ',
+              text: widget.startingText,
               style: Theme.of(context).textTheme.caption,
               children: <TextSpan>[
                 TextSpan(
