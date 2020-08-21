@@ -1,4 +1,4 @@
-package com.example.yoganath
+package com.applab.yoganath
 
 import io.flutter.embedding.android.FlutterActivity
 
