@@ -94,12 +94,6 @@ class _AndroidTextFieldState extends State<AndroidTextField> {
       ),
       cursorColor: Theme.of(context).primaryColor,
       obscureText: widget.isObscure,
-      validator: (value) {
-        if (value.isEmpty) {
-          return widget.errorMessage;
-        }
-        return null;
-      },
     );
   }
 }
@@ -145,12 +139,6 @@ class _IosTextFieldState extends State<IosTextField> {
       suffix: widget.suffixIcon,
       obscureText: widget.isObscure,
       cursorColor: Theme.of(context).primaryColor,
-      onSubmitted: (value) {
-        if (value.isEmpty) {
-          return widget.errorMessage;
-        }
-        return null;
-      },
     );
   }
 }

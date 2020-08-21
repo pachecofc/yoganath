@@ -1,17 +1,85 @@
 import 'dart:io' show Platform;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:yoganath/models/user.dart';
 import 'package:yoganath/services/routeGenerator.dart';
 import 'package:yoganath/utilities/buildNavigationBar.dart';
 import 'package:yoganath/widgets/reusableAcceptTerms.dart';
 import 'package:yoganath/widgets/reusableRaisedButton.dart';
 import 'package:yoganath/widgets/reusableTextFormField.dart';
 
-class Signup extends StatelessWidget {
+class Signup extends StatefulWidget {
+  @override
+  _SignupState createState() => _SignupState();
+}
+
+class _SignupState extends State<Signup> {
   final _formKey = GlobalKey<FormState>();
-  final _nameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passController = TextEditingController();
+
+  // TODO Remove default arguments after testing
+  final TextEditingController _nameController =
+      TextEditingController(text: 'Fabio Pacheco');
+
+  final TextEditingController _emailController =
+      TextEditingController(text: 'pachecofc@msn.com');
+
+  final TextEditingController _passController =
+      TextEditingController(text: '123abc');
+
+  String _errorMessage = '';
+
+  void _validateFields() {
+    String name = _nameController.text;
+    String email = _emailController.text;
+    String password = _passController.text;
+
+    if (name.length >= 3) {
+      if (email.isNotEmpty && email.contains('@')) {
+        if (password.length >= 6) {
+          setState(() {
+            _errorMessage = '';
+          });
+
+          AppUser appUser = AppUser();
+          appUser.name = name;
+          appUser.email = email;
+          appUser.password = password;
+
+          _signupUser(appUser);
+        } else {
+          setState(() {
+            _errorMessage = 'Senha precisa ter mais que 5 caracteres';
+          });
+        }
+      } else {
+        setState(() {
+          _errorMessage = 'Prencha o e-mail utilizando @';
+        });
+      }
+    } else {
+      setState(() {
+        _errorMessage = 'Nome precisa ter mais que 2 caracteres';
+      });
+    }
+  }
+
+  void _signupUser(AppUser appUser) {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    auth
+        .createUserWithEmailAndPassword(
+      email: appUser.email,
+      password: appUser.password,
+    )
+        .then((firebaseUser) {
+      Navigator.pushReplacementNamed(context, RouteGenerator.kBASE_ROUTE);
+    }).catchError((error) {
+      setState(() {
+        _errorMessage =
+            'Erro ao cadastrar usuário. Verifique os campos e tente novamente.';
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,10 +149,19 @@ class Signup extends StatelessWidget {
                   ReusableRaisedButton(
                     buttonText: 'CADASTRAR',
                     onPressed: () {
-                      Navigator.pushReplacementNamed(
-                          context, RouteGenerator.kBASE_ROUTE);
+                      _validateFields();
                     },
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Text(
+                      _errorMessage,
+                      style: Theme.of(context)
+                          .textTheme
+                          .caption
+                          .copyWith(color: Theme.of(context).errorColor),
+                    ),
+                  )
                 ],
               ),
             ),

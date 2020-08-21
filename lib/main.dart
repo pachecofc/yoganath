@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -7,10 +8,16 @@ import 'dart:io' show Platform;
 
 import 'screens/splash_screen.dart';
 
-void main() {
-  // Set portrait orientation as default
+// void main() {
+//   setOrientation(Orientation.portrait);
+//   initializeDateFormatting().then((_) => runApp(YogaNath()));
+// }
+void main() async {
   setOrientation(Orientation.portrait);
-  initializeDateFormatting().then((_) => runApp(YogaNath()));
+  initializeDateFormatting();
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(YogaNath());
 }
 
 class YogaNath extends StatelessWidget {
