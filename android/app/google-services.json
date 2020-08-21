@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "732592823416",
+    "firebase_url": "https://yoganath-68ff9.firebaseio.com",
+    "project_id": "yoganath-68ff9",
+    "storage_bucket": "yoganath-68ff9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732592823416:android:184ee118e477e6fbd4618d",
+        "android_client_info": {
+          "package_name": "com.applab.yoganath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732592823416-ogma167g2hk1t064p62jcs16noe5166s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.applab.yoganath",
+            "certificate_hash": "a1ce3b798b12a23dcffc29899a179cc0a5fb7229"
+          }
+        },
+        {
+          "client_id": "732592823416-7qjgeps50ivfi3ej16t84fbp084ir8gm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzBfQV_sC0y_Lgoqldaa4yktL7pjJbpbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732592823416-7qjgeps50ivfi3ej16t84fbp084ir8gm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
