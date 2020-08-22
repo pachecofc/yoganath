@@ -361,6 +361,8 @@ PODS:
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
   - PromisesObjC (1.2.10)
+  - validadores (0.0.1):
+    - Flutter
   - video_player (0.0.1):
     - Flutter
 
@@ -371,6 +373,7 @@ DEPENDENCIES:
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_storage (from `.symlinks/plugins/firebase_storage/ios`)
   - Flutter (from `Flutter`)
+  - validadores (from `.symlinks/plugins/validadores/ios`)
   - video_player (from `.symlinks/plugins/video_player/ios`)
 
 SPEC REPOS:
@@ -408,6 +411,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/firebase_storage/ios"
   Flutter:
     :path: Flutter
+  validadores:
+    :path: ".symlinks/plugins/validadores/ios"
   video_player:
     :path: ".symlinks/plugins/video_player/ios"
 
@@ -438,6 +443,7 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
+  validadores: 206300a4c79554790e2fc64e10917fe7db87dce1
   video_player: 9cc823b1d9da7e8427ee591e8438bfbcde500e6e
 
 PODFILE CHECKSUM: a5d19ff986dd057d5b1eeb95751ac9bcb039617a

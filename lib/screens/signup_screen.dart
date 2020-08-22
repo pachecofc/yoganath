@@ -15,8 +15,6 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  final _formKey = GlobalKey<FormState>();
-
   // TODO Remove default arguments after testing
   final TextEditingController _nameController =
       TextEditingController(text: 'Fabio Pacheco');
@@ -27,7 +25,10 @@ class _SignupState extends State<Signup> {
   final TextEditingController _passController =
       TextEditingController(text: '123abc');
 
-  String _errorMessage = '';
+  String _nameErrorMessage = '';
+  String _emailErrorMessage = '';
+  String _passErrorMessage = '';
+  String _generalErrorMessage = '';
 
   void _validateFields() {
     String name = _nameController.text;
@@ -35,33 +36,59 @@ class _SignupState extends State<Signup> {
     String password = _passController.text;
 
     if (name.length >= 3) {
-      if (email.isNotEmpty && email.contains('@')) {
-        if (password.length >= 6) {
-          setState(() {
-            _errorMessage = '';
-          });
-
-          AppUser appUser = AppUser();
-          appUser.name = name;
-          appUser.email = email;
-          appUser.password = password;
-
-          _signupUser(appUser);
-        } else {
-          setState(() {
-            _errorMessage = 'Senha precisa ter mais que 5 caracteres';
-          });
-        }
-      } else {
-        setState(() {
-          _errorMessage = 'Prencha o e-mail utilizando @';
-        });
-      }
+      setState(() {
+        _nameErrorMessage = '';
+        _generalErrorMessage = '';
+      });
     } else {
       setState(() {
-        _errorMessage = 'Nome precisa ter mais que 2 caracteres';
+        _nameErrorMessage = 'Nome precisa ter mais que 2 caracteres';
       });
     }
+
+    if (email.isNotEmpty && email.contains('@')) {
+      setState(() {
+        _emailErrorMessage = '';
+        _generalErrorMessage = '';
+      });
+    } else {
+      setState(() {
+        _emailErrorMessage = 'Prencha o e-mail utilizando @';
+      });
+    }
+
+    if (password.length >= 6) {
+      setState(() {
+        _passErrorMessage = '';
+        _generalErrorMessage = '';
+      });
+    } else {
+      setState(() {
+        _passErrorMessage = 'Senha precisa ter mais que 5 caracteres';
+      });
+    }
+
+    if (_nameErrorMessage == '' &&
+        _emailErrorMessage == '' &&
+        _passErrorMessage == '' &&
+        _generalErrorMessage == '') {
+      AppUser appUser = AppUser();
+      appUser.name = name;
+      appUser.email = email;
+      appUser.password = password;
+
+      // _signupUser(appUser);
+    }
+  }
+
+  Text buildErrorMessage(BuildContext context, String errorMessage) {
+    return Text(
+      errorMessage,
+      style: Theme.of(context)
+          .textTheme
+          .caption
+          .copyWith(color: Theme.of(context).errorColor),
+    );
   }
 
   void _signupUser(AppUser appUser) {
@@ -75,7 +102,7 @@ class _SignupState extends State<Signup> {
       Navigator.pushReplacementNamed(context, RouteGenerator.kBASE_ROUTE);
     }).catchError((error) {
       setState(() {
-        _errorMessage =
+        _generalErrorMessage =
             'Erro ao cadastrar usuário. Verifique os campos e tente novamente.';
       });
     });
@@ -100,70 +127,61 @@ class _SignupState extends State<Signup> {
             SizedBox(
               height: _screenSize.height * 0.05,
             ),
-            Form(
-              key: _formKey,
-              child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ReusableTextFormField(
-                      textEditingController: _nameController,
-                      isObscure: false,
-                      label: 'Nome',
-                      hint: 'Seu Nome',
-                      errorMessage: 'Por favor, digite seu nome',
-                      keyboardType: TextInputType.text,
-                    ),
+            Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ReusableTextFormField(
+                    textEditingController: _nameController,
+                    isObscure: false,
+                    label: 'Nome',
+                    hint: 'Seu Nome',
+                    errorMessage: 'Por favor, digite seu nome',
+                    keyboardType: TextInputType.text,
                   ),
-                  SizedBox(height: _screenSize.height * 0.05),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ReusableTextFormField(
-                      textEditingController: _emailController,
-                      isObscure: false,
-                      label: 'E-mail',
-                      hint: 'seu@email.com',
-                      errorMessage: 'Por favor, digite seu e-mail',
-                      keyboardType: TextInputType.emailAddress,
-                    ),
+                ),
+                buildErrorMessage(context, _nameErrorMessage),
+                SizedBox(height: _screenSize.height * 0.05),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ReusableTextFormField(
+                    textEditingController: _emailController,
+                    isObscure: false,
+                    label: 'E-mail',
+                    hint: 'seu@email.com',
+                    errorMessage: 'Por favor, digite seu e-mail',
+                    keyboardType: TextInputType.emailAddress,
                   ),
-                  SizedBox(height: _screenSize.height * 0.05),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: ReusableTextFormField(
-                      textEditingController: _passController,
-                      isObscure: true,
-                      suffixIcon: Platform.isIOS
-                          ? Icon(
-                              CupertinoIcons.eye,
-                              color: Theme.of(context).primaryColor,
-                            )
-                          : Icon(Icons.visibility),
-                      label: 'Senha',
-                      hint: null,
-                      errorMessage: 'Por favor, digite sua senha',
-                      keyboardType: TextInputType.text,
-                    ),
+                ),
+                buildErrorMessage(context, _emailErrorMessage),
+                SizedBox(height: _screenSize.height * 0.05),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: ReusableTextFormField(
+                    textEditingController: _passController,
+                    isObscure: true,
+                    suffixIcon: Platform.isIOS
+                        ? Icon(
+                            CupertinoIcons.eye,
+                            color: Theme.of(context).primaryColor,
+                          )
+                        : Icon(Icons.visibility),
+                    label: 'Senha',
+                    hint: null,
+                    errorMessage: 'Por favor, digite sua senha',
+                    keyboardType: TextInputType.text,
                   ),
-                  SizedBox(height: _screenSize.height * 0.04),
-                  ReusableRaisedButton(
-                    buttonText: 'CADASTRAR',
-                    onPressed: () {
-                      _validateFields();
-                    },
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8.0),
-                    child: Text(
-                      _errorMessage,
-                      style: Theme.of(context)
-                          .textTheme
-                          .caption
-                          .copyWith(color: Theme.of(context).errorColor),
-                    ),
-                  )
-                ],
-              ),
+                ),
+                buildErrorMessage(context, _passErrorMessage),
+                SizedBox(height: _screenSize.height * 0.04),
+                ReusableRaisedButton(
+                  buttonText: 'CADASTRAR',
+                  onPressed: () {
+                    _validateFields();
+                  },
+                ),
+                buildErrorMessage(context, _generalErrorMessage),
+              ],
             ),
             Material(
               child: ReusableAcceptTerms(
